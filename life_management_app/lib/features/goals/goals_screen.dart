@@ -116,7 +116,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
               selected: isSelected,
               onSelected: (selected) {
                 if (selected) setState(() => selectedCategory = category);
-              },
+              ),
             ),
           );
         ),
@@ -271,7 +271,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
         subtitle: completedAt != null ? Text('Completed on ${DateFormat('MMM dd, yyyy').format(completedAt)}') : null,
         onLongPress: () async {
           await DatabaseService().delete('goals', goal['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -320,7 +320,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
                     );
                     if (date != null) setState(() => targetDate = date);
-                  },
+                  ),
                 ),
               ],
             ),
@@ -339,7 +339,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
                   'status': 'active',
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Create'),
             ),
           ],
@@ -400,7 +400,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
                       onChanged: (value) async {
                         await DatabaseService().update('milestones', milestone['id']?.toString() ?? '', {'completed': value});
                         _updateGoalProgress(ref, goal['id']?.toString() ?? '', milestones);
-                      },
+                      ),
                     )),
                 ],
               ),
@@ -430,7 +430,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
                 'completed': false,
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],
@@ -472,7 +472,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
                   'completed_at': DateTime.now().toIso8601String(),
                 });
                 Navigator.pop(context);
-              },
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
@@ -480,7 +480,7 @@ class _GoalsScreenState extends ConsumerState<GoalsScreen> {
               onTap: () async {
                 await DatabaseService().delete('goals', goal['id']?.toString() ?? '');
                 Navigator.pop(context);
-              },
+              ),
             ),
           ],
         ),

@@ -14,7 +14,7 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
-      ),
+      },
       body: ListView(
         children: [
           const SizedBox(height: 8),
@@ -28,9 +28,9 @@ class SettingsScreen extends ConsumerWidget {
                 subtitle: Text(_getThemeLabel(themeMode)),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => _showThemeDialog(context, ref),
-              ),
+              },
             ],
-          ),
+          },
           _buildSection(
             context,
             title: 'Data & Sync',
@@ -41,16 +41,16 @@ class SettingsScreen extends ConsumerWidget {
                 subtitle: const Text('Last synced: 2 minutes ago'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {},
-              ),
+              },
               ListTile(
                 leading: const Icon(Icons.cloud_download),
                 title: const Text('Offline Data'),
                 subtitle: const Text('Manage offline storage'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {},
-              ),
+              },
             ],
-          ),
+          },
           _buildSection(
             context,
             title: 'Notifications',
@@ -61,16 +61,16 @@ class SettingsScreen extends ConsumerWidget {
                 subtitle: const Text('Receive notifications'),
                 value: true,
                 onChanged: (value) {},
-              ),
+              },
               SwitchListTile(
                 secondary: const Icon(Icons.alarm),
                 title: const Text('Reminders'),
                 subtitle: const Text('Enable task and bill reminders'),
                 value: true,
                 onChanged: (value) {},
-              ),
+              },
             ],
-          ),
+          },
           _buildSection(
             context,
             title: 'Account',
@@ -80,23 +80,23 @@ class SettingsScreen extends ConsumerWidget {
                 title: const Text('Profile'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {},
-              ),
+              },
               ListTile(
                 leading: const Icon(Icons.security),
                 title: const Text('Privacy & Security'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {},
-              ),
+              },
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.red),
                 title: const Text('Sign Out', style: TextStyle(color: Colors.red)),
                 onTap: () => _handleSignOut(context, ref),
-              ),
+              },
             ],
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSection(
@@ -114,13 +114,13 @@ class SettingsScreen extends ConsumerWidget {
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: const Color(0xFF6366F1),
               fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+            },
+          },
+        },
         ...children,
         const Divider(height: 32),
       ],
-    );
+    };
   }
 
   String _getThemeLabel(ThemeMode mode) {
@@ -152,7 +152,7 @@ class SettingsScreen extends ConsumerWidget {
                   Navigator.pop(context);
                 }
               },
-            ),
+            },
             RadioListTile<ThemeMode>(
               title: const Text('Dark'),
               value: ThemeMode.dark,
@@ -163,7 +163,7 @@ class SettingsScreen extends ConsumerWidget {
                   Navigator.pop(context);
                 }
               },
-            ),
+            },
             RadioListTile<ThemeMode>(
               title: const Text('System'),
               value: ThemeMode.system,
@@ -174,11 +174,11 @@ class SettingsScreen extends ConsumerWidget {
                   Navigator.pop(context);
                 }
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Future<void> _handleSignOut(BuildContext context, WidgetRef ref) async {
@@ -191,14 +191,14 @@ class SettingsScreen extends ConsumerWidget {
           TextButton(
             onPressed: () => Navigator.pop(context, false),
             child: const Text('Cancel'),
-          ),
+          },
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: const Text('Sign Out', style: TextStyle(color: Colors.red)),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
 
     if (confirmed == true && context.mounted) {
       await ref.read(authServiceProvider).signOut();

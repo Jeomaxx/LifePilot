@@ -25,9 +25,9 @@ class DebtsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.calculate_outlined),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: debtsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class DebtsScreen extends ConsumerWidget {
               subtitle: 'No debts tracked',
               actionLabel: 'Add Debt',
               onAction: () => _showAddDebtDialog(context, ref),
-            );
+            };
           }
 
           final totalDebt = debts.fold<double>(0, (sum, d) => sum + ((d['amount'] as num?)?.toDouble() ?? 0));
@@ -57,18 +57,18 @@ class DebtsScreen extends ConsumerWidget {
               Text(
                 'Your Debts',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...debts.map((debt) => _buildDebtCard(context, ref, debt)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDebtDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double total, double interest, int count) {
@@ -85,7 +85,7 @@ class DebtsScreen extends ConsumerWidget {
                 const SizedBox(width: 8),
                 Text('Total Debt', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
               ],
-            ),
+            },
             const SizedBox(height: 12),
             Text('\$${total.toStringAsFixed(2)}', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.red.shade700)),
             const SizedBox(height: 12),
@@ -95,11 +95,11 @@ class DebtsScreen extends ConsumerWidget {
                 Text('$count ${count == 1 ? 'debt' : 'debts'}', style: Theme.of(context).textTheme.bodyMedium),
                 Text('~\$${interest.toStringAsFixed(2)} annual interest', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey)),
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildDebtCard(BuildContext context, WidgetRef ref, Map<String, dynamic> debt) {
@@ -116,7 +116,7 @@ class DebtsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: Colors.red.withOpacity(0.1),
           child: Icon(Icons.credit_card, color: Colors.red.shade700),
-        ),
+        },
         title: Text(creditor, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,13 +125,13 @@ class DebtsScreen extends ConsumerWidget {
             if (dueDate != null) Text('Due: ${DateFormat('MMM dd, yyyy').format(dueDate)}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
             Text('Monthly interest: ~\$${monthlyInterest.toStringAsFixed(2)}', style: const TextStyle(fontSize: 12, color: Colors.orange)),
           ],
-        ),
+        },
         trailing: IconButton(
           icon: const Icon(Icons.more_vert),
           onPressed: () => _showDebtOptions(context, ref, debt),
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDebtDialog(BuildContext context, WidgetRef ref) {
@@ -165,13 +165,13 @@ class DebtsScreen extends ConsumerWidget {
                       initialDate: DateTime.now().add(const Duration(days: 30)),
                       firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
-                    );
+                    };
                     if (date != null) setState(() => dueDate = date);
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -186,13 +186,13 @@ class DebtsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showDebtOptions(BuildContext context, WidgetRef ref, Map<String, dynamic> debt) {
@@ -210,7 +210,7 @@ class DebtsScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showPaymentDialog(context, ref, debt);
               },
-            ),
+            },
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
               title: const Text('Delete Debt', style: TextStyle(color: Colors.red)),
@@ -218,11 +218,11 @@ class DebtsScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showDeleteDialog(context, ref, debt['id']?.toString() ?? '');
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showPaymentDialog(BuildContext context, WidgetRef ref, Map<String, dynamic> debt) {
@@ -240,7 +240,7 @@ class DebtsScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             TextField(controller: paymentController, decoration: const InputDecoration(labelText: 'Payment Amount'), keyboardType: TextInputType.number),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -259,10 +259,10 @@ class DebtsScreen extends ConsumerWidget {
               if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Pay'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -280,9 +280,9 @@ class DebtsScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

@@ -27,10 +27,11 @@ class TaxDocumentsScreen extends ConsumerWidget {
           if (docs.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt_long,
+              title: 'No Tax Documents',
               subtitle: 'No tax documents',
               actionLabel: 'Add Document',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final docsByYear = <int, List<Map<String, dynamic>>>{};
@@ -55,14 +56,14 @@ class TaxDocumentsScreen extends ConsumerWidget {
                 const SizedBox(height: 16),
               ],
             )).toList(),
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildDocCard(BuildContext context, WidgetRef ref, Map<String, dynamic> doc) {
@@ -77,9 +78,9 @@ class TaxDocumentsScreen extends ConsumerWidget {
         subtitle: Text(type),
         onLongPress: () async {
           await DatabaseService().delete('tax_documents', doc['id']?.toString() ?? '');
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -108,16 +109,16 @@ class TaxDocumentsScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => docType = v ?? 'W-2'),
                 decoration: const InputDecoration(labelText: 'Type'),
-              ),
+              },
               const SizedBox(height: 12),
               DropdownButtonFormField<int>(
                 value: taxYear,
                 items: List.generate(10, (i) => DateTime.now().year - i).map((year) => DropdownMenuItem(value: year, child: Text(year.toString()))).toList(),
                 onChanged: (v) => setState(() => taxYear = v ?? DateTime.now().year),
                 decoration: const InputDecoration(labelText: 'Tax Year'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -129,12 +130,12 @@ class TaxDocumentsScreen extends ConsumerWidget {
                   'tax_year': taxYear,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

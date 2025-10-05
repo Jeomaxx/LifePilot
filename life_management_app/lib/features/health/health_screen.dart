@@ -25,7 +25,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.insights),
-            onPressed: () {},
+            onPressed: () {),
           ),
         ],
       ),
@@ -205,7 +205,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
           onDelete: () async {
             await ref.read(healthNotifierProvider.notifier).deleteEntry(entry['id']);
             ref.invalidate(healthEntriesProvider);
-          },
+          ),
         )),
       ],
     );

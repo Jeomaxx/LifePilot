@@ -29,7 +29,7 @@ class MediaTrackerScreen extends ConsumerWidget {
               subtitle: 'No media tracked',
               actionLabel: 'Add Media',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return ListView.builder(
@@ -53,21 +53,21 @@ class MediaTrackerScreen extends ConsumerWidget {
                       Text('$type • $status'),
                       if (rating > 0) Row(children: List.generate(5, (i) => Icon(Icons.star, size: 16, color: i < rating ? Colors.amber : Colors.grey))),
                     ],
-                  ),
+                  },
                   onLongPress: () async {
                     await DatabaseService().delete('media_tracker', item['id']?.toString() ?? '');
                   },
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -92,7 +92,7 @@ class MediaTrackerScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => type = v ?? 'Movie'),
                 decoration: const InputDecoration(labelText: 'Type'),
-              ),
+              },
               TextField(controller: titleController, decoration: const InputDecoration(labelText: 'Title')),
               const SizedBox(height: 12),
               Row(
@@ -103,9 +103,9 @@ class MediaTrackerScreen extends ConsumerWidget {
                     onPressed: () => setState(() => rating = i + 1),
                   )),
                 ],
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -120,10 +120,10 @@ class MediaTrackerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

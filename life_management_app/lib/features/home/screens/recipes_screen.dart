@@ -25,6 +25,7 @@ class RecipesScreen extends ConsumerWidget {
           if (recipes.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.restaurant_menu,
+              title: 'No Recipes',
               subtitle: 'No recipes saved',
               actionLabel: 'Add Recipe',
               onAction: () => _showAddDialog(context, ref),

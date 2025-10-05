@@ -12,7 +12,7 @@ class AIService {
             {'role': 'user', 'content': message}
           ],
           'sessionId': sessionId,
-        },
+        ),
       );
       
       if (response.data != null && response.data['success'] == true) {
@@ -37,7 +37,7 @@ class AIService {
             }
           ],
           'context': 'financial_analysis',
-        },
+        ),
       );
       
       return response.data as Map<String, dynamic>;
@@ -58,7 +58,7 @@ class AIService {
             }
           ],
           'context': 'habit_analysis',
-        },
+        ),
       );
       
       return response.data as Map<String, dynamic>;
@@ -71,7 +71,7 @@ class AIService {
     try {
       final response = await _supabase.functions.invoke(
         'crypto-prices',
-        body: {'symbols': symbols},
+        body: {'symbols': symbols),
       );
       
       if (response.data != null && response.data['success'] == true) {

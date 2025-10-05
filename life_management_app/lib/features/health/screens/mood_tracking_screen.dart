@@ -26,9 +26,9 @@ class MoodTrackingScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.insights),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: moodAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -40,7 +40,7 @@ class MoodTrackingScreen extends ConsumerWidget {
               subtitle: 'Start tracking your mood',
               actionLabel: 'Log Mood',
               onAction: () => _showLogMoodDialog(context, ref),
-            );
+            };
           }
 
           return ListView(
@@ -53,18 +53,18 @@ class MoodTrackingScreen extends ConsumerWidget {
               Text(
                 'Recent Entries',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...moods.take(20).map((mood) => _buildMoodCard(context, ref, mood)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showLogMoodDialog(context, ref),
         child: const Icon(Icons.add_reaction),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildMoodSummary(BuildContext context, List<Map<String, dynamic>> moods) {
@@ -108,9 +108,9 @@ class MoodTrackingScreen extends ConsumerWidget {
             const SizedBox(height: 8),
             Text('${weekMoods.length} mood ${weekMoods.length == 1 ? 'entry' : 'entries'} logged', style: const TextStyle(color: Colors.grey)),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildWeeklyChart(BuildContext context, List<Map<String, dynamic>> moods) {
@@ -156,7 +156,7 @@ class MoodTrackingScreen extends ConsumerWidget {
                       color: Colors.blue,
                       barWidth: 3,
                       dotData: const FlDotData(show: true),
-                    ),
+                    },
                   ],
                   titlesData: FlTitlesData(
                     bottomTitles: AxisTitles(
@@ -165,30 +165,30 @@ class MoodTrackingScreen extends ConsumerWidget {
                         getTitlesWidget: (value, meta) {
                           final date = now.subtract(Duration(days: 6 - value.toInt()));
                           return Text(DateFormat('EEE').format(date), style: const TextStyle(fontSize: 12));
-                        ),
-                      ),
-                    ),
+                        },
+                      },
+                    },
                     leftTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
                         reservedSize: 30,
                         getTitlesWidget: (value, meta) => Text(value.toInt().toString()),
-                      ),
-                    ),
+                      },
+                    },
                     topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  ),
+                  },
                   minY: 0,
                   maxY: 5,
                   borderData: FlBorderData(show: false),
                   gridData: const FlGridData(show: true),
-                ),
-              ),
-            ),
+                },
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildMoodCard(BuildContext context, WidgetRef ref, Map<String, dynamic> mood) {
@@ -238,7 +238,7 @@ class MoodTrackingScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: color.withOpacity(0.1),
           child: Icon(icon, color: color),
-        ),
+        },
         title: Text(label, style: TextStyle(fontWeight: FontWeight.bold, color: color)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,15 +246,15 @@ class MoodTrackingScreen extends ConsumerWidget {
             if (note != null && note.isNotEmpty) Text(note, maxLines: 2, overflow: TextOverflow.ellipsis),
             if (recordedAt != null) Text(DateFormat('MMM dd, HH:mm').format(recordedAt), style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
-        ),
+        },
         trailing: IconButton(
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: () async {
             await DatabaseService().delete('mood_tracking', mood['id']?.toString() ?? '');
           },
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showLogMoodDialog(BuildContext context, WidgetRef ref) {
@@ -308,20 +308,20 @@ class MoodTrackingScreen extends ConsumerWidget {
                       decoration: BoxDecoration(
                         color: moodLevel == level ? color.withOpacity(0.2) : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
-                      ),
+                      },
                       child: Icon(icon, size: 40, color: color),
-                    ),
-                  );
+                    },
+                  };
                 }).toList(),
-              ),
+              },
               const SizedBox(height: 16),
               TextField(
                 controller: noteController,
                 decoration: const InputDecoration(labelText: 'Add a note (optional)', border: OutlineInputBorder()),
                 maxLines: 3,
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -335,10 +335,10 @@ class MoodTrackingScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

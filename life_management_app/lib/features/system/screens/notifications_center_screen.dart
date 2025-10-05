@@ -44,6 +44,7 @@ class NotificationsCenterScreen extends ConsumerWidget {
           if (notifications.isEmpty) {
             return const EmptyStateWidget(
               icon: Icons.notifications_none,
+              title: 'No Notifications',
               subtitle: 'No notifications',
             );
           }

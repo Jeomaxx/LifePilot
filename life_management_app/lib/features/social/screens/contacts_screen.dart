@@ -28,7 +28,7 @@ class ContactsScreen extends ConsumerWidget {
               subtitle: 'No contacts yet',
               actionLabel: 'Add Contact',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return ListView.builder(
@@ -51,21 +51,21 @@ class ContactsScreen extends ConsumerWidget {
                       if (phone != null) Text(phone),
                       if (email != null) Text(email, style: const TextStyle(fontSize: 12)),
                     ],
-                  ),
+                  },
                   onLongPress: () async {
                     await DatabaseService().delete('contacts', contact['id']?.toString() ?? '');
-                  ),
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                  },
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -86,7 +86,7 @@ class ContactsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             TextField(controller: emailController, decoration: const InputDecoration(labelText: 'Email'), keyboardType: TextInputType.emailAddress),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -98,11 +98,11 @@ class ContactsScreen extends ConsumerWidget {
                 'email': emailController.text,
               });
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

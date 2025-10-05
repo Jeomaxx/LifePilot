@@ -29,7 +29,7 @@ class HobbiesTrackerScreen extends ConsumerWidget {
               subtitle: 'No hobbies tracked',
               actionLabel: 'Add Hobby',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return GridView.builder(
@@ -39,7 +39,7 @@ class HobbiesTrackerScreen extends ConsumerWidget {
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 1.2,
-            ),
+            },
             itemCount: hobbies.length,
             itemBuilder: (context, index) {
               final hobby = hobbies[index];
@@ -59,19 +59,19 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                         Text(name, style: const TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center),
                         Text(category, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                       ],
-                    ),
-                  ),
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                    },
+                  },
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   IconData _getIconForCategory(String category) {
@@ -116,9 +116,9 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => category = v ?? 'Sports'),
                 decoration: const InputDecoration(labelText: 'Category'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -131,11 +131,11 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showHobbyDetails(BuildContext context, WidgetRef ref, Map<String, dynamic> hobby) {
@@ -159,11 +159,11 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 child: const Text('Delete Hobby'),
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

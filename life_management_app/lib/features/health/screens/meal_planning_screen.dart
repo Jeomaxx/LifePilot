@@ -34,9 +34,9 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
           IconButton(
             icon: const Icon(Icons.restaurant_menu),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: mealsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -69,17 +69,17 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                           const SizedBox(height: 16),
                           ...selectedDayMeals.map((meal) => _buildMealCard(context, ref, meal)),
                         ],
-                      ),
-              ),
+                      },
+              },
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddMealDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildCalendar(List<Map<String, dynamic>> meals) {
@@ -96,15 +96,15 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
             selectedDay = selected;
             focusedDay = focused;
           });
-        ),
+        },
         eventLoader: (day) {
           return meals.where((m) {
             final mealDate = m['meal_date'] != null ? DateTime.parse(m['meal_date'].toString()) : null;
             return mealDate != null && isSameDay(mealDate, day);
           }).toList();
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildNutritionSummary(BuildContext context, List<Map<String, dynamic>> meals) {
@@ -129,11 +129,11 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                 _buildNutrientCircle('${totalCarbs.toInt()}g', 'Carbs', Colors.green),
                 _buildNutrientCircle('${totalFat.toInt()}g', 'Fat', Colors.red),
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildNutrientCircle(String value, String label, Color color) {
@@ -144,13 +144,13 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
           decoration: BoxDecoration(
             color: color.withOpacity(0.1),
             shape: BoxShape.circle,
-          ),
+          },
           child: Text(value, style: TextStyle(fontWeight: FontWeight.bold, color: color)),
-        ),
+        },
         const SizedBox(height: 4),
         Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
       ],
-    );
+    };
   }
 
   Widget _buildMealCard(BuildContext context, WidgetRef ref, Map<String, dynamic> meal) {
@@ -189,7 +189,7 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
         leading: CircleAvatar(
           backgroundColor: color.withOpacity(0.1),
           child: Icon(icon, color: color),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text('$mealType • $calories cal'),
         trailing: IconButton(
@@ -197,9 +197,9 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
           onPressed: () async {
             await DatabaseService().delete('meal_plans', meal['id']?.toString() ?? '');
           },
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddMealDialog(BuildContext context, WidgetRef ref) {
@@ -229,7 +229,7 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                     DropdownMenuItem(value: 'Snack', child: Text('Snack')),
                   ],
                   onChanged: (value) => setState(() => mealType = value ?? 'Breakfast'),
-                ),
+                },
                 const SizedBox(height: 12),
                 TextField(controller: nameController, decoration: const InputDecoration(labelText: 'Meal Name')),
                 const SizedBox(height: 12),
@@ -243,10 +243,10 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                     const SizedBox(width: 8),
                     Expanded(child: TextField(controller: fatController, decoration: const InputDecoration(labelText: 'Fat (g)'), keyboardType: TextInputType.number)),
                   ],
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -266,10 +266,10 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

@@ -29,7 +29,7 @@ class LearningTrackerScreen extends ConsumerWidget {
               subtitle: 'No learning resources',
               actionLabel: 'Add Resource',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return ListView.builder(
@@ -53,21 +53,21 @@ class LearningTrackerScreen extends ConsumerWidget {
                       LinearProgressIndicator(value: progress / 100),
                       Text('$progress% complete'),
                     ],
-                  ),
+                  },
                   onLongPress: () async {
                     await DatabaseService().delete('learning_resources', resource['id']?.toString() ?? '');
                   },
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   IconData _getIconForType(String type) {
@@ -106,9 +106,9 @@ class LearningTrackerScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => type = v ?? 'Course'),
                 decoration: const InputDecoration(labelText: 'Type'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -122,10 +122,10 @@ class LearningTrackerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

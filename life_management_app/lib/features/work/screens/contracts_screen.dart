@@ -26,10 +26,11 @@ class ContractsScreen extends ConsumerWidget {
           if (contracts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.description,
+              title: 'No Contracts',
               subtitle: 'No contracts',
               actionLabel: 'Add Contract',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final active = contracts.where((c) => c['status'] == 'active').toList();
@@ -50,14 +51,14 @@ class ContractsScreen extends ConsumerWidget {
                 ...expired.map((contract) => _buildContractCard(context, ref, contract, false)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildContractCard(BuildContext context, WidgetRef ref, Map<String, dynamic> contract, bool isActive) {
@@ -72,7 +73,7 @@ class ContractsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: isActive ? Colors.green.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
           child: Icon(Icons.assignment, color: isActive ? Colors.green : Colors.grey),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,12 +82,12 @@ class ContractsScreen extends ConsumerWidget {
             if (startDate != null && endDate != null)
               Text('${DateFormat('MMM dd, yyyy').format(startDate)} - ${DateFormat('MMM dd, yyyy').format(endDate)}', style: const TextStyle(fontSize: 12)),
           ],
-        ),
+        },
         onLongPress: () async {
           await DatabaseService().delete('contracts', contract['id']?.toString() ?? '');
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -118,10 +119,10 @@ class ContractsScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime.now().subtract(const Duration(days: 3650)),
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
-                    );
+                    };
                     if (date != null) setState(() => startDate = date);
-                  ),
-                ),
+                  },
+                },
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(endDate == null ? 'End Date' : DateFormat('MMM dd, yyyy').format(endDate!)),
@@ -132,13 +133,13 @@ class ContractsScreen extends ConsumerWidget {
                       initialDate: startDate ?? DateTime.now(),
                       firstDate: startDate ?? DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
-                    );
+                    };
                     if (date != null) setState(() => endDate = date);
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -152,12 +153,12 @@ class ContractsScreen extends ConsumerWidget {
                   'status': endDate!.isAfter(DateTime.now()) ? 'active' : 'expired',
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

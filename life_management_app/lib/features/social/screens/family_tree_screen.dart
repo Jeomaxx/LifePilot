@@ -28,7 +28,7 @@ class FamilyTreeScreen extends ConsumerWidget {
               subtitle: 'No family members added',
               actionLabel: 'Add Member',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final membersByRelation = <String, List<Map<String, dynamic>>>{};
@@ -55,20 +55,20 @@ class FamilyTreeScreen extends ConsumerWidget {
                     subtitle: Text(member['phone']?.toString() ?? 'No phone'),
                     onLongPress: () async {
                       await DatabaseService().delete('family_members', member['id']?.toString() ?? '');
-                    ),
-                  ),
+                    },
+                  },
                 )),
                 const SizedBox(height: 16),
               ],
             )).toList(),
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -98,11 +98,11 @@ class FamilyTreeScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => relationship = v ?? 'Parent'),
                 decoration: const InputDecoration(labelText: 'Relationship'),
-              ),
+              },
               const SizedBox(height: 12),
               TextField(controller: phoneController, decoration: const InputDecoration(labelText: 'Phone'), keyboardType: TextInputType.phone),
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -114,12 +114,12 @@ class FamilyTreeScreen extends ConsumerWidget {
                   'phone': phoneController.text,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

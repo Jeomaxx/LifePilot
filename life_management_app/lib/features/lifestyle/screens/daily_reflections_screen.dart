@@ -56,24 +56,24 @@ class DailyReflectionsScreen extends ConsumerWidget {
                             _buildReflectionSection('Highlights', todayReflection['highlights']?.toString()),
                             _buildReflectionSection('Learnings', todayReflection['learnings']?.toString()),
                           ],
-                        ),
+                        },
                     ],
-                  ),
-                ),
-              ),
+                  },
+                },
+              },
               const SizedBox(height: 24),
               const Text('Past Reflections', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               const SizedBox(height: 12),
               ...reflections.where((r) => r != todayReflection).take(10).map((r) => _buildReflectionCard(context, ref, r)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.edit),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildReflectionSection(String title, String? content) {
@@ -86,8 +86,8 @@ class DailyReflectionsScreen extends ConsumerWidget {
           const SizedBox(height: 4),
           Text(content ?? 'Not filled', style: const TextStyle(color: Colors.grey)),
         ],
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildReflectionCard(BuildContext context, WidgetRef ref, Map<String, dynamic> reflection) {
@@ -101,9 +101,9 @@ class DailyReflectionsScreen extends ConsumerWidget {
         subtitle: Text(reflection['grateful_for']?.toString() ?? '', maxLines: 1, overflow: TextOverflow.ellipsis),
         onLongPress: () async {
           await DatabaseService().delete('daily_reflections', reflection['id']?.toString() ?? '');
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -125,8 +125,8 @@ class DailyReflectionsScreen extends ConsumerWidget {
               const SizedBox(height: 12),
               TextField(controller: learningsController, decoration: const InputDecoration(labelText: 'What did you learn?'), maxLines: 2),
             ],
-          ),
-        ),
+          },
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -138,11 +138,11 @@ class DailyReflectionsScreen extends ConsumerWidget {
                 'reflection_date': DateTime.now().toIso8601String(),
               });
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Save'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

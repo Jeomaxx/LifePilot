@@ -31,9 +31,9 @@ class HabitsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.calendar_month),
             onPressed: () => _showCalendarView(context),
-          ),
+          },
         ],
-      ),
+      },
       body: habitsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -45,7 +45,7 @@ class HabitsScreen extends ConsumerWidget {
               subtitle: 'No habits tracked',
               actionLabel: 'Add Habit',
               onAction: () => _showAddHabitDialog(context, ref),
-            );
+            };
           }
 
           return ListView(
@@ -56,18 +56,18 @@ class HabitsScreen extends ConsumerWidget {
               Text(
                 'Today\'s Habits',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...habits.map((habit) => _buildHabitCard(context, ref, habit, logsAsync.value ?? [])),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddHabitDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildStreakSummary(BuildContext context, List<Map<String, dynamic>> habits) {
@@ -91,8 +91,8 @@ class HabitsScreen extends ConsumerWidget {
                   Text('$totalStreak', style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                   const Text('Total Streaks', style: TextStyle(color: Colors.grey)),
                 ],
-              ),
-            ),
+              },
+            },
             Expanded(
               child: Column(
                 children: [
@@ -101,12 +101,12 @@ class HabitsScreen extends ConsumerWidget {
                   Text('$longestStreak', style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                   const Text('Best Streak', style: TextStyle(color: Colors.grey)),
                 ],
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildHabitCard(BuildContext context, WidgetRef ref, Map<String, dynamic> habit, List<Map<String, dynamic>> logs) {
@@ -129,7 +129,7 @@ class HabitsScreen extends ConsumerWidget {
           child: isCompletedToday 
               ? const Icon(Icons.check_circle, color: Colors.green)
               : const Icon(Icons.circle_outlined, color: Colors.grey),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Row(
           children: [
@@ -141,7 +141,7 @@ class HabitsScreen extends ConsumerWidget {
             const SizedBox(width: 4),
             Text('$streak day${streak == 1 ? '' : 's'}'),
           ],
-        ),
+        },
         trailing: !isCompletedToday
             ? IconButton(
                 icon: const Icon(Icons.check_circle_outline, color: Colors.green),
@@ -149,8 +149,8 @@ class HabitsScreen extends ConsumerWidget {
               )
             : const Icon(Icons.check_circle, color: Colors.green),
         onLongPress: () => _showHabitOptions(context, ref, habit),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddHabitDialog(BuildContext context, WidgetRef ref) {
@@ -176,9 +176,9 @@ class HabitsScreen extends ConsumerWidget {
                   DropdownMenuItem(value: 'custom', child: Text('Custom')),
                 ],
                 onChanged: (value) => setState(() => frequency = value ?? 'daily'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -193,13 +193,13 @@ class HabitsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _markAsComplete(BuildContext context, WidgetRef ref, Map<String, dynamic> habit) async {
@@ -227,7 +227,7 @@ class HabitsScreen extends ConsumerWidget {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Habit completed! $newStreak day streak 🔥'), backgroundColor: Colors.green),
-      );
+      };
     }
   }
 
@@ -246,7 +246,7 @@ class HabitsScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showHabitHistory(context, habit);
               },
-            ),
+            },
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
               title: const Text('Delete Habit', style: TextStyle(color: Colors.red)),
@@ -254,11 +254,11 @@ class HabitsScreen extends ConsumerWidget {
                 await DatabaseService().delete('habits', habit['id']?.toString() ?? '');
                 if (context.mounted) Navigator.pop(context);
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showHabitHistory(BuildContext context, Map<String, dynamic> habit) {
@@ -273,12 +273,12 @@ class HabitsScreen extends ConsumerWidget {
             const SizedBox(height: 16),
             Text('Last completed: ${habit['last_completed'] != null ? DateTime.parse(habit['last_completed'].toString()).toString().substring(0, 10) : 'Never'}'),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close')),
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showCalendarView(BuildContext context) {
@@ -297,11 +297,11 @@ class HabitsScreen extends ConsumerWidget {
                 lastDay: DateTime.utc(2030, 12, 31),
                 focusedDay: DateTime.now(),
                 calendarFormat: CalendarFormat.month,
-              ),
+              },
             ],
-          ),
-        ),
-      ),
-    );
+          },
+        },
+      },
+    };
   }
 }

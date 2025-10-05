@@ -29,7 +29,7 @@ class ReadingListScreen extends ConsumerWidget {
               subtitle: 'No books in your list',
               actionLabel: 'Add Book',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final reading = books.where((b) => b['status'] == 'reading').toList();
@@ -57,14 +57,14 @@ class ReadingListScreen extends ConsumerWidget {
                 ...finished.map((book) => _buildBookCard(context, ref, book)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildBookCard(BuildContext context, WidgetRef ref, Map<String, dynamic> book) {
@@ -91,9 +91,9 @@ class ReadingListScreen extends ConsumerWidget {
               await DatabaseService().update('reading_list', book['id']?.toString() ?? '', {'status': value});
             }
           },
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -111,7 +111,7 @@ class ReadingListScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             TextField(controller: authorController, decoration: const InputDecoration(labelText: 'Author')),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -125,9 +125,9 @@ class ReadingListScreen extends ConsumerWidget {
               if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

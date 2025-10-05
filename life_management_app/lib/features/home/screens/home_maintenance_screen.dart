@@ -26,6 +26,7 @@ class HomeMaintenanceScreen extends ConsumerWidget {
           if (tasks.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.home_repair_service,
+              title: 'No Maintenance Tasks',
               subtitle: 'No maintenance tasks',
               actionLabel: 'Add Task',
               onAction: () => _showAddDialog(context, ref),

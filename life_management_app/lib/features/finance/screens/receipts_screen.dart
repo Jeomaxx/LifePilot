@@ -30,7 +30,7 @@ class ReceiptsScreen extends ConsumerWidget {
               subtitle: 'No receipts saved',
               actionLabel: 'Add Receipt',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return ListView.builder(
@@ -54,22 +54,22 @@ class ReceiptsScreen extends ConsumerWidget {
                       Text(category),
                       if (date != null) Text(DateFormat('MMM dd, yyyy').format(date), style: const TextStyle(fontSize: 12)),
                     ],
-                  ),
+                  },
                   trailing: Text('\$${amount.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   onLongPress: () async {
                     await DatabaseService().delete('expense_receipts', receipt['id']?.toString() ?? '');
                   },
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -101,7 +101,7 @@ class ReceiptsScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => category = v ?? 'Food'),
                 decoration: const InputDecoration(labelText: 'Category'),
-              ),
+              },
               const SizedBox(height: 12),
               ListTile(
                 contentPadding: EdgeInsets.zero,
@@ -113,12 +113,12 @@ class ReceiptsScreen extends ConsumerWidget {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now().subtract(const Duration(days: 365)),
                     lastDate: DateTime.now(),
-                  );
+                  };
                   if (date != null) setState(() => expenseDate = date);
                 },
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -133,10 +133,10 @@ class ReceiptsScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

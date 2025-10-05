@@ -25,9 +25,9 @@ class SubscriptionsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.analytics_outlined),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: subscriptionsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class SubscriptionsScreen extends ConsumerWidget {
               subtitle: 'No subscriptions tracked',
               actionLabel: 'Add Subscription',
               onAction: () => _showAddSubscriptionDialog(context, ref),
-            );
+            };
           }
 
           final monthlyTotal = subscriptions.fold<double>(0, (sum, sub) {
@@ -58,18 +58,18 @@ class SubscriptionsScreen extends ConsumerWidget {
               Text(
                 'Active Subscriptions',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...subscriptions.map((subscription) => _buildSubscriptionCard(context, ref, subscription)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddSubscriptionDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double monthly, double yearly, int count) {
@@ -89,7 +89,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text('\$${monthly.toStringAsFixed(2)}', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
                   ],
-                ),
+                },
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -97,15 +97,15 @@ class SubscriptionsScreen extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text('\$${yearly.toStringAsFixed(2)}', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
                   ],
-                ),
+                },
               ],
-            ),
+            },
             const SizedBox(height: 12),
             Text('$count active ${count == 1 ? 'subscription' : 'subscriptions'}', style: Theme.of(context).textTheme.bodySmall),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildSubscriptionCard(BuildContext context, WidgetRef ref, Map<String, dynamic> subscription) {
@@ -122,7 +122,7 @@ class SubscriptionsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
           child: Text(name.substring(0, 1).toUpperCase(), style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold)),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,9 +132,9 @@ class SubscriptionsScreen extends ConsumerWidget {
               Text(
                 daysUntilPayment == 0 ? 'Next payment today' : 'Next payment in $daysUntilPayment days',
                 style: const TextStyle(fontSize: 12, color: Colors.grey),
-              ),
+              },
           ],
-        ),
+        },
         trailing: PopupMenuButton(
           itemBuilder: (context) => [
             const PopupMenuItem(value: 'edit', child: Text('Edit')),
@@ -145,9 +145,9 @@ class SubscriptionsScreen extends ConsumerWidget {
               _showDeleteDialog(context, ref, subscription['id']?.toString() ?? '');
             }
           },
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddSubscriptionDialog(BuildContext context, WidgetRef ref) {
@@ -178,7 +178,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                     DropdownMenuItem(value: 'weekly', child: Text('Weekly')),
                   ],
                   onChanged: (value) => setState(() => billingCycle = value ?? 'monthly'),
-                ),
+                },
                 const SizedBox(height: 12),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -190,13 +190,13 @@ class SubscriptionsScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 365)),
-                    );
+                    };
                     if (date != null) setState(() => nextPaymentDate = date);
                   },
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -213,11 +213,11 @@ class SubscriptionsScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -232,12 +232,12 @@ class SubscriptionsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('subscriptions', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Remove'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

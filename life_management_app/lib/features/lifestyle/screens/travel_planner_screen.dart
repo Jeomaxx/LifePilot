@@ -30,7 +30,7 @@ class TravelPlannerScreen extends ConsumerWidget {
               subtitle: 'No trips planned',
               actionLabel: 'Plan Trip',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final upcoming = trips.where((t) {
@@ -57,14 +57,14 @@ class TravelPlannerScreen extends ConsumerWidget {
                 ...past.map((trip) => _buildTripCard(context, ref, trip, false)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildTripCard(BuildContext context, WidgetRef ref, Map<String, dynamic> trip, bool isUpcoming) {
@@ -78,7 +78,7 @@ class TravelPlannerScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: isUpcoming ? Colors.blue.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
           child: Icon(Icons.flight, color: isUpcoming ? Colors.blue : Colors.grey),
-        ),
+        },
         title: Text(destination, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: startDate != null && endDate != null
             ? Text('${DateFormat('MMM dd').format(startDate)} - ${DateFormat('MMM dd, yyyy').format(endDate)}')
@@ -86,8 +86,8 @@ class TravelPlannerScreen extends ConsumerWidget {
         onLongPress: () async {
           await DatabaseService().delete('travel_logs', trip['id']?.toString() ?? '');
         },
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -115,10 +115,10 @@ class TravelPlannerScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
-                    );
+                    };
                     if (date != null) setState(() => startDate = date);
                   },
-                ),
+                },
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(endDate == null ? 'End Date' : DateFormat('MMM dd, yyyy').format(endDate!)),
@@ -129,13 +129,13 @@ class TravelPlannerScreen extends ConsumerWidget {
                       initialDate: startDate ?? DateTime.now(),
                       firstDate: startDate ?? DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
-                    );
+                    };
                     if (date != null) setState(() => endDate = date);
                   },
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -149,10 +149,10 @@ class TravelPlannerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

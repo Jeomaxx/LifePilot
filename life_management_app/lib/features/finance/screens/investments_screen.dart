@@ -25,9 +25,9 @@ class InvestmentsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.analytics_outlined),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: investmentsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,17 +39,17 @@ class InvestmentsScreen extends ConsumerWidget {
               subtitle: 'No investments yet',
               actionLabel: 'Add Investment',
               onAction: () => _showAddInvestmentDialog(context, ref),
-            );
+            };
           }
 
           final totalValue = investments.fold<double>(
             0,
             (sum, inv) => sum + ((inv['current_value'] as num?)?.toDouble() ?? 0),
-          );
+          };
           final totalInvested = investments.fold<double>(
             0,
             (sum, inv) => sum + ((inv['amount'] as num?)?.toDouble() ?? 0),
-          );
+          };
           final totalReturns = totalValue - totalInvested;
           final returnsPercent = totalInvested > 0 ? (totalReturns / totalInvested * 100) : 0;
 
@@ -63,18 +63,18 @@ class InvestmentsScreen extends ConsumerWidget {
               Text(
                 'Your Investments',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...investments.map((investment) => _buildInvestmentCard(context, ref, investment)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddInvestmentDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double totalValue, double totalInvested, double returns, double returnsPercent) {
@@ -88,7 +88,7 @@ class InvestmentsScreen extends ConsumerWidget {
           Text(
             '\$${totalValue.toStringAsFixed(2)}',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-          ),
+          },
           const SizedBox(height: 16),
           Row(
             children: [
@@ -99,8 +99,8 @@ class InvestmentsScreen extends ConsumerWidget {
                     Text('Invested', style: Theme.of(context).textTheme.bodySmall),
                     Text('\$${totalInvested.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
                   ],
-                ),
-              ),
+                },
+              },
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,16 +111,16 @@ class InvestmentsScreen extends ConsumerWidget {
                       style: TextStyle(
                         color: isPositive ? Colors.green : Colors.red,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                      },
+                    },
                   ],
-                ),
-              ),
+                },
+              },
             ],
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildPerformanceChart(BuildContext context, List<Map<String, dynamic>> investments) {
@@ -154,10 +154,10 @@ class InvestmentsScreen extends ConsumerWidget {
                           color: chartData[index] >= 0 ? Colors.green : Colors.red,
                           width: 20,
                           borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
-                        ),
+                        },
                       ],
-                    ),
-                  ),
+                    },
+                  },
                   titlesData: FlTitlesData(
                     show: true,
                     bottomTitles: AxisTitles(
@@ -169,22 +169,22 @@ class InvestmentsScreen extends ConsumerWidget {
                             return Text(name.length > 8 ? '${name.substring(0, 8)}...' : name, style: const TextStyle(fontSize: 10));
                           }
                           return const Text('');
-                        ),
-                      ),
-                    ),
+                        },
+                      },
+                    },
                     leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 40)),
                     topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  ),
+                  },
                   borderData: FlBorderData(show: false),
                   gridData: const FlGridData(show: true),
-                ),
-              ),
-            ),
+                },
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildInvestmentCard(BuildContext context, WidgetRef ref, Map<String, dynamic> investment) {
@@ -201,7 +201,7 @@ class InvestmentsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
           child: Icon(Icons.account_balance, color: Theme.of(context).primaryColor),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text('$type • Invested: \$${amount.toStringAsFixed(2)}'),
         trailing: Column(
@@ -212,12 +212,12 @@ class InvestmentsScreen extends ConsumerWidget {
             Text(
               '${isPositive ? '+' : ''}${returns.toStringAsFixed(1)}%',
               style: TextStyle(color: isPositive ? Colors.green : Colors.red, fontSize: 12),
-            ),
+            },
           ],
-        ),
+        },
         onLongPress: () => _showDeleteDialog(context, ref, investment['id']?.toString() ?? ''),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddInvestmentDialog(BuildContext context, WidgetRef ref) {
@@ -242,8 +242,8 @@ class InvestmentsScreen extends ConsumerWidget {
               const SizedBox(height: 12),
               TextField(controller: valueController, decoration: const InputDecoration(labelText: 'Current Value'), keyboardType: TextInputType.number),
             ],
-          ),
-        ),
+          },
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -265,10 +265,10 @@ class InvestmentsScreen extends ConsumerWidget {
               if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -286,9 +286,9 @@ class InvestmentsScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

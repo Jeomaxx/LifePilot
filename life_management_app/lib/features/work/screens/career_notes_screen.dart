@@ -28,10 +28,11 @@ class CareerNotesScreen extends ConsumerWidget {
           if (notes.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.sticky_note_2,
+              title: 'No Career Notes',
               subtitle: 'No career notes',
               actionLabel: 'Add Note',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           return ListView.builder(
@@ -54,22 +55,22 @@ class CareerNotesScreen extends ConsumerWidget {
                       Text(content, maxLines: 2, overflow: TextOverflow.ellipsis),
                       if (updatedAt != null) Text(DateFormat('MMM dd, yyyy').format(updatedAt), style: const TextStyle(fontSize: 12, color: Colors.grey)),
                     ],
-                  ),
+                  },
                   onTap: () => _showEditDialog(context, ref, note),
                   onLongPress: () async {
                     await DatabaseService().delete('notes', note['id']?.toString() ?? '');
-                  ),
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                  },
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -89,9 +90,9 @@ class CareerNotesScreen extends ConsumerWidget {
               controller: contentController,
               decoration: const InputDecoration(labelText: 'Content', border: OutlineInputBorder()),
               maxLines: 6,
-            ),
+            },
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -104,12 +105,12 @@ class CareerNotesScreen extends ConsumerWidget {
                 'category': 'career',
               });
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showEditDialog(BuildContext context, WidgetRef ref, Map<String, dynamic> note) {
@@ -129,17 +130,17 @@ class CareerNotesScreen extends ConsumerWidget {
               controller: contentController,
               decoration: const InputDecoration(labelText: 'Content', border: OutlineInputBorder()),
               maxLines: 6,
-            ),
+            },
           ],
-        ),
+        },
         actions: [
           TextButton(
             onPressed: () async {
               await DatabaseService().delete('notes', note['id']?.toString() ?? '');
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Delete', style: TextStyle(color: Colors.red)),
-          ),
+          },
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
             onPressed: () async {
@@ -148,11 +149,11 @@ class CareerNotesScreen extends ConsumerWidget {
                 'content': contentController.text,
               });
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Save'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

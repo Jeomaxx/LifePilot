@@ -26,6 +26,7 @@ class PlantCareScreen extends ConsumerWidget {
           if (plants.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.local_florist,
+              title: 'No Plants',
               subtitle: 'No plants tracked',
               actionLabel: 'Add Plant',
               onAction: () => _showAddDialog(context, ref),

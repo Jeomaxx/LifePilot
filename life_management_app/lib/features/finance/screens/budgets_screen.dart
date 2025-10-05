@@ -25,9 +25,9 @@ class BudgetsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.pie_chart_outline),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: budgetsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class BudgetsScreen extends ConsumerWidget {
               subtitle: 'No budgets created',
               actionLabel: 'Create Budget',
               onAction: () => _showAddBudgetDialog(context, ref),
-            );
+            };
           }
 
           final totalBudget = budgets.fold<double>(0, (sum, b) => sum + ((b['amount'] as num?)?.toDouble() ?? 0));
@@ -55,18 +55,18 @@ class BudgetsScreen extends ConsumerWidget {
               Text(
                 'Budget Categories',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...budgets.map((budget) => _buildBudgetCard(context, ref, budget)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddBudgetDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double total, double spent) {
@@ -87,7 +87,7 @@ class BudgetsScreen extends ConsumerWidget {
               value: percentUsed / 100,
               backgroundColor: Colors.grey.shade200,
               valueColor: AlwaysStoppedAnimation(percentUsed > 90 ? Colors.red : percentUsed > 70 ? Colors.orange : Colors.green),
-            ),
+            },
             const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,11 +95,11 @@ class BudgetsScreen extends ConsumerWidget {
                 Text('Spent: \$${spent.toStringAsFixed(2)}', style: const TextStyle(color: Colors.grey)),
                 Text('Remaining: \$${remaining.toStringAsFixed(2)}', style: TextStyle(color: remaining < 0 ? Colors.red : Colors.green, fontWeight: FontWeight.bold)),
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildBudgetChart(BuildContext context, List<Map<String, dynamic>> budgets) {
@@ -130,18 +130,18 @@ class BudgetsScreen extends ConsumerWidget {
                         color: colors[index % colors.length],
                         radius: 60,
                         titleStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
-                      );
-                    ),
-                  ),
+                      };
+                    },
+                  },
                   sectionsSpace: 2,
                   centerSpaceRadius: 40,
-                ),
-              ),
-            ),
+                },
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildBudgetCard(BuildContext context, WidgetRef ref, Map<String, dynamic> budget) {
@@ -166,15 +166,15 @@ class BudgetsScreen extends ConsumerWidget {
                 Text(
                   '\$${spent.toStringAsFixed(2)} / \$${amount.toStringAsFixed(2)}',
                   style: TextStyle(color: percentUsed > 100 ? Colors.red : Colors.grey),
-                ),
+                },
               ],
-            ),
+            },
             const SizedBox(height: 8),
             LinearProgressIndicator(
               value: percentUsed > 100 ? 1.0 : percentUsed / 100,
               backgroundColor: Colors.grey.shade200,
               valueColor: AlwaysStoppedAnimation(percentUsed > 100 ? Colors.red : percentUsed > 90 ? Colors.orange : Colors.green),
-            ),
+            },
             const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -183,13 +183,13 @@ class BudgetsScreen extends ConsumerWidget {
                 Text(
                   remaining >= 0 ? '\$${remaining.toStringAsFixed(2)} left' : 'Over by \$${remaining.abs().toStringAsFixed(2)}',
                   style: TextStyle(fontSize: 12, color: remaining < 0 ? Colors.red : Colors.green),
-                ),
+                },
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddBudgetDialog(BuildContext context, WidgetRef ref) {
@@ -219,9 +219,9 @@ class BudgetsScreen extends ConsumerWidget {
                   DropdownMenuItem(value: 'yearly', child: Text('Yearly')),
                 ],
                 onChanged: (value) => setState(() => period = value ?? 'monthly'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -236,12 +236,12 @@ class BudgetsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Create'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

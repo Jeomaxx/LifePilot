@@ -29,7 +29,7 @@ class BirthdaysScreen extends ConsumerWidget {
               subtitle: 'No birthdays tracked',
               actionLabel: 'Add Birthday',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final sortedBirthdays = birthdays..sort((a, b) {
@@ -58,23 +58,23 @@ class BirthdaysScreen extends ConsumerWidget {
                   leading: CircleAvatar(
                     backgroundColor: daysUntil <= 7 ? Colors.orange.withOpacity(0.2) : Colors.blue.withOpacity(0.2),
                     child: Icon(Icons.cake, color: daysUntil <= 7 ? Colors.orange : Colors.blue),
-                  ),
+                  },
                   title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: Text('${DateFormat('MMM dd').format(birthDate)} • Turning $age • ${daysUntil == 0 ? 'Today!' : 'In $daysUntil days'}'),
                   onLongPress: () async {
                     await DatabaseService().delete('birthdays', birthday['id']?.toString() ?? '');
-                  ),
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                  },
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   DateTime _getNextBirthday(DateTime birthDate) {
@@ -107,12 +107,12 @@ class BirthdaysScreen extends ConsumerWidget {
                     initialDate: DateTime.now(),
                     firstDate: DateTime(1900),
                     lastDate: DateTime.now(),
-                  );
+                  };
                   if (date != null) setState(() => birthDate = date);
-                ),
-              ),
+                },
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -123,12 +123,12 @@ class BirthdaysScreen extends ConsumerWidget {
                   'birth_date': birthDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

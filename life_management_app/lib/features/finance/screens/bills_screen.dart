@@ -25,9 +25,9 @@ class BillsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.calendar_month),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: billsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class BillsScreen extends ConsumerWidget {
               subtitle: 'No bills tracked',
               actionLabel: 'Add Bill',
               onAction: () => _showAddBillDialog(context, ref),
-            );
+            };
           }
 
           final upcomingBills = bills.where((b) => b['status'] == 'pending').toList();
@@ -48,7 +48,7 @@ class BillsScreen extends ConsumerWidget {
           final totalUpcoming = upcomingBills.fold<double>(
             0,
             (sum, bill) => sum + ((bill['amount'] as num?)?.toDouble() ?? 0),
-          );
+          };
 
           return ListView(
             padding: const EdgeInsets.all(16),
@@ -59,7 +59,7 @@ class BillsScreen extends ConsumerWidget {
                 Text(
                   'Upcoming Bills',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
+                },
                 const SizedBox(height: 12),
                 ...upcomingBills.map((bill) => _buildBillCard(context, ref, bill, true)),
                 const SizedBox(height: 24),
@@ -68,19 +68,19 @@ class BillsScreen extends ConsumerWidget {
                 Text(
                   'Paid Bills',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
+                },
                 const SizedBox(height: 12),
                 ...paidBills.map((bill) => _buildBillCard(context, ref, bill, false)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddBillDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double totalUpcoming, int billCount) {
@@ -97,18 +97,18 @@ class BillsScreen extends ConsumerWidget {
                 const SizedBox(width: 8),
                 Text('Upcoming Bills', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
               ],
-            ),
+            },
             const SizedBox(height: 12),
             Text(
               '\$${totalUpcoming.toStringAsFixed(2)}',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
+            },
             const SizedBox(height: 4),
             Text('$billCount ${billCount == 1 ? 'bill' : 'bills'} to pay', style: Theme.of(context).textTheme.bodyMedium),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildBillCard(BuildContext context, WidgetRef ref, Map<String, dynamic> bill, bool isUpcoming) {
@@ -129,8 +129,8 @@ class BillsScreen extends ConsumerWidget {
           child: Icon(
             isRecurring ? Icons.repeat : Icons.receipt,
             color: isOverdue ? Colors.red : (isUpcoming ? Colors.orange : Colors.green),
-          ),
-        ),
+          },
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,9 +144,9 @@ class BillsScreen extends ConsumerWidget {
                         ? 'Due ${daysUntilDue == 0 ? 'today' : 'in $daysUntilDue days'}'
                         : 'Paid on ${DateFormat('MMM dd').format(dueDate)}',
                 style: TextStyle(color: isOverdue ? Colors.red : null, fontSize: 12),
-              ),
+              },
           ],
-        ),
+        },
         trailing: status == 'pending'
             ? IconButton(
                 icon: const Icon(Icons.check_circle_outline),
@@ -154,8 +154,8 @@ class BillsScreen extends ConsumerWidget {
               )
             : const Icon(Icons.check_circle, color: Colors.green),
         onLongPress: () => _showDeleteDialog(context, ref, bill['id']?.toString() ?? ''),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddBillDialog(BuildContext context, WidgetRef ref) {
@@ -187,19 +187,19 @@ class BillsScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 365)),
-                    );
+                    };
                     if (date != null) setState(() => selectedDate = date);
-                  ),
-                ),
+                  },
+                },
                 CheckboxListTile(
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Recurring bill'),
                   value: isRecurring,
                   onChanged: (value) => setState(() => isRecurring = value ?? false),
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -215,13 +215,13 @@ class BillsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _markAsPaid(BuildContext context, WidgetRef ref, String id) async {
@@ -243,9 +243,9 @@ class BillsScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

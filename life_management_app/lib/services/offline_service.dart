@@ -20,7 +20,7 @@ class SyncQueueItem {
       'table': table,
       'data': data,
       'timestamp': timestamp.toIso8601String(),
-    };
+    );
   }
 
   factory SyncQueueItem.fromMap(Map<String, dynamic> map) {

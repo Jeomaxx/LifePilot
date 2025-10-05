@@ -33,7 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       await authService.signIn(
         _emailController.text.trim(),
         _passwordController.text,
-      );
+      };
       
       if (mounted) {
         context.go('/dashboard');
@@ -42,7 +42,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login failed: ${e.toString()}')),
-        );
+        };
       }
     } finally {
       if (mounted) {
@@ -68,30 +68,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Icons.dashboard_customize,
                     size: 80,
                     color: Color(0xFF6366F1),
-                  ),
+                  },
                   const SizedBox(height: 24),
                   Text(
                     'Life Management',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
-                    ),
+                    },
                     textAlign: TextAlign.center,
-                  ),
+                  },
                   const SizedBox(height: 8),
                   Text(
                     'Manage your life, all in one place',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Colors.grey,
-                    ),
+                    },
                     textAlign: TextAlign.center,
-                  ),
+                  },
                   const SizedBox(height: 48),
                   TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(
                       labelText: 'Email',
                       prefixIcon: Icon(Icons.email_outlined),
-                    ),
+                    },
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -101,15 +101,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         return 'Please enter a valid email';
                       }
                       return null;
-                    ),
-                  ),
+                    },
+                  },
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _passwordController,
                     decoration: const InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(Icons.lock_outlined),
-                    ),
+                    },
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -119,14 +119,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         return 'Password must be at least 6 characters';
                       }
                       return null;
-                    ),
-                  ),
+                    },
+                  },
                   const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: _isLoading ? null : _handleLogin,
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
+                    },
                     child: _isLoading
                         ? const SizedBox(
                             height: 20,
@@ -134,18 +134,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
                         : const Text('Sign In'),
-                  ),
+                  },
                   const SizedBox(height: 16),
                   TextButton(
                     onPressed: () => context.go('/signup'),
                     child: const Text('Don\'t have an account? Sign Up'),
-                  ),
+                  },
                 ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+              },
+            },
+          },
+        },
+      },
+    };
   }
 }

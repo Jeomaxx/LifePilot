@@ -23,7 +23,7 @@ class PasswordManagerScreen extends ConsumerWidget {
         actions: [
           IconButton(icon: const Icon(Icons.security), onPressed: () {}),
         ],
-      ),
+      },
       body: passwordsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -35,7 +35,7 @@ class PasswordManagerScreen extends ConsumerWidget {
               subtitle: 'No passwords saved',
               actionLabel: 'Add Password',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final passwordsByCategory = <String, List<Map<String, dynamic>>>{};
@@ -60,9 +60,9 @@ class PasswordManagerScreen extends ConsumerWidget {
                       SizedBox(width: 12),
                       Expanded(child: Text('Passwords are encrypted and stored securely', style: TextStyle(fontWeight: FontWeight.bold))),
                     ],
-                  ),
-                ),
-              ),
+                  },
+                },
+              },
               const SizedBox(height: 16),
               ...passwordsByCategory.entries.map((entry) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,14 +74,14 @@ class PasswordManagerScreen extends ConsumerWidget {
                 ],
               )),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildPasswordCard(BuildContext context, WidgetRef ref, Map<String, dynamic> pwd) {
@@ -102,18 +102,18 @@ class PasswordManagerScreen extends ConsumerWidget {
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: pwd['password']?.toString() ?? ''));
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password copied')));
-              ),
-            ),
+              },
+            },
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () async {
                 await DatabaseService().delete('passwords', pwd['id']?.toString() ?? '');
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -143,10 +143,10 @@ class PasswordManagerScreen extends ConsumerWidget {
                     suffixIcon: IconButton(
                       icon: Icon(showPassword ? Icons.visibility_off : Icons.visibility),
                       onPressed: () => setState(() => showPassword = !showPassword),
-                    ),
-                  ),
+                    },
+                  },
                   obscureText: !showPassword,
-                ),
+                },
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   value: category,
@@ -159,10 +159,10 @@ class PasswordManagerScreen extends ConsumerWidget {
                   ],
                   onChanged: (v) => setState(() => category = v ?? 'Work'),
                   decoration: const InputDecoration(labelText: 'Category'),
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -177,10 +177,10 @@ class PasswordManagerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

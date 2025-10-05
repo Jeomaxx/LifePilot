@@ -30,9 +30,9 @@ class CryptoPortfolioScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
             onPressed: () => _showAlertsSheet(context, alertsAsync.value ?? []),
-          ),
+          },
         ],
-      ),
+      },
       body: cryptoAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -44,7 +44,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               subtitle: 'No crypto assets yet',
               actionLabel: 'Add Crypto',
               onAction: () => _showAddCryptoDialog(context, ref),
-            );
+            };
           }
 
           final totalValue = portfolio.fold<double>(
@@ -53,8 +53,8 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               final amount = (crypto['amount'] as num?)?.toDouble() ?? 0;
               final price = (crypto['current_price'] as num?)?.toDouble() ?? 0;
               return sum + (amount * price);
-            ),
-          );
+            },
+          };
 
           final totalInvested = portfolio.fold<double>(
             0,
@@ -62,8 +62,8 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               final amount = (crypto['amount'] as num?)?.toDouble() ?? 0;
               final purchasePrice = (crypto['purchase_price'] as num?)?.toDouble() ?? 0;
               return sum + (amount * purchasePrice);
-            ),
-          );
+            },
+          };
 
           final profitLoss = totalValue - totalInvested;
           final profitLossPercent = totalInvested > 0 ? (profitLoss / totalInvested * 100) : 0;
@@ -76,18 +76,18 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               Text(
                 'Your Holdings',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...portfolio.map((crypto) => _buildCryptoCard(context, ref, crypto)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddCryptoDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double totalValue, double invested, double profitLoss, double profitLossPercent) {
@@ -103,7 +103,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             Text(
               '\$${totalValue.toStringAsFixed(2)}',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
+            },
             const SizedBox(height: 16),
             Row(
               children: [
@@ -114,8 +114,8 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                       Text('Invested', style: Theme.of(context).textTheme.bodySmall),
                       Text('\$${invested.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
-                  ),
-                ),
+                  },
+                },
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,17 +126,17 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                         style: TextStyle(
                           color: isProfit ? Colors.green : Colors.red,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                        },
+                      },
                     ],
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildCryptoCard(BuildContext context, WidgetRef ref, Map<String, dynamic> crypto) {
@@ -154,7 +154,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: Colors.orange.withOpacity(0.1),
           child: Text(symbol.substring(0, 1), style: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
-        ),
+        },
         title: Text(symbol, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text('${amount.toStringAsFixed(4)} @ \$${currentPrice.toStringAsFixed(2)}'),
         trailing: Column(
@@ -165,13 +165,13 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             Text(
               '${isProfit ? '+' : ''}\$${profitLoss.toStringAsFixed(2)}',
               style: TextStyle(color: isProfit ? Colors.green : Colors.red, fontSize: 12),
-            ),
+            },
           ],
-        ),
+        },
         onTap: () => _showCryptoDetails(context, ref, crypto),
         onLongPress: () => _showDeleteDialog(context, ref, crypto['id']?.toString() ?? ''),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddCryptoDialog(BuildContext context, WidgetRef ref) {
@@ -192,7 +192,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             TextField(controller: priceController, decoration: const InputDecoration(labelText: 'Purchase Price (USD)'), keyboardType: TextInputType.number),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -212,10 +212,10 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showCryptoDetails(BuildContext context, WidgetRef ref, Map<String, dynamic> crypto) {
@@ -238,12 +238,12 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               child: ElevatedButton(
                 onPressed: () => _showSetAlertDialog(context, ref, crypto['symbol']?.toString() ?? ''),
                 child: const Text('Set Price Alert'),
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildDetailRow(String label, String value) {
@@ -255,8 +255,8 @@ class CryptoPortfolioScreen extends ConsumerWidget {
           Text(label, style: const TextStyle(color: Colors.grey)),
           Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showSetAlertDialog(BuildContext context, WidgetRef ref, String symbol) {
@@ -280,9 +280,9 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                 DropdownMenuItem(value: 'below', child: Text('Price Below')),
               ],
               onChanged: (value) => condition = value ?? 'above',
-            ),
+            },
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -300,12 +300,12 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 Navigator.pop(context);
               }
-            ),
+            },
             child: const Text('Set Alert'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showAlertsSheet(BuildContext context, List<Map<String, dynamic>> alerts) {
@@ -327,11 +327,11 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                       await DatabaseService().delete('crypto_alerts', alert['id']?.toString() ?? '');
                       Navigator.pop(context);
                     },
-                  ),
-                );
-              ),
-            ),
-    );
+                  },
+                };
+              },
+            },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -349,9 +349,9 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

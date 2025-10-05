@@ -9,7 +9,7 @@ class FinanceTrackerScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Finance Tracker'),
-      ),
+      },
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -19,12 +19,12 @@ class FinanceTrackerScreen extends ConsumerWidget {
           const SizedBox(height: 24),
           _buildTransactionsList(context),
         ],
-      ),
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddTransactionDialog(context),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildBalanceCard(BuildContext context) {
@@ -38,15 +38,15 @@ class FinanceTrackerScreen extends ConsumerWidget {
               'Total Balance',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: Colors.grey,
-              ),
-            ),
+              },
+            },
             const SizedBox(height: 8),
             Text(
               '\$12,450.00',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-              ),
-            ),
+              },
+            },
             const SizedBox(height: 16),
             Row(
               children: [
@@ -61,20 +61,20 @@ class FinanceTrackerScreen extends ConsumerWidget {
                           Text(
                             'Income',
                             style: Theme.of(context).textTheme.bodySmall,
-                          ),
+                          },
                         ],
-                      ),
+                      },
                       const SizedBox(height: 4),
                       Text(
                         '\$5,200',
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Colors.green,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                        },
+                      },
                     ],
-                  ),
-                ),
+                  },
+                },
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,26 +86,26 @@ class FinanceTrackerScreen extends ConsumerWidget {
                           Text(
                             'Expenses',
                             style: Theme.of(context).textTheme.bodySmall,
-                          ),
+                          },
                         ],
-                      ),
+                      },
                       const SizedBox(height: 4),
                       Text(
                         '\$3,450',
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                        },
+                      },
                     ],
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildQuickActions(BuildContext context) {
@@ -118,9 +118,9 @@ class FinanceTrackerScreen extends ConsumerWidget {
             label: const Text('Investments'),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16),
-            ),
-          ),
-        ),
+            },
+          },
+        },
         const SizedBox(width: 12),
         Expanded(
           child: ElevatedButton.icon(
@@ -129,11 +129,11 @@ class FinanceTrackerScreen extends ConsumerWidget {
             label: const Text('Crypto'),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16),
-            ),
-          ),
-        ),
+            },
+          },
+        },
       ],
-    );
+    };
   }
 
   Widget _buildTransactionsList(BuildContext context) {
@@ -144,8 +144,8 @@ class FinanceTrackerScreen extends ConsumerWidget {
           'Recent Transactions',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
-          ),
-        ),
+          },
+        },
         const SizedBox(height: 12),
         _buildTransactionItem(
           context,
@@ -154,7 +154,7 @@ class FinanceTrackerScreen extends ConsumerWidget {
           category: 'Food',
           amount: -125.50,
           date: 'Today',
-        ),
+        },
         _buildTransactionItem(
           context,
           icon: Icons.payments,
@@ -162,7 +162,7 @@ class FinanceTrackerScreen extends ConsumerWidget {
           category: 'Income',
           amount: 1500.00,
           date: 'Yesterday',
-        ),
+        },
         _buildTransactionItem(
           context,
           icon: Icons.local_gas_station,
@@ -170,9 +170,9 @@ class FinanceTrackerScreen extends ConsumerWidget {
           category: 'Transportation',
           amount: -45.00,
           date: '2 days ago',
-        ),
+        },
       ],
-    );
+    };
   }
 
   Widget _buildTransactionItem(
@@ -195,8 +195,8 @@ class FinanceTrackerScreen extends ConsumerWidget {
           child: Icon(
             icon,
             color: isExpense ? Colors.red : Colors.green,
-          ),
-        ),
+          },
+        },
         title: Text(title),
         subtitle: Text(category),
         trailing: Column(
@@ -208,18 +208,18 @@ class FinanceTrackerScreen extends ConsumerWidget {
               style: TextStyle(
                 color: isExpense ? Colors.red : Colors.green,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
+              },
+            },
             Text(
               date,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.grey,
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddTransactionDialog(BuildContext context) {
@@ -232,13 +232,13 @@ class FinanceTrackerScreen extends ConsumerWidget {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('Cancel'),
-          ),
+          },
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('Add'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

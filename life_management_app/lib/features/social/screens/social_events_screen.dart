@@ -29,7 +29,7 @@ class SocialEventsScreen extends ConsumerWidget {
               subtitle: 'No social events',
               actionLabel: 'Add Event',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final upcoming = events.where((e) {
@@ -56,14 +56,14 @@ class SocialEventsScreen extends ConsumerWidget {
                 ...past.map((event) => _buildEventCard(context, ref, event, false)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildEventCard(BuildContext context, WidgetRef ref, Map<String, dynamic> event, bool isUpcoming) {
@@ -77,7 +77,7 @@ class SocialEventsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: isUpcoming ? Colors.purple.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
           child: Icon(Icons.celebration, color: isUpcoming ? Colors.purple : Colors.grey),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,12 +85,12 @@ class SocialEventsScreen extends ConsumerWidget {
             if (date != null) Text(DateFormat('MMM dd, yyyy HH:mm').format(date)),
             if (location != null) Text(location, style: const TextStyle(fontSize: 12)),
           ],
-        ),
+        },
         onLongPress: () async {
           await DatabaseService().delete('social_events', event['id']?.toString() ?? '');
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -120,17 +120,17 @@ class SocialEventsScreen extends ConsumerWidget {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(const Duration(days: 365)),
-                  );
+                  };
                   if (date != null && context.mounted) {
                     final time = await showTimePicker(context: context, initialTime: TimeOfDay.now());
                     if (time != null) {
                       setState(() => eventDate = DateTime(date.year, date.month, date.day, time.hour, time.minute));
                     }
                   }
-                ),
-              ),
+                },
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -142,12 +142,12 @@ class SocialEventsScreen extends ConsumerWidget {
                   'event_date': eventDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

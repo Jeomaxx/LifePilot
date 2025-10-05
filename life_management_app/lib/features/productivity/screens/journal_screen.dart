@@ -25,9 +25,9 @@ class JournalScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: entriesAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class JournalScreen extends ConsumerWidget {
               subtitle: 'Start your journal',
               actionLabel: 'Write Entry',
               onAction: () => _showAddEntryDialog(context, ref),
-            );
+            };
           }
 
           final entriesByDate = <String, List<Map<String, dynamic>>>{};
@@ -72,21 +72,21 @@ class JournalScreen extends ConsumerWidget {
                     child: Text(
                       DateFormat('EEEE, MMMM dd, yyyy').format(date),
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                    },
+                  },
                   ...dayEntries.map((entry) => _buildJournalCard(context, ref, entry)),
                   const SizedBox(height: 16),
                 ],
-              );
-            ),
-          );
-        ),
-      ),
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddEntryDialog(context, ref),
         child: const Icon(Icons.edit),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildJournalCard(BuildContext context, WidgetRef ref, Map<String, dynamic> entry) {
@@ -132,19 +132,19 @@ class JournalScreen extends ConsumerWidget {
                   Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                   if (moodIcon != null) Icon(moodIcon, color: moodColor, size: 24),
                 ],
-              ),
+              },
               const SizedBox(height: 8),
               Text(
                 content.length > 150 ? '${content.substring(0, 150)}...' : content,
                 style: const TextStyle(color: Colors.grey),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-              ),
+              },
             ],
-          ),
-        ),
-      ),
-    );
+          },
+        },
+      },
+    };
   }
 
   void _showAddEntryDialog(BuildContext context, WidgetRef ref) {
@@ -167,7 +167,7 @@ class JournalScreen extends ConsumerWidget {
                   controller: contentController,
                   decoration: const InputDecoration(labelText: 'What\'s on your mind?', border: OutlineInputBorder()),
                   maxLines: 8,
-                ),
+                },
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   value: mood,
@@ -179,10 +179,10 @@ class JournalScreen extends ConsumerWidget {
                     DropdownMenuItem(value: 'anxious', child: Row(children: [Icon(Icons.sentiment_very_dissatisfied, color: Colors.orange), SizedBox(width: 8), Text('Anxious')])),
                   ],
                   onChanged: (value) => setState(() => mood = value ?? 'neutral'),
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -197,13 +197,13 @@ class JournalScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showEntryDetails(BuildContext context, WidgetRef ref, Map<String, dynamic> entry) {
@@ -228,14 +228,14 @@ class JournalScreen extends ConsumerWidget {
                     Expanded(child: Text(entry['title']?.toString() ?? '', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
                     IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(context)),
                   ],
-                ),
+                },
                 const SizedBox(height: 8),
                 Text(
                   entry['entry_date'] != null 
                       ? DateFormat('EEEE, MMMM dd, yyyy').format(DateTime.parse(entry['entry_date'].toString()))
                       : '',
                   style: const TextStyle(color: Colors.grey),
-                ),
+                },
                 const SizedBox(height: 16),
                 Text(entry['content']?.toString() ?? ''),
                 const SizedBox(height: 24),
@@ -248,13 +248,13 @@ class JournalScreen extends ConsumerWidget {
                     },
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     child: const Text('Delete Entry'),
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
-          ),
-        ),
-      ),
-    );
+            },
+          },
+        },
+      },
+    };
   }
 }

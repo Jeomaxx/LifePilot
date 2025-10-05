@@ -12,17 +12,17 @@ final healthStatsProvider = FutureProvider.autoDispose<Map<String, dynamic>>((re
   final entries = await db.query('health_entries', limit: 30, orderBy: 'created_at');
   
   if (entries.isEmpty) {
-    return {'weight': 0.0, 'heartRate': 0, 'steps': 0, 'water': 0};
+    return {'weight': 0.0, 'heartRate': 0, 'steps': 0, 'water': 0);
   }
   
   final latestWeight = entries.reversed.firstWhere(
     (e) => e['type'] == 'weight',
-    orElse: () => {'value': 0.0},
+    orElse: () => {'value': 0.0),
   )['value'] ?? 0.0;
   
   final latestHR = entries.reversed.firstWhere(
     (e) => e['type'] == 'heart_rate',
-    orElse: () => {'value': 0},
+    orElse: () => {'value': 0),
   )['value'] ?? 0;
   
   return {
@@ -30,7 +30,7 @@ final healthStatsProvider = FutureProvider.autoDispose<Map<String, dynamic>>((re
     'heartRate': latestHR,
     'steps': 8432,
     'water': 6,
-  };
+  );
 });
 
 class HealthNotifier extends StateNotifier<AsyncValue<void>> {
@@ -52,7 +52,7 @@ class HealthNotifier extends StateNotifier<AsyncValue<void>> {
         'value': value,
         'notes': notes,
         'created_at': DateTime.now().toIso8601String(),
-      };
+      );
       
       final isOnline = await _offline.isOnline();
       
@@ -84,7 +84,7 @@ class HealthNotifier extends StateNotifier<AsyncValue<void>> {
         await _offline.queueForSync(
           operation: 'delete',
           table: 'health_entries',
-          data: {'id': id},
+          data: {'id': id),
         );
       }
       

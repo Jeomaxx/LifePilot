@@ -25,9 +25,9 @@ class MedicalHistoryScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.local_hospital_outlined),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: medicalAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
               subtitle: 'No medical records',
               actionLabel: 'Add Record',
               onAction: () => _showAddRecordDialog(context, ref),
-            );
+            };
           }
 
           final recordsByType = <String, List<Map<String, dynamic>>>{};
@@ -62,21 +62,21 @@ class MedicalHistoryScreen extends ConsumerWidget {
                   Text(
                     entry.key,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                  ),
+                  },
                   const SizedBox(height: 12),
                   ...entry.value.map((record) => _buildRecordCard(context, ref, record)),
                   const SizedBox(height: 16),
                 ],
               )),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddRecordDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildHealthSummary(BuildContext context, List<Map<String, dynamic>> records) {
@@ -94,9 +94,9 @@ class MedicalHistoryScreen extends ConsumerWidget {
             _buildSummaryItem(Icons.medication, '$medications', 'Meds', Colors.green),
             _buildSummaryItem(Icons.warning_amber, '$allergies', 'Allergies', Colors.orange),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildSummaryItem(IconData icon, String count, String label, Color color) {
@@ -107,7 +107,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
         Text(count, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         Text(label, style: const TextStyle(color: Colors.grey, fontSize: 12)),
       ],
-    );
+    };
   }
 
   Widget _buildRecordCard(BuildContext context, WidgetRef ref, Map<String, dynamic> record) {
@@ -151,7 +151,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: color.withOpacity(0.1),
           child: Icon(icon, color: color),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,13 +159,13 @@ class MedicalHistoryScreen extends ConsumerWidget {
             if (description != null) Text(description, maxLines: 2, overflow: TextOverflow.ellipsis),
             if (date != null) Text(DateFormat('MMM dd, yyyy').format(date), style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
-        ),
+        },
         trailing: IconButton(
           icon: const Icon(Icons.more_vert),
           onPressed: () => _showRecordOptions(context, ref, record),
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddRecordDialog(BuildContext context, WidgetRef ref) {
@@ -190,7 +190,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                   decoration: const InputDecoration(labelText: 'Type'),
                   items: types.map((type) => DropdownMenuItem(value: type, child: Text(type))).toList(),
                   onChanged: (value) => setState(() => recordType = value ?? 'Condition'),
-                ),
+                },
                 const SizedBox(height: 12),
                 TextField(controller: nameController, decoration: const InputDecoration(labelText: 'Name/Title')),
                 const SizedBox(height: 12),
@@ -206,13 +206,13 @@ class MedicalHistoryScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(1900),
                       lastDate: DateTime.now(),
-                    );
+                    };
                     if (date != null) setState(() => recordDate = date);
                   },
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -229,11 +229,11 @@ class MedicalHistoryScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showRecordOptions(BuildContext context, WidgetRef ref, Map<String, dynamic> record) {
@@ -251,7 +251,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showRecordDetails(context, record);
               },
-            ),
+            },
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
               title: const Text('Delete Record', style: TextStyle(color: Colors.red)),
@@ -259,11 +259,11 @@ class MedicalHistoryScreen extends ConsumerWidget {
                 await DatabaseService().delete('medical_history', record['id']?.toString() ?? '');
                 if (context.mounted) Navigator.pop(context);
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showRecordDetails(BuildContext context, Map<String, dynamic> record) {
@@ -279,12 +279,12 @@ class MedicalHistoryScreen extends ConsumerWidget {
             if (record['description'] != null) _buildDetailRow('Description', record['description'].toString()),
             if (record['date'] != null) _buildDetailRow('Date', DateFormat('MMM dd, yyyy').format(DateTime.parse(record['date'].toString()))),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close')),
         ],
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildDetailRow(String label, String value) {
@@ -297,7 +297,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
           const SizedBox(height: 4),
           Text(value),
         ],
-      ),
-    );
+      },
+    };
   }
 }

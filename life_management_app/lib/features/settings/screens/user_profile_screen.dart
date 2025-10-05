@@ -46,7 +46,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                 const CircleAvatar(
                   radius: 60,
                   child: Icon(Icons.person, size: 60),
-                ),
+                },
                 Positioned(
                   bottom: 0,
                   right: 0,
@@ -55,12 +55,12 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                     child: IconButton(
                       icon: const Icon(Icons.camera_alt, color: Colors.white),
                       onPressed: () {},
-                    ),
-                  ),
-                ),
+                    },
+                  },
+                },
               ],
-            ),
-          ),
+            },
+          },
           const SizedBox(height: 32),
           TextField(
             controller: nameController,
@@ -68,8 +68,8 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               labelText: 'Name',
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.person),
-            ),
-          ),
+            },
+          },
           const SizedBox(height: 16),
           TextField(
             controller: emailController,
@@ -77,9 +77,9 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               labelText: 'Email',
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.email),
-            ),
+            },
             keyboardType: TextInputType.emailAddress,
-          ),
+          },
           const SizedBox(height: 16),
           TextField(
             controller: phoneController,
@@ -87,17 +87,17 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               labelText: 'Phone',
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.phone),
-            ),
+            },
             keyboardType: TextInputType.phone,
-          ),
+          },
           const SizedBox(height: 24),
           ElevatedButton(
             onPressed: _saveProfile,
             child: const Padding(
               padding: EdgeInsets.all(16),
               child: Text('Save Profile'),
-            ),
-          ),
+            },
+          },
           const SizedBox(height: 32),
           const Text('Preferences', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 12),
@@ -109,22 +109,22 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                   subtitle: const Text('Use dark theme'),
                   value: false,
                   onChanged: (value) {},
-                ),
+                },
                 SwitchListTile(
                   title: const Text('Notifications'),
                   subtitle: const Text('Receive push notifications'),
                   value: true,
                   onChanged: (value) {},
-                ),
+                },
                 SwitchListTile(
                   title: const Text('Offline Sync'),
                   subtitle: const Text('Sync data when offline'),
                   value: true,
                   onChanged: (value) {},
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           const SizedBox(height: 24),
           OutlinedButton(
             onPressed: () async {
@@ -132,22 +132,22 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               if (context.mounted) {
                 Navigator.of(context).pushReplacementNamed('/login');
               }
-            ),
+            },
             style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
             child: const Padding(
               padding: EdgeInsets.all(16),
               child: Text('Sign Out'),
-            ),
-          ),
+            },
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   Future<void> _saveProfile() async {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Profile updated successfully')),
-    );
+    };
   }
 
   @override

@@ -25,9 +25,9 @@ class ProjectsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.filter_list),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: projectsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class ProjectsScreen extends ConsumerWidget {
               subtitle: 'No projects yet',
               actionLabel: 'Create Project',
               onAction: () => _showAddProjectDialog(context, ref),
-            );
+            };
           }
 
           final activeProjects = projects.where((p) => p['status'] == 'active').toList();
@@ -54,7 +54,7 @@ class ProjectsScreen extends ConsumerWidget {
                 Text(
                   'Active Projects',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
+                },
                 const SizedBox(height: 12),
                 ...activeProjects.map((project) => _buildProjectCard(context, ref, project)),
                 const SizedBox(height: 24),
@@ -63,19 +63,19 @@ class ProjectsScreen extends ConsumerWidget {
                 Text(
                   'Completed Projects',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                ),
+                },
                 const SizedBox(height: 12),
                 ...completedProjects.map((project) => _buildProjectCard(context, ref, project)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddProjectDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildProjectsSummary(BuildContext context, int active, int completed) {
@@ -92,7 +92,7 @@ class ProjectsScreen extends ConsumerWidget {
                 Text('$active', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const Text('Active', style: TextStyle(color: Colors.grey)),
               ],
-            ),
+            },
             Column(
               children: [
                 const Icon(Icons.check_circle, size: 32, color: Colors.green),
@@ -100,11 +100,11 @@ class ProjectsScreen extends ConsumerWidget {
                 Text('$completed', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const Text('Completed', style: TextStyle(color: Colors.grey)),
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildProjectCard(BuildContext context, WidgetRef ref, Map<String, dynamic> project) {
@@ -135,18 +135,18 @@ class ProjectsScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       color: status == 'completed' ? Colors.green.withOpacity(0.1) : Colors.blue.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
-                    ),
+                    },
                     child: Text(
                       status.toUpperCase(),
                       style: TextStyle(
                         color: status == 'completed' ? Colors.green : Colors.blue,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                      },
+                    },
+                  },
                 ],
-              ),
+              },
               if (description != null) ...[
                 const SizedBox(height: 8),
                 Text(description, style: const TextStyle(color: Colors.grey)),
@@ -156,7 +156,7 @@ class ProjectsScreen extends ConsumerWidget {
                 value: progress / 100,
                 backgroundColor: Colors.grey.shade200,
                 valueColor: AlwaysStoppedAnimation(status == 'completed' ? Colors.green : Colors.blue),
-              ),
+              },
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,14 +166,14 @@ class ProjectsScreen extends ConsumerWidget {
                     Text(
                       isOverdue ? 'Overdue by ${daysLeft!.abs()} days' : '$daysLeft days left',
                       style: TextStyle(fontSize: 12, color: isOverdue ? Colors.red : Colors.grey),
-                    ),
+                    },
                 ],
-              ),
+              },
             ],
-          ),
-        ),
-      ),
-    );
+          },
+        },
+      },
+    };
   }
 
   void _showAddProjectDialog(BuildContext context, WidgetRef ref) {
@@ -204,13 +204,13 @@ class ProjectsScreen extends ConsumerWidget {
                       initialDate: DateTime.now().add(const Duration(days: 30)),
                       firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 365)),
-                    );
+                    };
                     if (date != null) setState(() => deadline = date);
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -226,13 +226,13 @@ class ProjectsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Create'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showProjectDetails(BuildContext context, WidgetRef ref, Map<String, dynamic> project) {
@@ -257,7 +257,7 @@ class ProjectsScreen extends ConsumerWidget {
                     Expanded(child: Text(project['name']?.toString() ?? '', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
                     IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(context)),
                   ],
-                ),
+                },
                 const SizedBox(height: 16),
                 if (project['description'] != null) ...[
                   const Text('Description', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -275,7 +275,7 @@ class ProjectsScreen extends ConsumerWidget {
                   onChanged: (value) async {
                     await DatabaseService().update('projects', project['id']?.toString() ?? '', {'progress': value.toInt()});
                   },
-                ),
+                },
                 const SizedBox(height: 16),
                 Row(
                   children: [
@@ -289,8 +289,8 @@ class ProjectsScreen extends ConsumerWidget {
                           Navigator.pop(context);
                         },
                         child: Text(project['status'] == 'active' ? 'Mark Complete' : 'Reopen'),
-                      ),
-                    ),
+                      },
+                    },
                     const SizedBox(width: 12),
                     Expanded(
                       child: ElevatedButton(
@@ -300,15 +300,15 @@ class ProjectsScreen extends ConsumerWidget {
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                         child: const Text('Delete'),
-                      ),
-                    ),
+                      },
+                    },
                   ],
-                ),
+                },
               ],
-            ),
-          ),
-        ),
-      ),
-    );
+            },
+          },
+        },
+      },
+    };
   }
 }

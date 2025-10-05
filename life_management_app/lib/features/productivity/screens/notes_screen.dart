@@ -25,13 +25,13 @@ class NotesScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {},
-          ),
+          },
           IconButton(
             icon: const Icon(Icons.grid_view),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: notesAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -43,7 +43,7 @@ class NotesScreen extends ConsumerWidget {
               subtitle: 'No notes yet',
               actionLabel: 'Create Note',
               onAction: () => _showAddNoteDialog(context, ref),
-            );
+            };
           }
 
           return GridView.builder(
@@ -53,17 +53,17 @@ class NotesScreen extends ConsumerWidget {
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 0.8,
-            ),
+            },
             itemCount: notes.length,
             itemBuilder: (context, index) => _buildNoteCard(context, ref, notes[index]),
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddNoteDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildNoteCard(BuildContext context, WidgetRef ref, Map<String, dynamic> note) {
@@ -95,7 +95,7 @@ class NotesScreen extends ConsumerWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-              ),
+              },
               const SizedBox(height: 8),
               Expanded(
                 child: Text(
@@ -103,20 +103,20 @@ class NotesScreen extends ConsumerWidget {
                   style: const TextStyle(color: Colors.black87),
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
-                ),
-              ),
+                },
+              },
               if (updatedAt != null) ...[
                 const Divider(),
                 Text(
                   DateFormat('MMM dd, HH:mm').format(updatedAt),
                   style: const TextStyle(fontSize: 10, color: Colors.grey),
-                ),
+                },
               ],
             ],
-          ),
-        ),
-      ),
-    );
+          },
+        },
+      },
+    };
   }
 
   void _showAddNoteDialog(BuildContext context, WidgetRef ref) {
@@ -139,7 +139,7 @@ class NotesScreen extends ConsumerWidget {
                   controller: contentController,
                   decoration: const InputDecoration(labelText: 'Content', border: OutlineInputBorder()),
                   maxLines: 6,
-                ),
+                },
                 const SizedBox(height: 12),
                 const Text('Color', style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
@@ -165,15 +165,15 @@ class NotesScreen extends ConsumerWidget {
                           border: Border.all(
                             color: selectedColor == color ? Colors.black : Colors.transparent,
                             width: 2,
-                          ),
-                        ),
-                      ),
-                    );
+                          },
+                        },
+                      },
+                    };
                   }).toList(),
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -187,13 +187,13 @@ class NotesScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showEditNoteDialog(BuildContext context, WidgetRef ref, Map<String, dynamic> note) {
@@ -216,7 +216,7 @@ class NotesScreen extends ConsumerWidget {
                   controller: contentController,
                   decoration: const InputDecoration(labelText: 'Content', border: OutlineInputBorder()),
                   maxLines: 6,
-                ),
+                },
                 const SizedBox(height: 12),
                 const Text('Color', style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
@@ -242,15 +242,15 @@ class NotesScreen extends ConsumerWidget {
                           border: Border.all(
                             color: selectedColor == color ? Colors.black : Colors.transparent,
                             width: 2,
-                          ),
-                        ),
-                      ),
-                    );
+                          },
+                        },
+                      },
+                    };
                   }).toList(),
-                ),
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(
               onPressed: () async {
@@ -258,7 +258,7 @@ class NotesScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Delete', style: TextStyle(color: Colors.red)),
-            ),
+            },
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
               onPressed: () async {
@@ -269,12 +269,12 @@ class NotesScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

@@ -26,10 +26,11 @@ class JobApplicationsScreen extends ConsumerWidget {
           if (jobs.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.work,
+              title: 'No Applications',
               subtitle: 'No job applications',
               actionLabel: 'Add Application',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final active = jobs.where((j) => j['status'] != 'rejected' && j['status'] != 'accepted').toList();
@@ -50,14 +51,14 @@ class JobApplicationsScreen extends ConsumerWidget {
                 ...closed.map((job) => _buildJobCard(context, ref, job)),
               ],
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildJobCard(BuildContext context, WidgetRef ref, Map<String, dynamic> job) {
@@ -93,7 +94,7 @@ class JobApplicationsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: statusColor.withOpacity(0.1),
           child: Icon(Icons.work, color: statusColor),
-        ),
+        },
         title: Text(position, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +102,7 @@ class JobApplicationsScreen extends ConsumerWidget {
             Text(company),
             Text('Status: $status • ${appliedDate != null ? DateFormat('MMM dd').format(appliedDate) : ''}', style: const TextStyle(fontSize: 12)),
           ],
-        ),
+        },
         trailing: PopupMenuButton(
           itemBuilder: (context) => [
             const PopupMenuItem(value: 'interviewing', child: Text('Mark Interviewing')),
@@ -116,10 +117,10 @@ class JobApplicationsScreen extends ConsumerWidget {
             } else {
               await DatabaseService().update('job_applications', job['id']?.toString() ?? '', {'status': value});
             }
-          ),
-        ),
-      ),
-    );
+          },
+        },
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -149,12 +150,12 @@ class JobApplicationsScreen extends ConsumerWidget {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now().subtract(const Duration(days: 365)),
                     lastDate: DateTime.now(),
-                  );
+                  };
                   if (date != null) setState(() => appliedDate = date);
-                ),
-              ),
+                },
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -167,12 +168,12 @@ class JobApplicationsScreen extends ConsumerWidget {
                   'applied_date': (appliedDate ?? DateTime.now()).toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

@@ -26,9 +26,9 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: receiptsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
               subtitle: 'No receipts saved',
               actionLabel: 'Add Receipt',
               onAction: () => _showAddReceiptDialog(context, ref),
-            );
+            };
           }
 
           final totalAmount = receipts.fold<double>(0, (sum, r) => sum + ((r['amount'] as num?)?.toDouble() ?? 0));
@@ -52,18 +52,18 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
               Text(
                 'All Receipts',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               ...receipts.map((receipt) => _buildReceiptCard(context, ref, receipt)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddReceiptDialog(context, ref),
         child: const Icon(Icons.add_a_photo),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double total, int count) {
@@ -79,9 +79,9 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
             const SizedBox(height: 8),
             Text('$count ${count == 1 ? 'receipt' : 'receipts'} saved', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey)),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildReceiptCard(BuildContext context, WidgetRef ref, Map<String, dynamic> receipt) {
@@ -102,21 +102,21 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                   height: 50,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stack) => const Icon(Icons.receipt, size: 50),
-                ),
+                },
               )
             : const CircleAvatar(
                 child: Icon(Icons.receipt),
-              ),
+              },
         title: Text(merchant, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(category),
         trailing: Text(
           '\$${amount.toStringAsFixed(2)}',
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-        ),
+        },
         onTap: () => _showReceiptDetails(context, ref, receipt),
         onLongPress: () => _showDeleteDialog(context, ref, receipt['id']?.toString() ?? ''),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddReceiptDialog(BuildContext context, WidgetRef ref) {
@@ -141,7 +141,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.grey.shade200,
-                    ),
+                    },
                     child: const Center(child: Text('Receipt image selected')),
                   )
                 else
@@ -150,10 +150,10 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                       final picker = ImagePicker();
                       final image = await picker.pickImage(source: ImageSource.camera);
                       if (image != null) setState(() => imagePath = image.path);
-                    ),
+                    },
                     icon: const Icon(Icons.camera_alt),
                     label: const Text('Take Photo'),
-                  ),
+                  },
                 const SizedBox(height: 16),
                 TextField(controller: merchantController, decoration: const InputDecoration(labelText: 'Merchant Name')),
                 const SizedBox(height: 12),
@@ -161,8 +161,8 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                 const SizedBox(height: 12),
                 TextField(controller: categoryController, decoration: const InputDecoration(labelText: 'Category')),
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -174,7 +174,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                   uploadedUrl = await StorageService().uploadFile(
                     imagePath!,
                     'receipts/${DateTime.now().millisecondsSinceEpoch}.jpg',
-                  );
+                  };
                 }
 
                 await DatabaseService().insert('expense_receipts', {
@@ -185,13 +185,13 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showReceiptDetails(BuildContext context, WidgetRef ref, Map<String, dynamic> receipt) {
@@ -210,13 +210,13 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                 errorBuilder: (context, error, stack) => const Padding(
                   padding: EdgeInsets.all(24),
                   child: Icon(Icons.receipt, size: 100),
-                ),
+                },
               )
             else
               const Padding(
                 padding: EdgeInsets.all(24),
                 child: Icon(Icons.receipt, size: 100),
-              ),
+              },
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -232,15 +232,15 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                     child: ElevatedButton(
                       onPressed: () => Navigator.pop(context),
                       child: const Text('Close'),
-                    ),
-                  ),
+                    },
+                  },
                 ],
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -255,12 +255,12 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('expense_receipts', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

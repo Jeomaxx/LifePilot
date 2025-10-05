@@ -28,7 +28,7 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
               subtitle: 'No skills tracked',
               actionLabel: 'Add Skill',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final skillsByCategory = <String, List<Map<String, dynamic>>>{};
@@ -48,19 +48,19 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(entry.key, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                ),
+                },
                 ...entry.value.map((skill) => _buildSkillCard(context, ref, skill)),
                 const SizedBox(height: 16),
               ],
             )).toList(),
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSkillCard(BuildContext context, WidgetRef ref, Map<String, dynamic> skill) {
@@ -83,20 +83,20 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                   decoration: BoxDecoration(
                     color: _getLevelColor(level).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
-                  ),
+                  },
                   child: Text(
                     _getLevelText(level),
                     style: TextStyle(color: _getLevelColor(level), fontWeight: FontWeight.bold),
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
+            },
             const SizedBox(height: 12),
             LinearProgressIndicator(
               value: level / 5,
               backgroundColor: Colors.grey.shade200,
               valueColor: AlwaysStoppedAnimation(_getLevelColor(level)),
-            ),
+            },
             const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,14 +108,14 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                     if (level < 5) {
                       await DatabaseService().update('skills', skill['id']?.toString() ?? '', {'level': level + 1});
                     }
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   String _getLevelText(int level) {
@@ -177,9 +177,9 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => category = v ?? 'Technical'),
                 decoration: const InputDecoration(labelText: 'Category'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -191,12 +191,12 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                   'level': 1,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

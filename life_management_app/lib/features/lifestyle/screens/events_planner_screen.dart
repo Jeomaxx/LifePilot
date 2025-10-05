@@ -30,7 +30,7 @@ class EventsPlannerScreen extends ConsumerWidget {
               subtitle: 'No events planned',
               actionLabel: 'Add Event',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final sortedEvents = events..sort((a, b) {
@@ -59,21 +59,21 @@ class EventsPlannerScreen extends ConsumerWidget {
                       if (date != null) Text(DateFormat('MMM dd, yyyy HH:mm').format(date)),
                       if (location != null) Text(location, style: const TextStyle(fontSize: 12)),
                     ],
-                  ),
+                  },
                   onLongPress: () async {
                     await DatabaseService().delete('events', event['id']?.toString() ?? '');
                   },
-                ),
-              );
-            ),
-          );
-        ),
-      ),
+                },
+              };
+            },
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _showAddDialog(BuildContext context, WidgetRef ref) {
@@ -103,7 +103,7 @@ class EventsPlannerScreen extends ConsumerWidget {
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(const Duration(days: 3650)),
-                  );
+                  };
                   if (date != null && context.mounted) {
                     final time = await showTimePicker(context: context, initialTime: TimeOfDay.now());
                     if (time != null) {
@@ -111,9 +111,9 @@ class EventsPlannerScreen extends ConsumerWidget {
                     }
                   }
                 },
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -127,10 +127,10 @@ class EventsPlannerScreen extends ConsumerWidget {
                 if (context.mounted) Navigator.pop(context);
               },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

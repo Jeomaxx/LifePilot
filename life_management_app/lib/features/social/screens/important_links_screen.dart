@@ -29,7 +29,7 @@ class ImportantLinksScreen extends ConsumerWidget {
               subtitle: 'No links saved',
               actionLabel: 'Add Link',
               onAction: () => _showAddDialog(context, ref),
-            );
+            };
           }
 
           final linksByCategory = <String, List<Map<String, dynamic>>>{};
@@ -57,23 +57,23 @@ class ImportantLinksScreen extends ConsumerWidget {
                     trailing: IconButton(
                       icon: const Icon(Icons.open_in_new),
                       onPressed: () => _launchUrl(link['url']?.toString() ?? ''),
-                    ),
+                    },
                     onLongPress: () async {
                       await DatabaseService().delete('important_links', link['id']?.toString() ?? '');
-                    ),
-                  ),
+                    },
+                  },
                 )),
                 const SizedBox(height: 16),
               ],
             )).toList(),
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   void _launchUrl(String url) async {
@@ -112,9 +112,9 @@ class ImportantLinksScreen extends ConsumerWidget {
                 ],
                 onChanged: (v) => setState(() => category = v ?? 'Work'),
                 decoration: const InputDecoration(labelText: 'Category'),
-              ),
+              },
             ],
-          ),
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -126,12 +126,12 @@ class ImportantLinksScreen extends ConsumerWidget {
                   'category': category,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 }

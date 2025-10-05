@@ -34,9 +34,9 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
           IconButton(
             icon: const Icon(Icons.bar_chart),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: trackingAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -61,22 +61,22 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
               Text(
                 'Recent Sessions',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              },
               const SizedBox(height: 12),
               if (entries.isEmpty)
                 const EmptyStateWidget(icon: Icons.timer, title: 'No Time Tracked', subtitle: 'No time tracked yet', actionLabel: null)
               else
                 ...entries.take(10).map((entry) => _buildTimeEntry(context, entry)),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton.extended(
         onPressed: activeStartTime == null ? _startTracking : _stopTracking,
         icon: Icon(activeStartTime == null ? Icons.play_arrow : Icons.stop),
         label: Text(activeStartTime == null ? 'Start' : 'Stop'),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildActiveTimer() {
@@ -102,12 +102,12 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 final minutes = (duration.inMinutes % 60).toString().padLeft(2, '0');
                 final seconds = (duration.inSeconds % 60).toString().padLeft(2, '0');
                 return Text('$hours:$minutes:$seconds', style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold));
-              ),
-            ),
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildTodaySummary(BuildContext context, double hours, int sessions) {
@@ -124,7 +124,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 Text('${hours.toStringAsFixed(1)}h', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const Text('Today', style: TextStyle(color: Colors.grey)),
               ],
-            ),
+            },
             Column(
               children: [
                 Icon(Icons.psychology, size: 32, color: Theme.of(context).primaryColor),
@@ -132,11 +132,11 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 Text('$sessions', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const Text('Sessions', style: TextStyle(color: Colors.grey)),
               ],
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildWeeklyChart(BuildContext context, List<Map<String, dynamic>> entries) {
@@ -175,22 +175,22 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                         getTitlesWidget: (value, meta) {
                           const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
                           return Text(days[value.toInt()], style: const TextStyle(fontSize: 12));
-                        ),
-                      ),
-                    ),
+                        },
+                      },
+                    },
                     leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 30)),
                     topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  ),
+                  },
                   borderData: FlBorderData(show: false),
                   gridData: const FlGridData(show: true),
-                ),
-              ),
-            ),
+                },
+              },
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildTimeEntry(BuildContext context, Map<String, dynamic> entry) {
@@ -204,7 +204,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
       child: ListTile(
         leading: CircleAvatar(
           child: Text('${duration.toStringAsFixed(0)}h'),
-        ),
+        },
         title: Text(activity, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,9 +212,9 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
             if (project != null) Text(project),
             if (startTime != null) Text(DateFormat('MMM dd, HH:mm').format(startTime), style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _startTracking() {
@@ -232,7 +232,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
             const SizedBox(height: 12),
             TextField(controller: projectController, decoration: const InputDecoration(labelText: 'Project (Optional)')),
           ],
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -243,12 +243,12 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 activeTask = taskController.text;
               });
               Navigator.pop(context);
-            ),
+            },
             child: const Text('Start'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _stopTracking() async {
@@ -273,7 +273,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Tracked ${duration.toStringAsFixed(1)} hours'), backgroundColor: Colors.green),
-      );
+      };
     }
   }
 }

@@ -34,9 +34,9 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: Column(
         children: [
           if (isRecording) _buildRecordingIndicator(),
@@ -52,25 +52,25 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                     subtitle: 'No voice notes yet',
                     actionLabel: 'Record',
                     onAction: _startRecording,
-                  );
+                  };
                 }
 
                 return ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: notes.length,
                   itemBuilder: (context, index) => _buildVoiceNoteCard(context, notes[index]),
-                );
-              ),
-            ),
-          ),
+                };
+              },
+            },
+          },
         ],
-      ),
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: isRecording ? _stopRecording : _startRecording,
         backgroundColor: isRecording ? Colors.red : null,
         child: Icon(isRecording ? Icons.stop : Icons.mic),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildRecordingIndicator() {
@@ -91,11 +91,11 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
               final minutes = duration.inMinutes.toString().padLeft(2, '0');
               final seconds = (duration.inSeconds % 60).toString().padLeft(2, '0');
               return Text('$minutes:$seconds', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold));
-            ),
-          ),
+            },
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildVoiceNoteCard(BuildContext context, Map<String, dynamic> note) {
@@ -112,7 +112,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
         leading: CircleAvatar(
           backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
           child: Icon(Icons.mic, color: Theme.of(context).primaryColor),
-        ),
+        },
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,22 +120,22 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
             Text('Duration: $minutes:$seconds'),
             if (createdAt != null) Text(DateFormat('MMM dd, yyyy HH:mm').format(createdAt), style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
-        ),
+        },
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
               icon: const Icon(Icons.play_arrow),
               onPressed: () => _playVoiceNote(note),
-            ),
+            },
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () => _deleteVoiceNote(note),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _startRecording() {
@@ -164,7 +164,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
               const SizedBox(height: 12),
               Text('Duration: ${(duration ~/ 60).toString().padLeft(2, '0')}:${(duration % 60).toString().padLeft(2, '0')}'),
             ],
-          ),
+          },
           actions: [
             TextButton(
               onPressed: () {
@@ -173,9 +173,9 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                   recordingStartTime = null;
                 });
                 Navigator.pop(context);
-              ),
+              },
               child: const Text('Discard'),
-            ),
+            },
             ElevatedButton(
               onPressed: () async {
                 await DatabaseService().insert('voice_notes', {
@@ -191,19 +191,19 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
-            ),
+            },
           ],
-        ),
-      );
+        },
+      };
     }
   }
 
   void _playVoiceNote(Map<String, dynamic> note) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Playing: ${note['title']}')),
-    );
+    };
   }
 
   void _deleteVoiceNote(Map<String, dynamic> note) async {
@@ -218,10 +218,10 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
 
     if (confirm == true) {
       await DatabaseService().delete('voice_notes', note['id']?.toString() ?? '');

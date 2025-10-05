@@ -25,9 +25,9 @@ class AssetsScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.category_outlined),
             onPressed: () {},
-          ),
+          },
         ],
-      ),
+      },
       body: assetsAsync.when(
         loading: () => const LoadingWidget(),
         error: (error, stack) => CustomErrorWidget(message: error.toString()),
@@ -39,7 +39,7 @@ class AssetsScreen extends ConsumerWidget {
               subtitle: 'No assets tracked',
               actionLabel: 'Add Asset',
               onAction: () => _showAddAssetDialog(context, ref),
-            );
+            };
           }
 
           final totalValue = assets.fold<double>(0, (sum, a) => sum + ((a['value'] as num?)?.toDouble() ?? 0));
@@ -64,21 +64,21 @@ class AssetsScreen extends ConsumerWidget {
                   Text(
                     entry.key,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                  ),
+                  },
                   const SizedBox(height: 12),
                   ...entry.value.map((asset) => _buildAssetCard(context, ref, asset)),
                   const SizedBox(height: 16),
                 ],
               )),
             ],
-          );
-        ),
-      ),
+          };
+        },
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddAssetDialog(context, ref),
         child: const Icon(Icons.add),
-      ),
-    );
+      },
+    };
   }
 
   Widget _buildSummaryCard(BuildContext context, double totalValue, int count) {
@@ -94,9 +94,9 @@ class AssetsScreen extends ConsumerWidget {
             const SizedBox(height: 8),
             Text('$count ${count == 1 ? 'asset' : 'assets'} tracked', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey)),
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   Widget _buildAssetCard(BuildContext context, WidgetRef ref, Map<String, dynamic> asset) {
@@ -140,7 +140,7 @@ class AssetsScreen extends ConsumerWidget {
         leading: CircleAvatar(
           backgroundColor: color.withOpacity(0.1),
           child: Icon(icon, color: color),
-        ),
+        },
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,13 +149,13 @@ class AssetsScreen extends ConsumerWidget {
             if (purchaseDate != null) 
               Text('Purchased: ${DateFormat('MMM yyyy').format(purchaseDate)}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
-        ),
+        },
         trailing: IconButton(
           icon: const Icon(Icons.more_vert),
           onPressed: () => _showAssetOptions(context, ref, asset),
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAddAssetDialog(BuildContext context, WidgetRef ref) {
@@ -182,7 +182,7 @@ class AssetsScreen extends ConsumerWidget {
                   decoration: const InputDecoration(labelText: 'Type'),
                   items: assetTypes.map((type) => DropdownMenuItem(value: type, child: Text(type))).toList(),
                   onChanged: (value) => setState(() => assetType = value ?? 'Other'),
-                ),
+                },
                 const SizedBox(height: 12),
                 TextField(controller: valueController, decoration: const InputDecoration(labelText: 'Current Value'), keyboardType: TextInputType.number),
                 const SizedBox(height: 12),
@@ -196,13 +196,13 @@ class AssetsScreen extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(1900),
                       lastDate: DateTime.now(),
-                    );
+                    };
                     if (date != null) setState(() => purchaseDate = date);
-                  ),
-                ),
+                  },
+                },
               ],
-            ),
-          ),
+            },
+          },
           actions: [
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
             ElevatedButton(
@@ -217,13 +217,13 @@ class AssetsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showAssetOptions(BuildContext context, WidgetRef ref, Map<String, dynamic> asset) {
@@ -241,7 +241,7 @@ class AssetsScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showUpdateValueDialog(context, ref, asset);
               },
-            ),
+            },
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
               title: const Text('Delete Asset', style: TextStyle(color: Colors.red)),
@@ -249,11 +249,11 @@ class AssetsScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 _showDeleteDialog(context, ref, asset['id']?.toString() ?? '');
               },
-            ),
+            },
           ],
-        ),
-      ),
-    );
+        },
+      },
+    };
   }
 
   void _showUpdateValueDialog(BuildContext context, WidgetRef ref, Map<String, dynamic> asset) {
@@ -267,7 +267,7 @@ class AssetsScreen extends ConsumerWidget {
           controller: valueController,
           decoration: const InputDecoration(labelText: 'New Value'),
           keyboardType: TextInputType.number,
-        ),
+        },
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
           ElevatedButton(
@@ -277,10 +277,10 @@ class AssetsScreen extends ConsumerWidget {
               if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Update'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 
   void _showDeleteDialog(BuildContext context, WidgetRef ref, String id) {
@@ -298,9 +298,9 @@ class AssetsScreen extends ConsumerWidget {
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
-          ),
+          },
         ],
-      ),
-    );
+      },
+    };
   }
 }

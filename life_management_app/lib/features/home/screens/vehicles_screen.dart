@@ -26,6 +26,7 @@ class VehiclesScreen extends ConsumerWidget {
           if (vehicles.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.directions_car,
+              title: 'No Vehicles',
               subtitle: 'No vehicles tracked',
               actionLabel: 'Add Vehicle',
               onAction: () => _showAddDialog(context, ref),
