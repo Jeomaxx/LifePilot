@@ -56,7 +56,7 @@ class RecipesScreen extends ConsumerWidget {
                     onTap: () => _showRecipeDetails(context, ref, recipe),
                     onLongPress: () async {
                       await DatabaseService().delete('recipes', recipe['id']?.toString() ?? '');
-                    ),
+                    },
                   ),
                 )),
                 const SizedBox(height: 16),
@@ -124,7 +124,7 @@ class RecipesScreen extends ConsumerWidget {
                   'instructions': instructionsController.text,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

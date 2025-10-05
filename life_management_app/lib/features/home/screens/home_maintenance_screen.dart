@@ -73,13 +73,13 @@ class HomeMaintenanceScreen extends ConsumerWidget {
             await DatabaseService().update('home_maintenance', task['id']?.toString() ?? '', {
               'status': value == true ? 'completed' : 'pending',
             });
-          ),
+          },
         ),
         title: Text(name, style: TextStyle(fontWeight: FontWeight.bold, decoration: isCompleted ? TextDecoration.lineThrough : null)),
         subtitle: dueDate != null ? Text('Due: ${DateFormat('MMM dd, yyyy').format(dueDate)}') : null,
         onLongPress: () async {
           await DatabaseService().delete('home_maintenance', task['id']?.toString() ?? '');
-        ),
+        },
       ),
     );
   }
@@ -110,7 +110,7 @@ class HomeMaintenanceScreen extends ConsumerWidget {
                     lastDate: DateTime.now().add(const Duration(days: 3650)),
                   );
                   if (date != null) setState(() => dueDate = date);
-                ),
+                },
               ),
             ],
           ),
@@ -125,7 +125,7 @@ class HomeMaintenanceScreen extends ConsumerWidget {
                   'status': 'pending',
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

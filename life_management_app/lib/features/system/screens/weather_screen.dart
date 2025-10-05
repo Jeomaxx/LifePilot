@@ -56,7 +56,7 @@ class WeatherScreen extends ConsumerWidget {
                       ),
                     ),
                   );
-                ),
+                },
               ),
             ),
           ],

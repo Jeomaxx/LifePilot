@@ -33,7 +33,7 @@ class NotificationsCenterScreen extends ConsumerWidget {
                   }
                 }
               }
-            ),
+            },
           ),
         ],
       ),
@@ -119,11 +119,11 @@ class NotificationsCenterScreen extends ConsumerWidget {
           icon: const Icon(Icons.done),
           onPressed: () async {
             await DatabaseService().update('notifications', notif['id']?.toString() ?? '', {'read': true});
-          ),
+          },
         ) : null,
         onLongPress: () async {
           await DatabaseService().delete('notifications', notif['id']?.toString() ?? '');
-        ),
+        },
       ),
     );
   }
