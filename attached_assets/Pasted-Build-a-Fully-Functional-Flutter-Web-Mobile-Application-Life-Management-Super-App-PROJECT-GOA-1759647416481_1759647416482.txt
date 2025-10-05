@@ -1,0 +1,506 @@
+Build a Fully Functional Flutter Web + Mobile Application (Life Management Super App)
+🎯 PROJECT GOAL
+
+Develop a complete, production-ready, feature-rich, full-stack Flutter application that runs on Android, iOS, and Web (using Flutter Web).
+The app will act as a comprehensive personal life management system, combining productivity, finance, health, lifestyle, and AI-powered tools into a single unified platform.
+
+It must have:
+
+✅ 51 functional modules (each with database support and offline mode)
+
+✅ Supabase backend with PostgreSQL and Edge Functions
+
+✅ Modern UI/UX using Material 3 + Cupertino design
+
+✅ AI Assistant integration (Gemini API)
+
+✅ Offline-first mode with automatic sync
+
+✅ Full authentication and user data isolation via RLS
+
+✅ Analytics, gamification, and system notifications
+
+⚙️ SYSTEM ARCHITECTURE OVERVIEW
+🖥️ Frontend (Flutter Web + Mobile)
+
+Framework: Flutter 3.x (Dart SDK latest)
+
+Platforms: Android, iOS, Web (Responsive)
+
+Design System: Material 3 + Custom adaptive theming
+
+State Management: Riverpod or Bloc/Cubit (developer’s choice, modular architecture)
+
+Routing: GoRouter (with deep link and web route support)
+
+Database (Local): Drift or Hive for offline caching
+
+Network Layer: Dio or http with interceptors and retry logic
+
+AI Integration: Gemini API via HTTPS through Supabase Edge Function
+
+Notifications: Firebase Cloud Messaging (FCM) for push + flutter_local_notifications for local
+
+File Storage: Supabase Storage
+
+Charting: syncfusion_flutter_charts or fl_chart
+
+Analytics: Built-in analytics dashboard + usage tracking per module
+
+🔧 Backend (Supabase)
+
+Database: PostgreSQL
+
+Authentication: Supabase Auth (Email, OAuth, Magic Link)
+
+Storage: Supabase Storage (images, audio, receipts, files)
+
+APIs: Supabase Edge Functions (TypeScript or Deno)
+
+RLS: Enabled for all tables (user_id = auth.uid())
+
+Serverless Logic:
+
+crypto-prices: Fetches live cryptocurrency data from CoinGecko
+
+gemini-assistant: Processes AI chat and AI insights requests
+
+Security: Enforced SSL, hashed passwords, role-based access policies
+
+🗄️ DATABASE STRUCTURE (52 Tables)
+
+All tables include id, created_at, updated_at, and user_id.
+All have Row Level Security (RLS) with access control: auth.uid() = user_id.
+
+Categories & Key Tables:
+
+🏠 Core
+
+profiles
+
+user_preferences
+
+settings
+
+notifications
+
+push_tokens
+
+💰 Financial Management
+
+finance_entries
+
+investments
+
+crypto_portfolio
+
+crypto_alerts
+
+bills
+
+subscriptions
+
+budgets
+
+debts
+
+assets
+
+expense_receipts
+
+tax_documents
+
+📈 Productivity & Work
+
+tasks
+
+goals
+
+goal_milestones
+
+habits
+
+habit_logs
+
+projects
+
+time_tracking
+
+journal_entries
+
+notes
+
+voice_notes
+
+🧠 Learning & Lifestyle
+
+learning_resources
+
+reading_list
+
+media_tracker
+
+hobbies
+
+skills
+
+travel_logs
+
+events
+
+social_events
+
+daily_reflections
+
+important_links
+
+❤️ Health & Home
+
+health_entries
+
+medical_history
+
+meal_plans
+
+mood_tracking
+
+vehicles
+
+plants
+
+home_maintenance
+
+recipes
+
+👥 Social & Contacts
+
+contacts
+
+family_members
+
+relationships
+
+birthdays
+
+🔐 System & Extras
+
+password_manager
+
+weather_data
+
+news_articles
+
+categories
+
+chat_sessions
+
+chat_messages
+
+posts (optional)
+
+🧩 APPLICATION MODULES (51)
+
+Each module should be a self-contained Flutter feature screen with:
+
+Its own ViewModel / Bloc
+
+Full CRUD integration with Supabase
+
+Offline caching
+
+Analytics logging
+
+Search and filter options
+
+🔹 Core Modules (4)
+
+Dashboard Overview (Stats, insights, quick access)
+
+AI Assistant (Gemini chat + history)
+
+Settings (preferences, themes, sync)
+
+Analytics Dashboard (personal insights, activity)
+
+🔹 Financial Modules (9)
+
+Finance Tracker
+
+Investment Portfolio
+
+Crypto Portfolio (live CoinGecko data)
+
+Bill Tracker (with reminders)
+
+Subscription Manager
+
+Budget Planning
+
+Debt Tracker
+
+Asset Manager
+
+Expense Receipts (scan + categorize)
+
+🔹 Productivity Modules (7)
+
+Task Manager (priorities, deadlines, tags)
+
+Goals Tracker (milestones)
+
+Habits Tracker (streaks, reminders)
+
+Time Tracking (projects + activities)
+
+Project Management (Gantt/timeline view)
+
+Journal (rich text + mood)
+
+Notes (simple + quick access)
+
+🔹 Health & Wellness (4)
+
+Health Tracker (vitals + measurements)
+
+Medical History (secure records)
+
+Meal Planning (macros + recipes)
+
+Mood Tracking (emotional states)
+
+🔹 Lifestyle & Learning (8)
+
+Learning Tracker
+
+Reading List
+
+Media Tracker (movies, TV shows)
+
+Hobbies Tracker
+
+Travel Planner
+
+Events Planner
+
+Daily Reflections (gratitude journal)
+
+Skills Development (levels + badges)
+
+🔹 Social & Contacts (5)
+
+Contacts Manager
+
+Birthday Tracker
+
+Family Tree
+
+Important Links
+
+Social Events
+
+🔹 Work & Business (4)
+
+Job Applications Tracker
+
+Contract Manager
+
+Tax Document Organizer
+
+Voice Notes Recorder
+
+🔹 Home & Lifestyle (4)
+
+Vehicle Management
+
+Plant Care
+
+Home Maintenance
+
+Recipe Collection
+
+🔹 Additional (6)
+
+Password Manager (AES encryption, biometrics)
+
+Weather Module (OpenWeather API)
+
+News Module (RSS or NewsAPI)
+
+Notifications Center
+
+User Profile
+
+Command Palette / Global Search
+
+🧠 AI & SMART FEATURES
+
+Gemini AI Assistant:
+
+Chat with memory and history per user
+
+Contextual insights (finance, goals, habits)
+
+Generates summaries, insights, or recommendations
+
+AI-Powered Smart Insights:
+
+Financial summary suggestions
+
+Habit analysis
+
+Daily journal reflections
+
+Voice Input for AI and note-taking
+
+AI Auto-fill Templates (tasks, goals, notes)
+
+🧩 USER INTERFACE REQUIREMENTS
+General UI:
+
+Material 3 adaptive design
+
+Dark/Light theme with system sync
+
+Bottom navigation bar for primary modules
+
+Side Drawer (Web) / Sidebar (Desktop view)
+
+Floating Action Button for new actions
+
+Animated transitions
+
+Pull-to-refresh
+
+Toast notifications and snackbars
+
+Global search bar (Cmd/Ctrl + K)
+
+Dashboard:
+
+Display metrics from all modules (finance, health, tasks)
+
+Use charts and cards for visual insights
+
+Include quick action shortcuts
+
+Mobile Optimization:
+
+Responsive breakpoints
+
+Touch-friendly buttons
+
+Offline caching
+
+Gesture navigation
+
+Scroll and swipe support
+
+Web Optimization:
+
+Collapsible sidebar
+
+Mouse hover tooltips
+
+Resizable panels
+
+Keyboard shortcuts
+
+🔒 SECURITY IMPLEMENTATION
+
+Supabase Auth with JWT tokens
+
+Secure local storage (AES encrypted using Flutter secure storage)
+
+RLS on all tables
+
+Encrypted Hive/Drift local database
+
+Biometric login (FaceID, fingerprint)
+
+PIN-protected sensitive modules (Password Manager, Finance)
+
+📊 ANALYTICS & GAMIFICATION
+
+Track module usage, goals progress, task completion rates
+
+Display insights in Analytics Dashboard
+
+Add achievements (streaks, milestones, badges)
+
+AI assistant can summarize performance trends
+
+🧪 TESTING REQUIREMENTS
+
+Test all modules for CRUD operations
+
+Verify offline cache sync consistency
+
+Check authentication & access controls
+
+Validate all Edge Functions (crypto, AI)
+
+Ensure UI responsiveness across all platforms
+
+Run Flutter integration tests for navigation and sync
+
+⚡ PERFORMANCE OPTIMIZATION
+
+Lazy loading for lists
+
+Query caching
+
+Image compression before upload
+
+Background sync
+
+Efficient indexing in Supabase
+
+Use isolate for heavy AI tasks
+
+🚀 DEPLOYMENT EXPECTATIONS
+
+Deliverables should include:
+
+✅ Full Flutter Source Code (mobile + web)
+
+✅ Supabase SQL schema & seed data
+
+✅ Edge Function code for crypto-prices & gemini-assistant
+
+✅ Firebase setup for notifications
+
+✅ Config files (env, API keys, secrets placeholders)
+
+✅ Documentation:
+
+Setup instructions
+
+Database schema
+
+Architecture diagram
+
+Module overview
+
+Build & deployment guide
+
+🧩 OPTIONAL ENHANCEMENTS (If Possible)
+
+Add Calendar sync (Google Calendar integration)
+
+Add Weather widget & News widget to dashboard
+
+Add Multi-user collaboration (shared projects or tasks)
+
+Add AI-suggested daily planner
+
+Add Data visualization for health trends
+
+Add Custom dashboards per user preference
+
+✅ FINAL NOTE TO THE AI DEVELOPER
+
+You must build this as a fully functional, production-ready system — not a concept or demo.
+The app should run seamlessly across Android, iOS, and Web.
+Code should be modular, documented, scalable, and clean.
+Focus on performance, reliability, offline capability, and security.
+Include all UI components, modules, and features listed above.
