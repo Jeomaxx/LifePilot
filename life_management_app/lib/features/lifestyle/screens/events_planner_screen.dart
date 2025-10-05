@@ -26,6 +26,7 @@ class EventsPlannerScreen extends ConsumerWidget {
           if (events.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.event,
+              title: 'No Events',
               subtitle: 'No events planned',
               actionLabel: 'Add Event',
               onAction: () => _showAddDialog(context, ref),
@@ -61,7 +62,7 @@ class EventsPlannerScreen extends ConsumerWidget {
                   ),
                   onLongPress: () async {
                     await DatabaseService().delete('events', event['id']?.toString() ?? '');
-                  ),
+                  },
                 ),
               );
             ),
@@ -109,7 +110,7 @@ class EventsPlannerScreen extends ConsumerWidget {
                       setState(() => eventDate = DateTime(date.year, date.month, date.day, time.hour, time.minute));
                     }
                   }
-                ),
+                },
               ),
             ],
           ),
@@ -124,7 +125,7 @@ class EventsPlannerScreen extends ConsumerWidget {
                   'event_date': eventDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

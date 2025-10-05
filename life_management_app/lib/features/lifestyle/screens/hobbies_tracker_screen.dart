@@ -25,6 +25,7 @@ class HobbiesTrackerScreen extends ConsumerWidget {
           if (hobbies.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.sports_tennis,
+              title: 'No Hobbies',
               subtitle: 'No hobbies tracked',
               actionLabel: 'Add Hobby',
               onAction: () => _showAddDialog(context, ref),
@@ -128,7 +129,7 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                   'category': category,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],
@@ -155,7 +156,7 @@ class HobbiesTrackerScreen extends ConsumerWidget {
                 onPressed: () async {
                   await DatabaseService().delete('hobbies', hobby['id']?.toString() ?? '');
                   Navigator.pop(context);
-                ),
+                },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 child: const Text('Delete Hobby'),
               ),
