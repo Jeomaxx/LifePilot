@@ -21,11 +21,15 @@ void main() async {
     anonKey: EnvConfig.supabaseAnonKey,
   );
   
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  
-  await NotificationService.initialize();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    await NotificationService.initialize();
+  } catch (e) {
+    print('Firebase initialization failed: $e');
+    print('Push notifications will not be available. See FIREBASE_SETUP.md for configuration.');
+  }
   
   await SyncService.initialize();
   
