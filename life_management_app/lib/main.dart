@@ -9,6 +9,7 @@ import 'core/theme/app_theme.dart';
 import 'routes/app_router.dart';
 import 'services/notification_service.dart';
 import 'services/sync_service.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,9 @@ void main() async {
     anonKey: EnvConfig.supabaseAnonKey,
   );
   
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   
   await NotificationService.initialize();
   

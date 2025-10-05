@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Guide - Flutter Life Management App</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <h1>📱 Life Management Super App</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/setup">Setup Guide</a>
+            <a href="/database">Database Schema</a>
+            <a href="/deployment">Deployment</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>🚀 Deployment Guide</h2>
+        
+        <div class="setup-section">
+            <h3>📱 Android Deployment (Google Play Store)</h3>
+            
+            <h4>1. Configure App Signing</h4>
+            <pre><code>keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload</code></pre>
+            
+            <h4>2. Create key.properties</h4>
+            <p>Create <code>android/key.properties</code>:</p>
+            <pre><code>storePassword=your_store_password
+keyPassword=your_key_password
+keyAlias=upload
+storeFile=/path/to/upload-keystore.jks</code></pre>
+            
+            <h4>3. Update android/app/build.gradle</h4>
+            <p>The build.gradle file is already configured for release signing.</p>
+            
+            <h4>4. Build Release APK/Bundle</h4>
+            <pre><code># Build APK
+flutter build apk --release
+
+# Build App Bundle (recommended for Play Store)
+flutter build appbundle --release</code></pre>
+            
+            <h4>5. Upload to Play Console</h4>
+            <ol>
+                <li>Go to <a href="https://play.google.com/console">Google Play Console</a></li>
+                <li>Create a new app</li>
+                <li>Fill in app details and store listing</li>
+                <li>Upload the app bundle from <code>build/app/outputs/bundle/release/</code></li>
+                <li>Complete content rating and pricing</li>
+                <li>Submit for review</li>
+            </ol>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🍎 iOS Deployment (Apple App Store)</h3>
+            
+            <h4>1. Xcode Configuration</h4>
+            <ol>
+                <li>Open <code>ios/Runner.xcworkspace</code> in Xcode</li>
+                <li>Select Runner in project navigator</li>
+                <li>Update Bundle Identifier</li>
+                <li>Select your development team</li>
+                <li>Configure signing & capabilities</li>
+            </ol>
+            
+            <h4>2. Build for Release</h4>
+            <pre><code>flutter build ios --release</code></pre>
+            
+            <h4>3. Archive and Upload</h4>
+            <ol>
+                <li>In Xcode: Product → Archive</li>
+                <li>Once archived, click "Distribute App"</li>
+                <li>Select "App Store Connect"</li>
+                <li>Follow the prompts to upload</li>
+            </ol>
+            
+            <h4>4. App Store Connect</h4>
+            <ol>
+                <li>Go to <a href="https://appstoreconnect.apple.com">App Store Connect</a></li>
+                <li>Create a new app</li>
+                <li>Fill in app information</li>
+                <li>Add screenshots and descriptions</li>
+                <li>Submit for review</li>
+            </ol>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🌐 Web Deployment</h3>
+            
+            <h4>1. Build for Web</h4>
+            <pre><code>flutter build web --release</code></pre>
+            
+            <h4>2. Deploy to Hosting</h4>
+            
+            <p><strong>Firebase Hosting:</strong></p>
+            <pre><code>firebase init hosting
+firebase deploy</code></pre>
+            
+            <p><strong>Vercel:</strong></p>
+            <pre><code>vercel --prod</code></pre>
+            
+            <p><strong>Netlify:</strong></p>
+            <pre><code>netlify deploy --prod --dir=build/web</code></pre>
+            
+            <p><strong>Custom Server:</strong></p>
+            <pre><code># Copy build/web contents to your web server
+scp -r build/web/* user@yourserver:/var/www/html/</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>⚙️ Pre-Deployment Checklist</h3>
+            <ul>
+                <li>✅ All API keys configured via environment variables</li>
+                <li>✅ Firebase configuration files in place</li>
+                <li>✅ Supabase backend fully set up and tested</li>
+                <li>✅ Edge Functions deployed</li>
+                <li>✅ Database schema imported</li>
+                <li>✅ RLS policies enabled</li>
+                <li>✅ App icons and splash screens configured</li>
+                <li>✅ Privacy policy and terms of service created</li>
+                <li>✅ Analytics and crash reporting set up</li>
+                <li>✅ Push notifications tested</li>
+                <li>✅ Offline mode verified</li>
+                <li>✅ All modules tested</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🔧 Build Configuration Files</h3>
+            
+            <h4>android/app/build.gradle</h4>
+            <p>Already configured with:</p>
+            <ul>
+                <li>Release signing configuration</li>
+                <li>ProGuard rules</li>
+                <li>Version codes and names</li>
+            </ul>
+            
+            <h4>ios/Runner.xcodeproj</h4>
+            <p>Configured with:</p>
+            <ul>
+                <li>Release build configuration</li>
+                <li>Code signing settings</li>
+                <li>Capabilities (push notifications, etc.)</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>📊 Performance Optimization</h3>
+            <ul>
+                <li>Enable code minification and obfuscation</li>
+                <li>Use --split-debug-info for better stack traces</li>
+                <li>Enable tree shaking</li>
+                <li>Optimize images and assets</li>
+                <li>Use deferred loading for large modules</li>
+            </ul>
+            
+            <pre><code>flutter build apk --release \
+  --obfuscate \
+  --split-debug-info=/path/to/symbols \
+  --tree-shake-icons</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🔐 Security Best Practices</h3>
+            <ul>
+                <li>Never commit API keys or secrets to version control</li>
+                <li>Use environment variables for sensitive data</li>
+                <li>Enable SSL pinning for production</li>
+                <li>Implement certificate pinning for critical APIs</li>
+                <li>Regular security audits</li>
+                <li>Keep dependencies updated</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>📱 App Store Requirements</h3>
+            
+            <h4>Google Play Store:</h4>
+            <ul>
+                <li>Target SDK 33 or higher</li>
+                <li>Privacy policy URL</li>
+                <li>Content rating</li>
+                <li>Feature graphic and screenshots</li>
+                <li>App description (max 4000 characters)</li>
+            </ul>
+            
+            <h4>Apple App Store:</h4>
+            <ul>
+                <li>App icons in all required sizes</li>
+                <li>Screenshots for all device sizes</li>
+                <li>Privacy nutrition labels</li>
+                <li>App description (max 4000 characters)</li>
+                <li>Keywords (max 100 characters)</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🔄 Continuous Integration/Deployment</h3>
+            <p>Consider setting up CI/CD with:</p>
+            <ul>
+                <li>GitHub Actions</li>
+                <li>Codemagic</li>
+                <li>Bitrise</li>
+                <li>Fastlane</li>
+            </ul>
+            
+            <p>Sample GitHub Actions workflow included in <code>.github/workflows/deploy.yml</code></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Schema - Flutter Life Management App</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <h1>📱 Life Management Super App</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/setup">Setup Guide</a>
+            <a href="/database">Database Schema</a>
+            <a href="/deployment">Deployment</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>🗄️ Database Schema</h2>
+        
+        <p>The application uses Supabase (PostgreSQL) with 52 tables, all protected by Row Level Security (RLS).</p>
+        
+        <div class="setup-section">
+            <h3>📋 Common Fields</h3>
+            <p>All tables include:</p>
+            <ul>
+                <li><code>id</code>: UUID primary key</li>
+                <li><code>user_id</code>: UUID foreign key to auth.users</li>
+                <li><code>created_at</code>: Timestamp</li>
+                <li><code>updated_at</code>: Timestamp</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🏠 Core Tables (5)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Description</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>profiles</td>
+                        <td>User profile information</td>
+                        <td>full_name, avatar_url, bio</td>
+                    </tr>
+                    <tr>
+                        <td>user_preferences</td>
+                        <td>User settings and preferences</td>
+                        <td>theme, language, notifications_enabled</td>
+                    </tr>
+                    <tr>
+                        <td>settings</td>
+                        <td>App settings</td>
+                        <td>key, value, category</td>
+                    </tr>
+                    <tr>
+                        <td>notifications</td>
+                        <td>In-app notifications</td>
+                        <td>title, message, read, type</td>
+                    </tr>
+                    <tr>
+                        <td>push_tokens</td>
+                        <td>FCM tokens for push notifications</td>
+                        <td>token, platform</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>💰 Financial Tables (10)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>finance_entries</td><td>amount, type, category, date, description</td></tr>
+                    <tr><td>investments</td><td>name, type, amount, current_value, returns</td></tr>
+                    <tr><td>crypto_portfolio</td><td>symbol, amount, purchase_price, current_price</td></tr>
+                    <tr><td>crypto_alerts</td><td>symbol, target_price, condition, triggered</td></tr>
+                    <tr><td>bills</td><td>name, amount, due_date, status, recurring</td></tr>
+                    <tr><td>subscriptions</td><td>name, amount, billing_cycle, next_payment</td></tr>
+                    <tr><td>budgets</td><td>category, amount, period, spent</td></tr>
+                    <tr><td>debts</td><td>creditor, amount, interest_rate, due_date</td></tr>
+                    <tr><td>assets</td><td>name, type, value, purchase_date</td></tr>
+                    <tr><td>expense_receipts</td><td>image_url, amount, merchant, category</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>📈 Productivity Tables (10)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>tasks</td><td>title, description, priority, due_date, status, tags</td></tr>
+                    <tr><td>goals</td><td>title, description, target_date, progress, status</td></tr>
+                    <tr><td>goal_milestones</td><td>goal_id, title, completed, due_date</td></tr>
+                    <tr><td>habits</td><td>name, frequency, streak, last_completed</td></tr>
+                    <tr><td>habit_logs</td><td>habit_id, completed, date, notes</td></tr>
+                    <tr><td>projects</td><td>name, description, status, start_date, end_date</td></tr>
+                    <tr><td>time_tracking</td><td>task, project_id, start_time, end_time, duration</td></tr>
+                    <tr><td>journal_entries</td><td>title, content, mood, tags, date</td></tr>
+                    <tr><td>notes</td><td>title, content, tags, pinned</td></tr>
+                    <tr><td>voice_notes</td><td>title, audio_url, duration, transcription</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>❤️ Health & Wellness Tables (4)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>health_entries</td><td>type, value, unit, date, notes</td></tr>
+                    <tr><td>medical_history</td><td>condition, diagnosis_date, treatment, doctor</td></tr>
+                    <tr><td>meal_plans</td><td>meal_type, food_items, calories, macros, date</td></tr>
+                    <tr><td>mood_tracking</td><td>mood, intensity, activities, notes, date</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🎯 Lifestyle & Learning Tables (8)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>learning_resources</td><td>title, type, url, status, progress</td></tr>
+                    <tr><td>reading_list</td><td>title, author, status, rating, notes</td></tr>
+                    <tr><td>media_tracker</td><td>title, type, status, rating, platform</td></tr>
+                    <tr><td>hobbies</td><td>name, description, frequency, last_activity</td></tr>
+                    <tr><td>skills</td><td>name, level, progress, category</td></tr>
+                    <tr><td>travel_logs</td><td>destination, start_date, end_date, notes, photos</td></tr>
+                    <tr><td>events</td><td>title, date, location, description, attendees</td></tr>
+                    <tr><td>daily_reflections</td><td>grateful_for, highlights, learnings, date</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>👥 Social & Contacts Tables (5)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>contacts</td><td>name, email, phone, address, notes</td></tr>
+                    <tr><td>family_members</td><td>name, relationship, birthday, contact_info</td></tr>
+                    <tr><td>relationships</td><td>person_name, type, since, notes</td></tr>
+                    <tr><td>birthdays</td><td>person_name, date, reminder_days</td></tr>
+                    <tr><td>social_events</td><td>title, date, location, attendees, type</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>💼 Work & Business Tables (5)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>job_applications</td><td>company, position, status, applied_date, salary_range</td></tr>
+                    <tr><td>contracts</td><td>title, client, start_date, end_date, value, status</td></tr>
+                    <tr><td>important_links</td><td>title, url, category, description</td></tr>
+                    <tr><td>tax_documents</td><td>file_url, year, type, description</td></tr>
+                    <tr><td>password_manager</td><td>service, username, encrypted_password, url</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🏠 Home & Lifestyle Tables (4)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>vehicles</td><td>make, model, year, mileage, maintenance_log</td></tr>
+                    <tr><td>plants</td><td>name, species, watering_schedule, last_watered</td></tr>
+                    <tr><td>home_maintenance</td><td>task, due_date, completed, cost, notes</td></tr>
+                    <tr><td>recipes</td><td>title, ingredients, instructions, cooking_time</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🤖 AI & System Tables (3)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table</th>
+                        <th>Key Fields</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>chat_sessions</td><td>title, model, created_at</td></tr>
+                    <tr><td>chat_messages</td><td>session_id, role, content, timestamp</td></tr>
+                    <tr><td>categories</td><td>name, type, color, icon</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>🔐 Row Level Security (RLS)</h3>
+            <p>All tables have RLS policies ensuring users can only access their own data:</p>
+            <pre><code>CREATE POLICY "Users can view own data"
+  ON table_name FOR SELECT
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can insert own data"
+  ON table_name FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update own data"
+  ON table_name FOR UPDATE
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can delete own data"
+  ON table_name FOR DELETE
+  USING (auth.uid() = user_id);</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>📁 Schema File</h3>
+            <p>The complete database schema is available at: <code>/life_management_app/supabase/schema.sql</code></p>
+            <p>Import it into your Supabase project to create all tables and policies.</p>
+        </div>
+    </div>
+</body>
+</html>

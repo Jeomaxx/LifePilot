@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Guide - Flutter Life Management App</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <h1>📱 Life Management Super App</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/setup">Setup Guide</a>
+            <a href="/database">Database Schema</a>
+            <a href="/deployment">Deployment</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>🚀 Setup Guide</h2>
+        
+        <div class="setup-section">
+            <h3>📋 Prerequisites</h3>
+            <ul>
+                <li>Flutter SDK 3.x or later installed</li>
+                <li>Android Studio with Android SDK (for Android builds)</li>
+                <li>Xcode (for iOS builds, macOS only)</li>
+                <li>Node.js 18+ (for Supabase Edge Functions)</li>
+                <li>Supabase account</li>
+                <li>Firebase account</li>
+                <li>API Keys: Gemini AI, OpenWeather, NewsAPI</li>
+            </ul>
+        </div>
+        
+        <div class="setup-section">
+            <h3>1️⃣ Clone or Download Flutter Source</h3>
+            <p>The complete Flutter source code is available in the <code>/life_management_app</code> directory.</p>
+            <pre><code>cd life_management_app</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>2️⃣ Install Flutter Dependencies</h3>
+            <pre><code>flutter pub get</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>3️⃣ Set Up Supabase Backend</h3>
+            <ol>
+                <li>Create a new Supabase project at <a href="https://supabase.com">supabase.com</a></li>
+                <li>Copy your project URL and anon key</li>
+                <li>Run the database schema:
+                    <pre><code>psql -h your-db-host -U postgres -d your-database -f supabase/schema.sql</code></pre>
+                </li>
+                <li>Deploy Edge Functions:
+                    <pre><code>cd supabase/functions
+supabase functions deploy crypto-prices
+supabase functions deploy gemini-assistant</code></pre>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="setup-section">
+            <h3>4️⃣ Set Up Firebase</h3>
+            <ol>
+                <li>Create a Firebase project</li>
+                <li>Add Android and iOS apps to your Firebase project</li>
+                <li>Download <code>google-services.json</code> (Android) and <code>GoogleService-Info.plist</code> (iOS)</li>
+                <li>Place files in:
+                    <ul>
+                        <li><code>android/app/google-services.json</code></li>
+                        <li><code>ios/Runner/GoogleService-Info.plist</code></li>
+                    </ul>
+                </li>
+                <li>Enable Firebase Cloud Messaging</li>
+            </ol>
+        </div>
+        
+        <div class="setup-section">
+            <h3>5️⃣ Configure Environment Variables</h3>
+            <p>Create a <code>.env</code> file or use Flutter compile-time variables:</p>
+            <pre><code># Build with environment variables
+flutter build apk --dart-define=SUPABASE_URL=your_url \
+  --dart-define=SUPABASE_ANON_KEY=your_key \
+  --dart-define=GEMINI_API_KEY=your_gemini_key \
+  --dart-define=OPENWEATHER_API_KEY=your_weather_key \
+  --dart-define=NEWS_API_KEY=your_news_key</code></pre>
+            
+            <p>Or update <code>lib/core/config/env_config.dart</code> with your keys (not recommended for production).</p>
+        </div>
+        
+        <div class="setup-section">
+            <h3>6️⃣ Run the Application</h3>
+            <h4>Mobile (Android/iOS)</h4>
+            <pre><code>flutter run</code></pre>
+            
+            <h4>Web</h4>
+            <pre><code>flutter run -d chrome</code></pre>
+        </div>
+        
+        <div class="setup-section">
+            <h3>7️⃣ API Keys Required</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Purpose</th>
+                        <th>Get Key From</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supabase</td>
+                        <td>Backend database and authentication</td>
+                        <td><a href="https://supabase.com">supabase.com</a></td>
+                    </tr>
+                    <tr>
+                        <td>Gemini AI</td>
+                        <td>AI assistant and insights</td>
+                        <td><a href="https://makersuite.google.com/app/apikey">Google AI Studio</a></td>
+                    </tr>
+                    <tr>
+                        <td>OpenWeather</td>
+                        <td>Weather module</td>
+                        <td><a href="https://openweathermap.org/api">openweathermap.org</a></td>
+                    </tr>
+                    <tr>
+                        <td>NewsAPI</td>
+                        <td>News module</td>
+                        <td><a href="https://newsapi.org">newsapi.org</a></td>
+                    </tr>
+                    <tr>
+                        <td>Firebase</td>
+                        <td>Push notifications</td>
+                        <td><a href="https://console.firebase.google.com">Firebase Console</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="setup-section">
+            <h3>📱 Next Steps</h3>
+            <ul>
+                <li><a href="/database">Review the database schema</a></li>
+                <li><a href="/deployment">Learn about deployment</a></li>
+                <li>Test the application on emulators/devices</li>
+                <li>Customize themes and branding</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
