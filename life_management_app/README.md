@@ -190,14 +190,28 @@ supabase/
     └── gemini-assistant/
 ```
 
-## Documentation
+## 📚 Documentation
 
-For detailed documentation, visit the documentation server:
+### Documentation Server
+View comprehensive guides and API reference:
 ```bash
 npm start
 ```
-
 Then open http://localhost:5000
+
+### Guides
+- **[FIREBASE_SETUP.md](FIREBASE_SETUP.md)** - Complete Firebase configuration guide
+- **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Pre-deployment checklist
+- **[PROJECT_STATUS.md](PROJECT_STATUS.md)** - Current implementation status
+
+### Example Module Implementations
+The following modules are fully implemented as reference examples:
+- **Finance Tracker**: Complete finance management with charts
+- **Tasks Manager**: Task management with categories
+- **Health Tracker**: Health metrics with progress charts
+- **Goals Manager**: Goal tracking with categories and progress
+
+Use these as templates for implementing additional modules.
 
 ## License
 
