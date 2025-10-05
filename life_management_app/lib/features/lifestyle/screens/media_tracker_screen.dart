@@ -25,6 +25,7 @@ class MediaTrackerScreen extends ConsumerWidget {
           if (media.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.movie,
+              title: 'No Media',
               subtitle: 'No media tracked',
               actionLabel: 'Add Media',
               onAction: () => _showAddDialog(context, ref),
@@ -55,7 +56,7 @@ class MediaTrackerScreen extends ConsumerWidget {
                   ),
                   onLongPress: () async {
                     await DatabaseService().delete('media_tracker', item['id']?.toString() ?? '');
-                  ),
+                  },
                 ),
               );
             ),
@@ -117,7 +118,7 @@ class MediaTrackerScreen extends ConsumerWidget {
                   'rating': rating,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

@@ -25,6 +25,7 @@ class ReadingListScreen extends ConsumerWidget {
           if (books.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.book,
+              title: 'No Books',
               subtitle: 'No books in your list',
               actionLabel: 'Add Book',
               onAction: () => _showAddDialog(context, ref),
@@ -89,7 +90,7 @@ class ReadingListScreen extends ConsumerWidget {
             } else {
               await DatabaseService().update('reading_list', book['id']?.toString() ?? '', {'status': value});
             }
-          ),
+          },
         ),
       ),
     );
@@ -122,7 +123,7 @@ class ReadingListScreen extends ConsumerWidget {
                 'status': 'to_read',
               });
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Add'),
           ),
         ],
