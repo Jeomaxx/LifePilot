@@ -205,7 +205,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
           onDelete: () async {
             await ref.read(healthNotifierProvider.notifier).deleteEntry(entry['id']);
             ref.invalidate(healthEntriesProvider);
-          ),
+          },
         )),
       ],
     );

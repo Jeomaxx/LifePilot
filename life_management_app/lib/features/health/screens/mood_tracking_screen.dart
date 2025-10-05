@@ -36,6 +36,7 @@ class MoodTrackingScreen extends ConsumerWidget {
           if (moods.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.sentiment_satisfied_alt,
+              title: 'No Mood Entries',
               subtitle: 'Start tracking your mood',
               actionLabel: 'Log Mood',
               onAction: () => _showLogMoodDialog(context, ref),
@@ -250,7 +251,7 @@ class MoodTrackingScreen extends ConsumerWidget {
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: () async {
             await DatabaseService().delete('mood_tracking', mood['id']?.toString() ?? '');
-          ),
+          },
         ),
       ),
     );
@@ -332,7 +333,7 @@ class MoodTrackingScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Save'),
             ),
           ],

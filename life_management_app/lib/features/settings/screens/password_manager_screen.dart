@@ -31,6 +31,7 @@ class PasswordManagerScreen extends ConsumerWidget {
           if (passwords.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.lock,
+              title: 'No Passwords',
               subtitle: 'No passwords saved',
               actionLabel: 'Add Password',
               onAction: () => _showAddDialog(context, ref),
@@ -107,7 +108,7 @@ class PasswordManagerScreen extends ConsumerWidget {
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () async {
                 await DatabaseService().delete('passwords', pwd['id']?.toString() ?? '');
-              ),
+              },
             ),
           ],
         ),
@@ -174,7 +175,7 @@ class PasswordManagerScreen extends ConsumerWidget {
                   'category': category,
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

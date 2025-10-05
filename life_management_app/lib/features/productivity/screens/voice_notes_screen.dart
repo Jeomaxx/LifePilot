@@ -48,6 +48,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                 if (notes.isEmpty && !isRecording) {
                   return EmptyStateWidget(
                     icon: Icons.mic,
+                    title: 'No Voice Notes',
                     subtitle: 'No voice notes yet',
                     actionLabel: 'Record',
                     onAction: _startRecording,

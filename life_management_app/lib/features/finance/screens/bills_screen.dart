@@ -35,6 +35,7 @@ class BillsScreen extends ConsumerWidget {
           if (bills.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt_long,
+              title: 'No Bills',
               subtitle: 'No bills tracked',
               actionLabel: 'Add Bill',
               onAction: () => _showAddBillDialog(context, ref),
@@ -239,7 +240,7 @@ class BillsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('bills', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

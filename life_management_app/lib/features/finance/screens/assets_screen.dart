@@ -35,6 +35,7 @@ class AssetsScreen extends ConsumerWidget {
           if (assets.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.inventory_2,
+              title: 'No Assets',
               subtitle: 'No assets tracked',
               actionLabel: 'Add Asset',
               onAction: () => _showAddAssetDialog(context, ref),
@@ -239,7 +240,7 @@ class AssetsScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showUpdateValueDialog(context, ref, asset);
-              ),
+              },
             ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
@@ -247,7 +248,7 @@ class AssetsScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showDeleteDialog(context, ref, asset['id']?.toString() ?? '');
-              ),
+              },
             ),
           ],
         ),
@@ -274,7 +275,7 @@ class AssetsScreen extends ConsumerWidget {
               final newValue = double.tryParse(valueController.text) ?? 0;
               await DatabaseService().update('assets', asset['id']?.toString() ?? '', {'value': newValue});
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Update'),
           ),
         ],
@@ -294,7 +295,7 @@ class AssetsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('assets', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

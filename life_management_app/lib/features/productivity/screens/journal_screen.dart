@@ -35,6 +35,7 @@ class JournalScreen extends ConsumerWidget {
           if (entries.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.book,
+              title: 'No Journal Entries',
               subtitle: 'Start your journal',
               actionLabel: 'Write Entry',
               onAction: () => _showAddEntryDialog(context, ref),
@@ -244,7 +245,7 @@ class JournalScreen extends ConsumerWidget {
                     onPressed: () async {
                       await DatabaseService().delete('journal_entries', entry['id']?.toString() ?? '');
                       Navigator.pop(context);
-                    ),
+                    },
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     child: const Text('Delete Entry'),
                   ),

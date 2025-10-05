@@ -39,6 +39,7 @@ class NotesScreen extends ConsumerWidget {
           if (notes.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.note,
+              title: 'No Notes',
               subtitle: 'No notes yet',
               actionLabel: 'Create Note',
               onAction: () => _showAddNoteDialog(context, ref),
@@ -255,7 +256,7 @@ class NotesScreen extends ConsumerWidget {
               onPressed: () async {
                 await DatabaseService().delete('notes', note['id']?.toString() ?? '');
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Delete', style: TextStyle(color: Colors.red)),
             ),
             TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),

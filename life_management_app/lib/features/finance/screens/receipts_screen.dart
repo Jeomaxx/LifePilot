@@ -26,6 +26,7 @@ class ReceiptsScreen extends ConsumerWidget {
           if (receipts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt_long,
+              title: 'No Receipts',
               subtitle: 'No receipts saved',
               actionLabel: 'Add Receipt',
               onAction: () => _showAddDialog(context, ref),
@@ -57,7 +58,7 @@ class ReceiptsScreen extends ConsumerWidget {
                   trailing: Text('\$${amount.toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   onLongPress: () async {
                     await DatabaseService().delete('expense_receipts', receipt['id']?.toString() ?? '');
-                  ),
+                  },
                 ),
               );
             ),
@@ -114,7 +115,7 @@ class ReceiptsScreen extends ConsumerWidget {
                     lastDate: DateTime.now(),
                   );
                   if (date != null) setState(() => expenseDate = date);
-                ),
+                },
               ),
             ],
           ),
@@ -130,7 +131,7 @@ class ReceiptsScreen extends ConsumerWidget {
                   'expense_date': expenseDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

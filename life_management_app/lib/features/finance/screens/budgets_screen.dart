@@ -35,6 +35,7 @@ class BudgetsScreen extends ConsumerWidget {
           if (budgets.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.account_balance_wallet,
+              title: 'No Budgets',
               subtitle: 'No budgets created',
               actionLabel: 'Create Budget',
               onAction: () => _showAddBudgetDialog(context, ref),

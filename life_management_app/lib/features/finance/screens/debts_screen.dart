@@ -35,6 +35,7 @@ class DebtsScreen extends ConsumerWidget {
           if (debts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.money_off,
+              title: 'No Debts',
               subtitle: 'No debts tracked',
               actionLabel: 'Add Debt',
               onAction: () => _showAddDebtDialog(context, ref),
@@ -208,7 +209,7 @@ class DebtsScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showPaymentDialog(context, ref, debt);
-              ),
+              },
             ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
@@ -216,7 +217,7 @@ class DebtsScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showDeleteDialog(context, ref, debt['id']?.toString() ?? '');
-              ),
+              },
             ),
           ],
         ),
@@ -256,7 +257,7 @@ class DebtsScreen extends ConsumerWidget {
               }
 
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Pay'),
           ),
         ],
@@ -276,7 +277,7 @@ class DebtsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('debts', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

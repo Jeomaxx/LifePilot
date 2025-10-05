@@ -41,6 +41,7 @@ class HabitsScreen extends ConsumerWidget {
           if (habits.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.repeat,
+              title: 'No Habits',
               subtitle: 'No habits tracked',
               actionLabel: 'Add Habit',
               onAction: () => _showAddHabitDialog(context, ref),
@@ -244,7 +245,7 @@ class HabitsScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showHabitHistory(context, habit);
-              ),
+              },
             ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
@@ -252,7 +253,7 @@ class HabitsScreen extends ConsumerWidget {
               onTap: () async {
                 await DatabaseService().delete('habits', habit['id']?.toString() ?? '');
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
             ),
           ],
         ),

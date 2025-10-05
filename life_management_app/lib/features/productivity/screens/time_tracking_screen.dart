@@ -64,7 +64,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
               ),
               const SizedBox(height: 12),
               if (entries.isEmpty)
-                const EmptyStateWidget(icon: Icons.timer, subtitle: 'No time tracked yet', actionLabel: null)
+                const EmptyStateWidget(icon: Icons.timer, title: 'No Time Tracked', subtitle: 'No time tracked yet', actionLabel: null)
               else
                 ...entries.take(10).map((entry) => _buildTimeEntry(context, entry)),
             ],

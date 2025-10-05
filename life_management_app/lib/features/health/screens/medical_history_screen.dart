@@ -35,6 +35,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
           if (records.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.medical_services,
+              title: 'No Medical Records',
               subtitle: 'No medical records',
               actionLabel: 'Add Record',
               onAction: () => _showAddRecordDialog(context, ref),
@@ -207,7 +208,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                       lastDate: DateTime.now(),
                     );
                     if (date != null) setState(() => recordDate = date);
-                  ),
+                  },
                 ),
               ],
             ),
@@ -226,7 +227,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],
@@ -249,7 +250,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
               onTap: () {
                 Navigator.pop(context);
                 _showRecordDetails(context, record);
-              ),
+              },
             ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
@@ -257,7 +258,7 @@ class MedicalHistoryScreen extends ConsumerWidget {
               onTap: () async {
                 await DatabaseService().delete('medical_history', record['id']?.toString() ?? '');
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
             ),
           ],
         ),

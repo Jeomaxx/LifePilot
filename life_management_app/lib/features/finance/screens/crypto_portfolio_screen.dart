@@ -40,6 +40,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
           if (portfolio.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.currency_bitcoin,
+              title: 'No Crypto Assets',
               subtitle: 'No crypto assets yet',
               actionLabel: 'Add Crypto',
               onAction: () => _showAddCryptoDialog(context, ref),
@@ -209,7 +210,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               });
 
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Add'),
           ),
         ],
@@ -325,7 +326,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                     onPressed: () async {
                       await DatabaseService().delete('crypto_alerts', alert['id']?.toString() ?? '');
                       Navigator.pop(context);
-                    ),
+                    },
                   ),
                 );
               ),
@@ -345,7 +346,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('crypto_portfolio', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

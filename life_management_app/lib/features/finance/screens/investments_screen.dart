@@ -35,6 +35,7 @@ class InvestmentsScreen extends ConsumerWidget {
           if (investments.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.trending_up,
+              title: 'No Investments',
               subtitle: 'No investments yet',
               actionLabel: 'Add Investment',
               onAction: () => _showAddInvestmentDialog(context, ref),
@@ -262,7 +263,7 @@ class InvestmentsScreen extends ConsumerWidget {
               });
               
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             child: const Text('Add'),
           ),
         ],
@@ -282,7 +283,7 @@ class InvestmentsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('investments', id);
               if (context.mounted) Navigator.pop(context);
-            ),
+            },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

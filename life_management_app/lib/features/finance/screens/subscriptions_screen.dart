@@ -35,6 +35,7 @@ class SubscriptionsScreen extends ConsumerWidget {
           if (subscriptions.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.subscriptions,
+              title: 'No Subscriptions',
               subtitle: 'No subscriptions tracked',
               actionLabel: 'Add Subscription',
               onAction: () => _showAddSubscriptionDialog(context, ref),
@@ -143,7 +144,7 @@ class SubscriptionsScreen extends ConsumerWidget {
             if (value == 'delete') {
               _showDeleteDialog(context, ref, subscription['id']?.toString() ?? '');
             }
-          ),
+          },
         ),
       ),
     );
@@ -191,7 +192,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 365)),
                     );
                     if (date != null) setState(() => nextPaymentDate = date);
-                  ),
+                  },
                 ),
               ],
             ),
@@ -210,7 +211,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              ),
+              },
               child: const Text('Add'),
             ),
           ],

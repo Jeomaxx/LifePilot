@@ -35,6 +35,7 @@ class ProjectsScreen extends ConsumerWidget {
           if (projects.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.work_outline,
+              title: 'No Projects',
               subtitle: 'No projects yet',
               actionLabel: 'Create Project',
               onAction: () => _showAddProjectDialog(context, ref),
@@ -273,7 +274,7 @@ class ProjectsScreen extends ConsumerWidget {
                   label: '${project['progress']}%',
                   onChanged: (value) async {
                     await DatabaseService().update('projects', project['id']?.toString() ?? '', {'progress': value.toInt()});
-                  ),
+                  },
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -286,7 +287,7 @@ class ProjectsScreen extends ConsumerWidget {
                             'progress': project['status'] == 'active' ? 100 : project['progress'],
                           });
                           Navigator.pop(context);
-                        ),
+                        },
                         child: Text(project['status'] == 'active' ? 'Mark Complete' : 'Reopen'),
                       ),
                     ),
@@ -296,7 +297,7 @@ class ProjectsScreen extends ConsumerWidget {
                         onPressed: () async {
                           await DatabaseService().delete('projects', project['id']?.toString() ?? '');
                           Navigator.pop(context);
-                        ),
+                        },
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                         child: const Text('Delete'),
                       ),
