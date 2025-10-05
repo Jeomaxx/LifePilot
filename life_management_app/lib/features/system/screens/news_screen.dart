@@ -6,7 +6,7 @@ class NewsScreen extends ConsumerWidget {
   const NewsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final mockNews = List.generate(10, (index) => {
       'title': 'Breaking News Story ${index + 1}',
       'summary': 'This is a summary of the news article with important information about recent events.',

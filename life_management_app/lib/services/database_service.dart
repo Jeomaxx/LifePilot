@@ -10,7 +10,7 @@ class DatabaseService {
     bool ascending = true,
     int? limit,
   }) async {
-    var query = _supabase.from(table).select(select ?? '*');
+    dynamic query = _supabase.from(table).select(select ?? '*');
     
     if (filters != null) {
       filters.forEach((key, value) {

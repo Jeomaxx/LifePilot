@@ -1,0 +1,683 @@
+lib/services/offline_service.dart:129:27: Error: A value of type 'Stream<List<ConnectivityResult>>' can't be returned from a function with return type 'Stream<ConnectivityResult>'.
+ - 'Stream' is from 'dart:async'.
+ - 'List' is from 'dart:core'.
+ - 'ConnectivityResult' is from 'package:connectivity_plus_platform_interface/src/enums.dart' ('../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/connectivity_plus_platform_interface-2.0.1/lib/src/enums.dart').
+    return Connectivity().onConnectivityChanged;
+                          ^
+lib/features/system/screens/news_screen.dart:9:10: Error: The method 'NewsScreen.build' has fewer positional arguments than those of overridden method 'ConsumerWidget.build'.
+  Widget build(BuildContext context) {
+         ^
+../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/flutter_riverpod-2.6.1/lib/src/consumer.dart:466:10: Context: This is the overridden method ('build').
+  Widget build(BuildContext context, WidgetRef ref);
+         ^
+lib/features/system/screens/weather_screen.dart:8:10: Error: The method 'WeatherScreen.build' has fewer positional arguments than those of overridden method 'ConsumerWidget.build'.
+  Widget build(BuildContext context) {
+         ^
+../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/flutter_riverpod-2.6.1/lib/src/consumer.dart:466:10: Context: This is the overridden method ('build').
+  Widget build(BuildContext context, WidgetRef ref);
+         ^
+lib/features/system/screens/notifications_center_screen.dart:47:15: Error: No named parameter with the name 'message'.
+              message: 'No notifications',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/services/database_service.dart:22:21: Error: A value of type 'PostgrestTransformBuilder<List<Map<String, dynamic>>>' can't be assigned to a variable of type 'PostgrestFilterBuilder<List<Map<String, dynamic>>>'.
+ - 'PostgrestTransformBuilder' is from 'package:postgrest/src/postgrest_builder.dart' ('../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/postgrest-2.5.0/lib/src/postgrest_builder.dart').
+ - 'List' is from 'dart:core'.
+ - 'Map' is from 'dart:core'.
+ - 'PostgrestFilterBuilder' is from 'package:postgrest/src/postgrest_builder.dart' ('../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/postgrest-2.5.0/lib/src/postgrest_builder.dart').
+      query = query.order(orderBy, ascending: ascending);
+                    ^
+lib/services/database_service.dart:26:21: Error: A value of type 'PostgrestTransformBuilder<List<Map<String, dynamic>>>' can't be assigned to a variable of type 'PostgrestFilterBuilder<List<Map<String, dynamic>>>'.
+ - 'PostgrestTransformBuilder' is from 'package:postgrest/src/postgrest_builder.dart' ('../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/postgrest-2.5.0/lib/src/postgrest_builder.dart').
+ - 'List' is from 'dart:core'.
+ - 'Map' is from 'dart:core'.
+ - 'PostgrestFilterBuilder' is from 'package:postgrest/src/postgrest_builder.dart' ('../../../../../AppData/Local/Pub/Cache/hosted/pub.dev/postgrest-2.5.0/lib/src/postgrest_builder.dart').
+      query = query.limit(limit);
+                    ^
+lib/features/home/screens/recipes_screen.dart:82:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/home/screens/recipes_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No recipes saved',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/home/screens/recipes_screen.dart:131:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/home/screens/recipes_screen.dart:131:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/home/screens/recipes_screen.dart:85:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/home/screens/home_maintenance_screen.dart:91:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/home/screens/home_maintenance_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No maintenance tasks',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/home/screens/home_maintenance_screen.dart:132:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/home/screens/home_maintenance_screen.dart:132:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/home/screens/home_maintenance_screen.dart:94:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/home/screens/plant_care_screen.dart:99:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/home/screens/plant_care_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No plants tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/home/screens/plant_care_screen.dart:135:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/home/screens/plant_care_screen.dart:135:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/home/screens/plant_care_screen.dart:102:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/home/screens/vehicles_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No vehicles tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/work/screens/career_notes_screen.dart:31:15: Error: No named parameter with the name 'message'.
+              message: 'No career notes',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/work/screens/tax_documents_screen.dart:90:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/work/screens/tax_documents_screen.dart:30:15: Error: No named parameter with the name 'message'.
+              message: 'No tax documents',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/work/screens/tax_documents_screen.dart:136:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/work/screens/tax_documents_screen.dart:136:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/work/screens/tax_documents_screen.dart:93:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/work/screens/contracts_screen.dart:98:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/work/screens/contracts_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No contracts',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/work/screens/contracts_screen.dart:159:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/work/screens/contracts_screen.dart:159:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/work/screens/contracts_screen.dart:101:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/work/screens/job_applications_screen.dart:130:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/work/screens/job_applications_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No job applications',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/work/screens/job_applications_screen.dart:174:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/work/screens/job_applications_screen.dart:174:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/work/screens/job_applications_screen.dart:133:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/social/screens/social_events_screen.dart:101:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/social/screens/social_events_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No social events',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/social/screens/social_events_screen.dart:149:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/social/screens/social_events_screen.dart:149:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/social/screens/social_events_screen.dart:104:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/social/screens/important_links_screen.dart:92:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/social/screens/important_links_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No links saved',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/social/screens/important_links_screen.dart:133:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/social/screens/important_links_screen.dart:133:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/social/screens/important_links_screen.dart:95:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/social/screens/family_tree_screen.dart:79:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/social/screens/family_tree_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No family members added',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/social/screens/family_tree_screen.dart:121:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/social/screens/family_tree_screen.dart:121:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/social/screens/family_tree_screen.dart:82:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/social/screens/birthdays_screen.dart:90:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/social/screens/birthdays_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No birthdays tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/social/screens/birthdays_screen.dart:130:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/social/screens/birthdays_screen.dart:130:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/social/screens/birthdays_screen.dart:93:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/social/screens/contacts_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No contacts yet',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/skills_development_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No skills tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/events_planner_screen.dart:83:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/lifestyle/screens/events_planner_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No events planned',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/events_planner_screen.dart:131:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/lifestyle/screens/events_planner_screen.dart:131:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/lifestyle/screens/events_planner_screen.dart:86:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/lifestyle/screens/travel_planner_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No trips planned',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/hobbies_tracker_screen.dart:97:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/lifestyle/screens/hobbies_tracker_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No hobbies tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/hobbies_tracker_screen.dart:135:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/lifestyle/screens/hobbies_tracker_screen.dart:135:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/lifestyle/screens/hobbies_tracker_screen.dart:100:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/lifestyle/screens/media_tracker_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No media tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/reading_list_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No books in your list',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/lifestyle/screens/learning_tracker_screen.dart:28:15: Error: No named parameter with the name 'message'.
+              message: 'No learning resources',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/health/screens/mood_tracking_screen.dart:263:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/health/screens/mood_tracking_screen.dart:39:15: Error: No named parameter with the name 'message'.
+              message: 'Start tracking your mood',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/health/screens/mood_tracking_screen.dart:339:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/health/screens/mood_tracking_screen.dart:339:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/health/screens/mood_tracking_screen.dart:266:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/health/screens/meal_planning_screen.dart:212:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/health/screens/meal_planning_screen.dart:60:25: Error: No named parameter with the name 'message'.
+                        message: 'No meals planned for ${DateFormat('MMM dd').format(selectedDay)}',
+                        ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/health/screens/meal_planning_screen.dart:270:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/health/screens/meal_planning_screen.dart:270:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/health/screens/meal_planning_screen.dart:215:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/health/screens/medical_history_screen.dart:178:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/health/screens/medical_history_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No medical records',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/health/screens/medical_history_screen.dart:233:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/health/screens/medical_history_screen.dart:233:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/health/screens/medical_history_screen.dart:181:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/productivity/screens/voice_notes_screen.dart:51:21: Error: No named parameter with the name 'message'.
+                    message: 'No voice notes yet',
+                    ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/notes_screen.dart:126:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/productivity/screens/notes_screen.dart:203:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/productivity/screens/notes_screen.dart:42:15: Error: No named parameter with the name 'message'.
+              message: 'No notes yet',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/notes_screen.dart:193:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/productivity/screens/notes_screen.dart:193:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/productivity/screens/notes_screen.dart:129:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/productivity/screens/notes_screen.dart:275:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/productivity/screens/notes_screen.dart:275:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/productivity/screens/notes_screen.dart:206:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/productivity/screens/journal_screen.dart:154:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/productivity/screens/journal_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'Start your journal',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/journal_screen.dart:203:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/productivity/screens/journal_screen.dart:203:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/productivity/screens/journal_screen.dart:157:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/productivity/screens/projects_screen.dart:183:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/productivity/screens/projects_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No projects yet',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/projects_screen.dart:232:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/productivity/screens/projects_screen.dart:232:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/productivity/screens/projects_screen.dart:186:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/productivity/screens/time_tracking_screen.dart:67:59: Error: No named parameter with the name 'message'.
+                const EmptyStateWidget(icon: Icons.timer, message: 'No time tracked yet', actionLabel: null)
+                                                          ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/habits_screen.dart:159:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/productivity/screens/habits_screen.dart:44:15: Error: No named parameter with the name 'message'.
+              message: 'No habits tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/productivity/screens/habits_screen.dart:199:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/productivity/screens/habits_screen.dart:199:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/productivity/screens/habits_screen.dart:162:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/finance/screens/receipts_screen.dart:29:15: Error: No named parameter with the name 'message'.
+              message: 'No receipts saved',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/assets_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No assets tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/debts_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No debts tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/budgets_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No budgets created',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/subscriptions_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No subscriptions tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/bills_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No bills tracked',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/crypto_portfolio_screen.dart:43:15: Error: No named parameter with the name 'message'.
+              message: 'No crypto assets yet',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/crypto_portfolio_screen.dart:73:81: Error: The argument type 'num' can't be assigned to the parameter type 'double'.
+              _buildSummaryCard(context, totalValue, totalInvested, profitLoss, profitLossPercent),
+                                                                                ^
+lib/features/finance/screens/investments_screen.dart:38:15: Error: No named parameter with the name 'message'.
+              message: 'No investments yet',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/finance/screens/investments_screen.dart:58:83: Error: The argument type 'num' can't be assigned to the parameter type 'double'.
+              _buildSummaryCard(context, totalValue, totalInvested, totalReturns, returnsPercent),
+                                                                                  ^
+lib/features/finance/screens/investments_screen.dart:84:9: Error: No named parameter with the name 'children'.
+        children: [
+        ^^^^^^^^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/widgets/basic.dart:2070:9: Context: Found this candidate, but the arguments don't match.
+  const Padding({super.key, required this.padding, super.child});
+        ^^^^^^^
+lib/features/goals/goals_screen.dart:284:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/goals/goals_screen.dart:46:15: Error: No named parameter with the name 'message'.
+              message: 'No goals set',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/goals/goals_screen.dart:345:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/goals/goals_screen.dart:345:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/goals/goals_screen.dart:287:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+lib/features/settings/screens/user_profile_screen.dart:26:29: Error: The method 'getCurrentUser' isn't defined for the class 'AuthService'.
+ - 'AuthService' is from 'package:life_management_app/services/auth_service.dart' ('lib/services/auth_service.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'getCurrentUser'.
+    final user = await auth.getCurrentUser();
+                            ^^^^^^^^^^^^^^
+lib/features/settings/screens/password_manager_screen.dart:125:15: Error: Can't find ')' to match '('.
+    showDialog(
+              ^
+lib/features/settings/screens/password_manager_screen.dart:34:15: Error: No named parameter with the name 'message'.
+              message: 'No passwords saved',
+              ^^^^^^^
+lib/core/widgets/empty_state_widget.dart:10:9: Context: Found this candidate, but the arguments don't match.
+  const EmptyStateWidget({
+        ^^^^^^^^^^^^^^^^
+lib/features/settings/screens/password_manager_screen.dart:181:9: Error: Expected an identifier, but got '}'.
+Try inserting an identifier before '}'.
+        },
+        ^
+lib/features/settings/screens/password_manager_screen.dart:181:9: Error: Expected ')' before this.
+        },
+        ^
+lib/features/settings/screens/password_manager_screen.dart:128:52: Error: Too many positional arguments: 0 allowed, but 1 found.
+Try removing the extra positional arguments.
+        builder: (context, setState) => AlertDialog(
+                                                   ^
+/C:/Flutter/flutter3293/packages/flutter/lib/src/material/dialog.dart:389:9: Context: Found this candidate, but the arguments don't match.
+  const AlertDialog({
+        ^^^^^^^^^^^
+Target kernel_snapshot_program failed: Exception
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileFlutterBuildDebug'.
+> Process 'command 'C:\Flutter\flutter3293\bin\flutter.bat'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 25s
+Running Gradle task 'assembleDebug'...                             27.0s
+Error: Gradle task assembleDebug failed with exit code 1
+PS C:\Users\markn\Downloads\myapp\05-10-2025-Replit\life_management_app\life_management_app> 

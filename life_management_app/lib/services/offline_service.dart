@@ -118,14 +118,14 @@ class OfflineService {
   Future<bool> isOnline() async {
     try {
       final result = await Connectivity().checkConnectivity();
-      return result != ConnectivityResult.none;
+      return !result.contains(ConnectivityResult.none);
     } catch (e) {
       print('Error checking connectivity: $e');
       return false;
     }
   }
   
-  Stream<ConnectivityResult> get connectivityStream {
+  Stream<List<ConnectivityResult>> get connectivityStream {
     return Connectivity().onConnectivityChanged;
   }
 }

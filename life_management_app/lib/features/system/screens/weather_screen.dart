@@ -5,7 +5,7 @@ class WeatherScreen extends ConsumerWidget {
   const WeatherScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text('Weather')),
       body: Padding(
