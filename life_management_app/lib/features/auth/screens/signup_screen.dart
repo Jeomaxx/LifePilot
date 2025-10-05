@@ -105,7 +105,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                         return 'Please enter a valid email';
                       }
                       return null;
-                    },
+                    ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
@@ -123,7 +123,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                         return 'Password must be at least 6 characters';
                       }
                       return null;
-                    },
+                    ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
@@ -138,7 +138,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                         return 'Passwords do not match';
                       }
                       return null;
-                    },
+                    ),
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton(

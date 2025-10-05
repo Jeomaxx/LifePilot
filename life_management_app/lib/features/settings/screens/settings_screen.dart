@@ -151,7 +151,7 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(themeModeProvider.notifier).state = value;
                   Navigator.pop(context);
                 }
-              },
+              ),
             ),
             RadioListTile<ThemeMode>(
               title: const Text('Dark'),
@@ -162,7 +162,7 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(themeModeProvider.notifier).state = value;
                   Navigator.pop(context);
                 }
-              },
+              ),
             ),
             RadioListTile<ThemeMode>(
               title: const Text('System'),
@@ -173,7 +173,7 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(themeModeProvider.notifier).state = value;
                   Navigator.pop(context);
                 }
-              },
+              ),
             ),
           ],
         ),

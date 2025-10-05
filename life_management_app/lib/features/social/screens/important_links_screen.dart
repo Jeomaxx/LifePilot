@@ -26,7 +26,7 @@ class ImportantLinksScreen extends ConsumerWidget {
           if (links.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.link,
-              message: 'No links saved',
+              subtitle: 'No links saved',
               actionLabel: 'Add Link',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -60,14 +60,14 @@ class ImportantLinksScreen extends ConsumerWidget {
                     ),
                     onLongPress: () async {
                       await DatabaseService().delete('important_links', link['id']?.toString() ?? '');
-                    },
+                    ),
                   ),
                 )),
                 const SizedBox(height: 16),
               ],
             )).toList(),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -126,11 +126,11 @@ class ImportantLinksScreen extends ConsumerWidget {
                   'category': category,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

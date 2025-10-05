@@ -64,12 +64,12 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
               ),
               const SizedBox(height: 12),
               if (entries.isEmpty)
-                const EmptyStateWidget(icon: Icons.timer, message: 'No time tracked yet', actionLabel: null)
+                const EmptyStateWidget(icon: Icons.timer, subtitle: 'No time tracked yet', actionLabel: null)
               else
                 ...entries.take(10).map((entry) => _buildTimeEntry(context, entry)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: activeStartTime == null ? _startTracking : _stopTracking,
@@ -102,7 +102,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 final minutes = (duration.inMinutes % 60).toString().padLeft(2, '0');
                 final seconds = (duration.inSeconds % 60).toString().padLeft(2, '0');
                 return Text('$hours:$minutes:$seconds', style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold));
-              },
+              ),
             ),
           ],
         ),
@@ -175,7 +175,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                         getTitlesWidget: (value, meta) {
                           const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
                           return Text(days[value.toInt()], style: const TextStyle(fontSize: 12));
-                        },
+                        ),
                       ),
                     ),
                     leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 30)),
@@ -243,7 +243,7 @@ class _TimeTrackingScreenState extends ConsumerState<TimeTrackingScreen> {
                 activeTask = taskController.text;
               });
               Navigator.pop(context);
-            },
+            ),
             child: const Text('Start'),
           ),
         ],

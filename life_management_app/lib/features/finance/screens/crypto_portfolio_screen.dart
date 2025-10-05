@@ -40,7 +40,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
           if (portfolio.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.currency_bitcoin,
-              message: 'No crypto assets yet',
+              subtitle: 'No crypto assets yet',
               actionLabel: 'Add Crypto',
               onAction: () => _showAddCryptoDialog(context, ref),
             );
@@ -52,7 +52,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               final amount = (crypto['amount'] as num?)?.toDouble() ?? 0;
               final price = (crypto['current_price'] as num?)?.toDouble() ?? 0;
               return sum + (amount * price);
-            },
+            ),
           );
 
           final totalInvested = portfolio.fold<double>(
@@ -61,7 +61,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               final amount = (crypto['amount'] as num?)?.toDouble() ?? 0;
               final purchasePrice = (crypto['purchase_price'] as num?)?.toDouble() ?? 0;
               return sum + (amount * purchasePrice);
-            },
+            ),
           );
 
           final profitLoss = totalValue - totalInvested;
@@ -80,7 +80,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               ...portfolio.map((crypto) => _buildCryptoCard(context, ref, crypto)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddCryptoDialog(context, ref),
@@ -209,7 +209,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
               });
 
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],
@@ -299,7 +299,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 Navigator.pop(context);
               }
-            },
+            ),
             child: const Text('Set Alert'),
           ),
         ],
@@ -325,10 +325,10 @@ class CryptoPortfolioScreen extends ConsumerWidget {
                     onPressed: () async {
                       await DatabaseService().delete('crypto_alerts', alert['id']?.toString() ?? '');
                       Navigator.pop(context);
-                    },
+                    ),
                   ),
                 );
-              },
+              ),
             ),
     );
   }
@@ -345,7 +345,7 @@ class CryptoPortfolioScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('crypto_portfolio', id);
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

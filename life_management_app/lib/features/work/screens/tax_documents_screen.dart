@@ -27,7 +27,7 @@ class TaxDocumentsScreen extends ConsumerWidget {
           if (docs.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt_long,
-              message: 'No tax documents',
+              subtitle: 'No tax documents',
               actionLabel: 'Add Document',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -56,7 +56,7 @@ class TaxDocumentsScreen extends ConsumerWidget {
               ],
             )).toList(),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -77,7 +77,7 @@ class TaxDocumentsScreen extends ConsumerWidget {
         subtitle: Text(type),
         onLongPress: () async {
           await DatabaseService().delete('tax_documents', doc['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -129,11 +129,11 @@ class TaxDocumentsScreen extends ConsumerWidget {
                   'tax_year': taxYear,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

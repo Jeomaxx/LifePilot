@@ -31,7 +31,7 @@ class PasswordManagerScreen extends ConsumerWidget {
           if (passwords.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.lock,
-              message: 'No passwords saved',
+              subtitle: 'No passwords saved',
               actionLabel: 'Add Password',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -74,7 +74,7 @@ class PasswordManagerScreen extends ConsumerWidget {
               )),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -101,13 +101,13 @@ class PasswordManagerScreen extends ConsumerWidget {
               onPressed: () {
                 Clipboard.setData(ClipboardData(text: pwd['password']?.toString() ?? ''));
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password copied')));
-              },
+              ),
             ),
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () async {
                 await DatabaseService().delete('passwords', pwd['id']?.toString() ?? '');
-              },
+              ),
             ),
           ],
         ),
@@ -174,11 +174,11 @@ class PasswordManagerScreen extends ConsumerWidget {
                   'category': category,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

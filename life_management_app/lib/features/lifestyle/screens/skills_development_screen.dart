@@ -25,7 +25,7 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
           if (skills.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.star,
-              message: 'No skills tracked',
+              subtitle: 'No skills tracked',
               actionLabel: 'Add Skill',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -54,7 +54,7 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
               ],
             )).toList(),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -108,7 +108,7 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                     if (level < 5) {
                       await DatabaseService().update('skills', skill['id']?.toString() ?? '', {'level': level + 1});
                     }
-                  },
+                  ),
                 ),
               ],
             ),
@@ -191,7 +191,7 @@ class SkillsDevelopmentScreen extends ConsumerWidget {
                   'level': 1,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],

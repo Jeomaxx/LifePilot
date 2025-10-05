@@ -26,7 +26,7 @@ class ContractsScreen extends ConsumerWidget {
           if (contracts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.description,
-              message: 'No contracts',
+              subtitle: 'No contracts',
               actionLabel: 'Add Contract',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -51,7 +51,7 @@ class ContractsScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -84,7 +84,7 @@ class ContractsScreen extends ConsumerWidget {
         ),
         onLongPress: () async {
           await DatabaseService().delete('contracts', contract['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -120,7 +120,7 @@ class ContractsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
                     );
                     if (date != null) setState(() => startDate = date);
-                  },
+                  ),
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -134,7 +134,7 @@ class ContractsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
                     );
                     if (date != null) setState(() => endDate = date);
-                  },
+                  ),
                 ),
               ],
             ),
@@ -152,11 +152,11 @@ class ContractsScreen extends ConsumerWidget {
                   'status': endDate!.isAfter(DateTime.now()) ? 'active' : 'expired',
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

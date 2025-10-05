@@ -25,7 +25,7 @@ class ContactsScreen extends ConsumerWidget {
           if (contacts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.contacts,
-              message: 'No contacts yet',
+              subtitle: 'No contacts yet',
               actionLabel: 'Add Contact',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -54,12 +54,12 @@ class ContactsScreen extends ConsumerWidget {
                   ),
                   onLongPress: () async {
                     await DatabaseService().delete('contacts', contact['id']?.toString() ?? '');
-                  },
+                  ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -98,7 +98,7 @@ class ContactsScreen extends ConsumerWidget {
                 'email': emailController.text,
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],

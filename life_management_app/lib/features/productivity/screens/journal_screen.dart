@@ -35,7 +35,7 @@ class JournalScreen extends ConsumerWidget {
           if (entries.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.book,
-              message: 'Start your journal',
+              subtitle: 'Start your journal',
               actionLabel: 'Write Entry',
               onAction: () => _showAddEntryDialog(context, ref),
             );
@@ -77,9 +77,9 @@ class JournalScreen extends ConsumerWidget {
                   const SizedBox(height: 16),
                 ],
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddEntryDialog(context, ref),
@@ -196,11 +196,11 @@ class JournalScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Save'),
             ),
           ],
-        },
+        ),
       ),
     );
   }
@@ -244,7 +244,7 @@ class JournalScreen extends ConsumerWidget {
                     onPressed: () async {
                       await DatabaseService().delete('journal_entries', entry['id']?.toString() ?? '');
                       Navigator.pop(context);
-                    },
+                    ),
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     child: const Text('Delete Entry'),
                   ),

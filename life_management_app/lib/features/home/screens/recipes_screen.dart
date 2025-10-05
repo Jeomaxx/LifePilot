@@ -25,7 +25,7 @@ class RecipesScreen extends ConsumerWidget {
           if (recipes.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.restaurant_menu,
-              message: 'No recipes saved',
+              subtitle: 'No recipes saved',
               actionLabel: 'Add Recipe',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -56,14 +56,14 @@ class RecipesScreen extends ConsumerWidget {
                     onTap: () => _showRecipeDetails(context, ref, recipe),
                     onLongPress: () async {
                       await DatabaseService().delete('recipes', recipe['id']?.toString() ?? '');
-                    },
+                    ),
                   ),
                 )),
                 const SizedBox(height: 16),
               ],
             )).toList(),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -124,11 +124,11 @@ class RecipesScreen extends ConsumerWidget {
                   'instructions': instructionsController.text,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

@@ -25,7 +25,7 @@ class FamilyTreeScreen extends ConsumerWidget {
           if (members.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.people,
-              message: 'No family members added',
+              subtitle: 'No family members added',
               actionLabel: 'Add Member',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -55,14 +55,14 @@ class FamilyTreeScreen extends ConsumerWidget {
                     subtitle: Text(member['phone']?.toString() ?? 'No phone'),
                     onLongPress: () async {
                       await DatabaseService().delete('family_members', member['id']?.toString() ?? '');
-                    },
+                    ),
                   ),
                 )),
                 const SizedBox(height: 16),
               ],
             )).toList(),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -114,11 +114,11 @@ class FamilyTreeScreen extends ConsumerWidget {
                   'phone': phoneController.text,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

@@ -26,7 +26,7 @@ class BirthdaysScreen extends ConsumerWidget {
           if (birthdays.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.cake,
-              message: 'No birthdays tracked',
+              subtitle: 'No birthdays tracked',
               actionLabel: 'Add Birthday',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -63,12 +63,12 @@ class BirthdaysScreen extends ConsumerWidget {
                   subtitle: Text('${DateFormat('MMM dd').format(birthDate)} • Turning $age • ${daysUntil == 0 ? 'Today!' : 'In $daysUntil days'}'),
                   onLongPress: () async {
                     await DatabaseService().delete('birthdays', birthday['id']?.toString() ?? '');
-                  },
+                  ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -109,7 +109,7 @@ class BirthdaysScreen extends ConsumerWidget {
                     lastDate: DateTime.now(),
                   );
                   if (date != null) setState(() => birthDate = date);
-                },
+                ),
               ),
             ],
           ),
@@ -123,11 +123,11 @@ class BirthdaysScreen extends ConsumerWidget {
                   'birth_date': birthDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

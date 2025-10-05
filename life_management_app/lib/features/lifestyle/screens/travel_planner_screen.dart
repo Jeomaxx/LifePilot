@@ -26,7 +26,7 @@ class TravelPlannerScreen extends ConsumerWidget {
           if (trips.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.flight,
-              message: 'No trips planned',
+              subtitle: 'No trips planned',
               actionLabel: 'Plan Trip',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -57,7 +57,7 @@ class TravelPlannerScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -84,7 +84,7 @@ class TravelPlannerScreen extends ConsumerWidget {
             : null,
         onLongPress: () async {
           await DatabaseService().delete('travel_logs', trip['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -116,7 +116,7 @@ class TravelPlannerScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
                     );
                     if (date != null) setState(() => startDate = date);
-                  },
+                  ),
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -130,7 +130,7 @@ class TravelPlannerScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 3650)),
                     );
                     if (date != null) setState(() => endDate = date);
-                  },
+                  ),
                 ),
               ],
             ),
@@ -146,7 +146,7 @@ class TravelPlannerScreen extends ConsumerWidget {
                   'end_date': endDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],

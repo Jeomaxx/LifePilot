@@ -35,7 +35,7 @@ class InvestmentsScreen extends ConsumerWidget {
           if (investments.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.trending_up,
-              message: 'No investments yet',
+              subtitle: 'No investments yet',
               actionLabel: 'Add Investment',
               onAction: () => _showAddInvestmentDialog(context, ref),
             );
@@ -67,7 +67,7 @@ class InvestmentsScreen extends ConsumerWidget {
               ...investments.map((investment) => _buildInvestmentCard(context, ref, investment)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddInvestmentDialog(context, ref),
@@ -168,7 +168,7 @@ class InvestmentsScreen extends ConsumerWidget {
                             return Text(name.length > 8 ? '${name.substring(0, 8)}...' : name, style: const TextStyle(fontSize: 10));
                           }
                           return const Text('');
-                        },
+                        ),
                       ),
                     ),
                     leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 40)),
@@ -262,7 +262,7 @@ class InvestmentsScreen extends ConsumerWidget {
               });
               
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],
@@ -282,7 +282,7 @@ class InvestmentsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('investments', id);
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

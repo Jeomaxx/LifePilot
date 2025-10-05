@@ -36,7 +36,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
           if (receipts.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt,
-              message: 'No receipts saved',
+              subtitle: 'No receipts saved',
               actionLabel: 'Add Receipt',
               onAction: () => _showAddReceiptDialog(context, ref),
             );
@@ -57,7 +57,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
               ...receipts.map((receipt) => _buildReceiptCard(context, ref, receipt)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddReceiptDialog(context, ref),
@@ -150,7 +150,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                       final picker = ImagePicker();
                       final image = await picker.pickImage(source: ImageSource.camera);
                       if (image != null) setState(() => imagePath = image.path);
-                    },
+                    ),
                     icon: const Icon(Icons.camera_alt),
                     label: const Text('Take Photo'),
                   ),
@@ -185,11 +185,11 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Save'),
             ),
           ],
-        },
+        ),
       ),
     );
   }
@@ -255,7 +255,7 @@ class ExpenseReceiptsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('expense_receipts', id);
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

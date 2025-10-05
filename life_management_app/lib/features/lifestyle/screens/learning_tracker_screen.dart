@@ -25,7 +25,7 @@ class LearningTrackerScreen extends ConsumerWidget {
           if (resources.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.school,
-              message: 'No learning resources',
+              subtitle: 'No learning resources',
               actionLabel: 'Add Resource',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -55,12 +55,12 @@ class LearningTrackerScreen extends ConsumerWidget {
                   ),
                   onLongPress: () async {
                     await DatabaseService().delete('learning_resources', resource['id']?.toString() ?? '');
-                  },
+                  ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -119,7 +119,7 @@ class LearningTrackerScreen extends ConsumerWidget {
                   'progress': 0,
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],

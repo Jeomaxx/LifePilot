@@ -67,7 +67,7 @@ class DailyReflectionsScreen extends ConsumerWidget {
               ...reflections.where((r) => r != todayReflection).take(10).map((r) => _buildReflectionCard(context, ref, r)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -101,7 +101,7 @@ class DailyReflectionsScreen extends ConsumerWidget {
         subtitle: Text(reflection['grateful_for']?.toString() ?? '', maxLines: 1, overflow: TextOverflow.ellipsis),
         onLongPress: () async {
           await DatabaseService().delete('daily_reflections', reflection['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -138,7 +138,7 @@ class DailyReflectionsScreen extends ConsumerWidget {
                 'reflection_date': DateTime.now().toIso8601String(),
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Save'),
           ),
         ],

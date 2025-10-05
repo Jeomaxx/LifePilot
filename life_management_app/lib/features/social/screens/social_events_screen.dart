@@ -26,7 +26,7 @@ class SocialEventsScreen extends ConsumerWidget {
           if (events.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.group,
-              message: 'No social events',
+              subtitle: 'No social events',
               actionLabel: 'Add Event',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -57,7 +57,7 @@ class SocialEventsScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -88,7 +88,7 @@ class SocialEventsScreen extends ConsumerWidget {
         ),
         onLongPress: () async {
           await DatabaseService().delete('social_events', event['id']?.toString() ?? '');
-        },
+        ),
       ),
     );
   }
@@ -127,7 +127,7 @@ class SocialEventsScreen extends ConsumerWidget {
                       setState(() => eventDate = DateTime(date.year, date.month, date.day, time.hour, time.minute));
                     }
                   }
-                },
+                ),
               ),
             ],
           ),
@@ -142,11 +142,11 @@ class SocialEventsScreen extends ConsumerWidget {
                   'event_date': eventDate!.toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

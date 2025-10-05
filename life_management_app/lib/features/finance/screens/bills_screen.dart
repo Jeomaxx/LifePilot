@@ -35,7 +35,7 @@ class BillsScreen extends ConsumerWidget {
           if (bills.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.receipt_long,
-              message: 'No bills tracked',
+              subtitle: 'No bills tracked',
               actionLabel: 'Add Bill',
               onAction: () => _showAddBillDialog(context, ref),
             );
@@ -73,7 +73,7 @@ class BillsScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddBillDialog(context, ref),
@@ -188,7 +188,7 @@ class BillsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 365)),
                     );
                     if (date != null) setState(() => selectedDate = date);
-                  },
+                  ),
                 ),
                 CheckboxListTile(
                   contentPadding: EdgeInsets.zero,
@@ -214,7 +214,7 @@ class BillsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
@@ -239,7 +239,7 @@ class BillsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('bills', id);
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Delete'),
           ),

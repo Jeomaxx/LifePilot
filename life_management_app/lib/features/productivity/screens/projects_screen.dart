@@ -35,7 +35,7 @@ class ProjectsScreen extends ConsumerWidget {
           if (projects.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.work_outline,
-              message: 'No projects yet',
+              subtitle: 'No projects yet',
               actionLabel: 'Create Project',
               onAction: () => _showAddProjectDialog(context, ref),
             );
@@ -68,7 +68,7 @@ class ProjectsScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddProjectDialog(context, ref),
@@ -205,7 +205,7 @@ class ProjectsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 365)),
                     );
                     if (date != null) setState(() => deadline = date);
-                  },
+                  ),
                 ),
               ],
             ),
@@ -225,11 +225,11 @@ class ProjectsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Create'),
             ),
           ],
-        },
+        ),
       ),
     );
   }
@@ -273,7 +273,7 @@ class ProjectsScreen extends ConsumerWidget {
                   label: '${project['progress']}%',
                   onChanged: (value) async {
                     await DatabaseService().update('projects', project['id']?.toString() ?? '', {'progress': value.toInt()});
-                  },
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -286,7 +286,7 @@ class ProjectsScreen extends ConsumerWidget {
                             'progress': project['status'] == 'active' ? 100 : project['progress'],
                           });
                           Navigator.pop(context);
-                        },
+                        ),
                         child: Text(project['status'] == 'active' ? 'Mark Complete' : 'Reopen'),
                       ),
                     ),
@@ -296,7 +296,7 @@ class ProjectsScreen extends ConsumerWidget {
                         onPressed: () async {
                           await DatabaseService().delete('projects', project['id']?.toString() ?? '');
                           Navigator.pop(context);
-                        },
+                        ),
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                         child: const Text('Delete'),
                       ),

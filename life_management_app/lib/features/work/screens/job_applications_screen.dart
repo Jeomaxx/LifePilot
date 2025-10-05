@@ -26,7 +26,7 @@ class JobApplicationsScreen extends ConsumerWidget {
           if (jobs.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.work,
-              message: 'No job applications',
+              subtitle: 'No job applications',
               actionLabel: 'Add Application',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -51,7 +51,7 @@ class JobApplicationsScreen extends ConsumerWidget {
               ],
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -116,7 +116,7 @@ class JobApplicationsScreen extends ConsumerWidget {
             } else {
               await DatabaseService().update('job_applications', job['id']?.toString() ?? '', {'status': value});
             }
-          },
+          ),
         ),
       ),
     );
@@ -151,7 +151,7 @@ class JobApplicationsScreen extends ConsumerWidget {
                     lastDate: DateTime.now(),
                   );
                   if (date != null) setState(() => appliedDate = date);
-                },
+                ),
               ),
             ],
           ),
@@ -167,11 +167,11 @@ class JobApplicationsScreen extends ConsumerWidget {
                   'applied_date': (appliedDate ?? DateTime.now()).toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

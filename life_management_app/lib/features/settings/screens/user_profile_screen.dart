@@ -132,7 +132,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               if (context.mounted) {
                 Navigator.of(context).pushReplacementNamed('/login');
               }
-            },
+            ),
             style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
             child: const Padding(
               padding: EdgeInsets.all(16),

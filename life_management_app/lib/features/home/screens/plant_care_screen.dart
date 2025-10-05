@@ -26,7 +26,7 @@ class PlantCareScreen extends ConsumerWidget {
           if (plants.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.local_florist,
-              message: 'No plants tracked',
+              subtitle: 'No plants tracked',
               actionLabel: 'Add Plant',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -80,9 +80,9 @@ class PlantCareScreen extends ConsumerWidget {
                   ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -128,11 +128,11 @@ class PlantCareScreen extends ConsumerWidget {
                   'last_watered': DateTime.now().toIso8601String(),
                 });
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
-        },
+        ),
       ),
     );
   }
@@ -155,7 +155,7 @@ class PlantCareScreen extends ConsumerWidget {
                     'last_watered': DateTime.now().toIso8601String(),
                   });
                   Navigator.pop(context);
-                },
+                ),
                 icon: const Icon(Icons.water_drop),
                 label: const Text('Mark as Watered'),
               ),
@@ -167,7 +167,7 @@ class PlantCareScreen extends ConsumerWidget {
                 onPressed: () async {
                   await DatabaseService().delete('plants', plant['id']?.toString() ?? '');
                   Navigator.pop(context);
-                },
+                ),
                 style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
                 child: const Text('Delete Plant'),
               ),

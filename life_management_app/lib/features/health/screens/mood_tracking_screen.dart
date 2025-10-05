@@ -36,7 +36,7 @@ class MoodTrackingScreen extends ConsumerWidget {
           if (moods.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.sentiment_satisfied_alt,
-              message: 'Start tracking your mood',
+              subtitle: 'Start tracking your mood',
               actionLabel: 'Log Mood',
               onAction: () => _showLogMoodDialog(context, ref),
             );
@@ -57,7 +57,7 @@ class MoodTrackingScreen extends ConsumerWidget {
               ...moods.take(20).map((mood) => _buildMoodCard(context, ref, mood)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showLogMoodDialog(context, ref),
@@ -164,7 +164,7 @@ class MoodTrackingScreen extends ConsumerWidget {
                         getTitlesWidget: (value, meta) {
                           final date = now.subtract(Duration(days: 6 - value.toInt()));
                           return Text(DateFormat('EEE').format(date), style: const TextStyle(fontSize: 12));
-                        },
+                        ),
                       ),
                     ),
                     leftTitles: AxisTitles(
@@ -250,7 +250,7 @@ class MoodTrackingScreen extends ConsumerWidget {
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: () async {
             await DatabaseService().delete('mood_tracking', mood['id']?.toString() ?? '');
-          },
+          ),
         ),
       ),
     );
@@ -332,11 +332,11 @@ class MoodTrackingScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Save'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

@@ -67,7 +67,7 @@ class _AIAssistantScreenState extends ConsumerState<AIAssistantScreen> {
             icon: const Icon(Icons.refresh),
             onPressed: () {
               setState(() => _messages.clear());
-            },
+            ),
           ),
         ],
       ),
@@ -108,7 +108,7 @@ class _AIAssistantScreenState extends ConsumerState<AIAssistantScreen> {
                     itemBuilder: (context, index) {
                       final message = _messages[index];
                       return _buildMessage(message);
-                    },
+                    ),
                   ),
           ),
           Container(

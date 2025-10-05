@@ -28,7 +28,7 @@ class CareerNotesScreen extends ConsumerWidget {
           if (notes.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.sticky_note_2,
-              message: 'No career notes',
+              subtitle: 'No career notes',
               actionLabel: 'Add Note',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -58,12 +58,12 @@ class CareerNotesScreen extends ConsumerWidget {
                   onTap: () => _showEditDialog(context, ref, note),
                   onLongPress: () async {
                     await DatabaseService().delete('notes', note['id']?.toString() ?? '');
-                  },
+                  ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -104,7 +104,7 @@ class CareerNotesScreen extends ConsumerWidget {
                 'category': 'career',
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],
@@ -137,7 +137,7 @@ class CareerNotesScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('notes', note['id']?.toString() ?? '');
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Delete', style: TextStyle(color: Colors.red)),
           ),
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
@@ -148,7 +148,7 @@ class CareerNotesScreen extends ConsumerWidget {
                 'content': contentController.text,
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Save'),
           ),
         ],

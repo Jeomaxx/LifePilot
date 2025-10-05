@@ -57,7 +57,7 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                 child: selectedDayMeals.isEmpty
                     ? EmptyStateWidget(
                         icon: Icons.restaurant,
-                        message: 'No meals planned for ${DateFormat('MMM dd').format(selectedDay)}',
+                        subtitle: 'No meals planned for ${DateFormat('MMM dd').format(selectedDay)}',
                         actionLabel: 'Plan Meal',
                         onAction: () => _showAddMealDialog(context, ref),
                       )
@@ -72,7 +72,7 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
               ),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddMealDialog(context, ref),
@@ -95,13 +95,13 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
             selectedDay = selected;
             focusedDay = focused;
           });
-        },
+        ),
         eventLoader: (day) {
           return meals.where((m) {
             final mealDate = m['meal_date'] != null ? DateTime.parse(m['meal_date'].toString()) : null;
             return mealDate != null && isSameDay(mealDate, day);
           }).toList();
-        },
+        ),
       ),
     );
   }
@@ -195,7 +195,7 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: () async {
             await DatabaseService().delete('meal_plans', meal['id']?.toString() ?? '');
-          },
+          ),
         ),
       ),
     );
@@ -263,11 +263,11 @@ class _MealPlanningScreenState extends ConsumerState<MealPlanningScreen> {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Save'),
             ),
           ],
-        },
+        ),
       ),
     );
   }

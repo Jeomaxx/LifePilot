@@ -48,7 +48,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                 if (notes.isEmpty && !isRecording) {
                   return EmptyStateWidget(
                     icon: Icons.mic,
-                    message: 'No voice notes yet',
+                    subtitle: 'No voice notes yet',
                     actionLabel: 'Record',
                     onAction: _startRecording,
                   );
@@ -59,7 +59,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                   itemCount: notes.length,
                   itemBuilder: (context, index) => _buildVoiceNoteCard(context, notes[index]),
                 );
-              },
+              ),
             ),
           ),
         ],
@@ -90,7 +90,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
               final minutes = duration.inMinutes.toString().padLeft(2, '0');
               final seconds = (duration.inSeconds % 60).toString().padLeft(2, '0');
               return Text('$minutes:$seconds', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold));
-            },
+            ),
           ),
         ],
       ),
@@ -172,7 +172,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                   recordingStartTime = null;
                 });
                 Navigator.pop(context);
-              },
+              ),
               child: const Text('Discard'),
             ),
             ElevatedButton(
@@ -190,7 +190,7 @@ class _VoiceNotesScreenState extends ConsumerState<VoiceNotesScreen> {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Save'),
             ),
           ],

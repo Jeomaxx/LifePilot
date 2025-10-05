@@ -30,7 +30,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
         ],
       ),
       body: entriesAsync.when(
-        loading: () => const LoadingWidget(message: 'Loading health data...'),
+        loading: () => const LoadingWidget(subtitle: 'Loading health data...'),
         error: (error, stack) => CustomErrorWidget(
           message: error.toString(),
           onRetry: () => ref.invalidate(healthEntriesProvider),
@@ -205,7 +205,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
           onDelete: () async {
             await ref.read(healthNotifierProvider.notifier).deleteEntry(entry['id']);
             ref.invalidate(healthEntriesProvider);
-          },
+          ),
         )),
       ],
     );
@@ -288,7 +288,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
                   );
                 }
               }
-            },
+            ),
             child: const Text('Save'),
           ),
         ],

@@ -35,7 +35,7 @@ class BudgetsScreen extends ConsumerWidget {
           if (budgets.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.account_balance_wallet,
-              message: 'No budgets created',
+              subtitle: 'No budgets created',
               actionLabel: 'Create Budget',
               onAction: () => _showAddBudgetDialog(context, ref),
             );
@@ -59,7 +59,7 @@ class BudgetsScreen extends ConsumerWidget {
               ...budgets.map((budget) => _buildBudgetCard(context, ref, budget)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddBudgetDialog(context, ref),
@@ -130,7 +130,7 @@ class BudgetsScreen extends ConsumerWidget {
                         radius: 60,
                         titleStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
                       );
-                    },
+                    ),
                   ),
                   sectionsSpace: 2,
                   centerSpaceRadius: 40,
@@ -235,7 +235,7 @@ class BudgetsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Create'),
             ),
           ],

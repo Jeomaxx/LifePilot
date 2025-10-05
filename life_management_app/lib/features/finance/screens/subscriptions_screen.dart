@@ -35,7 +35,7 @@ class SubscriptionsScreen extends ConsumerWidget {
           if (subscriptions.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.subscriptions,
-              message: 'No subscriptions tracked',
+              subtitle: 'No subscriptions tracked',
               actionLabel: 'Add Subscription',
               onAction: () => _showAddSubscriptionDialog(context, ref),
             );
@@ -62,7 +62,7 @@ class SubscriptionsScreen extends ConsumerWidget {
               ...subscriptions.map((subscription) => _buildSubscriptionCard(context, ref, subscription)),
             ],
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddSubscriptionDialog(context, ref),
@@ -143,7 +143,7 @@ class SubscriptionsScreen extends ConsumerWidget {
             if (value == 'delete') {
               _showDeleteDialog(context, ref, subscription['id']?.toString() ?? '');
             }
-          },
+          ),
         ),
       ),
     );
@@ -191,7 +191,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                       lastDate: DateTime.now().add(const Duration(days: 365)),
                     );
                     if (date != null) setState(() => nextPaymentDate = date);
-                  },
+                  ),
                 ),
               ],
             ),
@@ -210,7 +210,7 @@ class SubscriptionsScreen extends ConsumerWidget {
                 });
 
                 if (context.mounted) Navigator.pop(context);
-              },
+              ),
               child: const Text('Add'),
             ),
           ],
@@ -231,7 +231,7 @@ class SubscriptionsScreen extends ConsumerWidget {
             onPressed: () async {
               await DatabaseService().delete('subscriptions', id);
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             child: const Text('Remove'),
           ),

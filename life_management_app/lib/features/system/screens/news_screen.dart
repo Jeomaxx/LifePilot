@@ -79,7 +79,7 @@ class NewsScreen extends ConsumerWidget {
               ],
             ),
           );
-        },
+        ),
       ),
     );
   }

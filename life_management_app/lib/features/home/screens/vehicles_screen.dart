@@ -26,7 +26,7 @@ class VehiclesScreen extends ConsumerWidget {
           if (vehicles.isEmpty) {
             return EmptyStateWidget(
               icon: Icons.directions_car,
-              message: 'No vehicles tracked',
+              subtitle: 'No vehicles tracked',
               actionLabel: 'Add Vehicle',
               onAction: () => _showAddDialog(context, ref),
             );
@@ -54,12 +54,12 @@ class VehiclesScreen extends ConsumerWidget {
                   ),
                   onLongPress: () async {
                     await DatabaseService().delete('vehicles', vehicle['id']?.toString() ?? '');
-                  },
+                  ),
                 ),
               );
-            },
+            ),
           );
-        },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -102,7 +102,7 @@ class VehiclesScreen extends ConsumerWidget {
                 'mileage': int.tryParse(mileageController.text) ?? 0,
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Add'),
           ),
         ],
@@ -130,7 +130,7 @@ class VehiclesScreen extends ConsumerWidget {
                 'mileage': int.tryParse(mileageController.text) ?? 0,
               });
               if (context.mounted) Navigator.pop(context);
-            },
+            ),
             child: const Text('Update'),
           ),
         ],
