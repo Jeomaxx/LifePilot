@@ -1,0 +1,19 @@
+## This file must be checked in version control.
+##
+## To customize properties used by the Ant build system edit
+## "ant.properties", and override values to adapt the script to your
+## project structure.
+##
+## To enable ProGuard to shrink and obfuscate your code, uncomment this:
+# proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt
+
+# Project target.
+# target=android-33
+
+# Flutter SDK Path
+# Replace with your Flutter SDK installation path
+flutter.sdk=/path/to/flutter/sdk
+
+# Flutter version information
+flutter.versionCode=1
+flutter.versionName=1.0.0
